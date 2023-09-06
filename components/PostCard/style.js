@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { styled } from 'styled-components';
 
 export const Wrapper = styled.article`
+  height: 100%;
   & .date::before {
     width: 4px;
     height: 4px;

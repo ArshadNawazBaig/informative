@@ -4,6 +4,7 @@ import { Navbar, StyledButton } from './style';
 import { useTheme } from '@/context/ThemeProvider';
 import { Box } from '@/style';
 import Link from 'next/link';
+import { MoonIcon, SearchIcon, SunIcon } from '../Icons';
 
 function Header(args) {
   const { theme, toggleTheme } = useTheme();
@@ -11,8 +12,8 @@ function Header(args) {
   return (
     <Navbar className="navbar navbar-expand-lg">
       <Box className="container">
-        <Link className="navbar-brand" href="#">
-          Navbar
+        <Link className="navbar-brand text-uppercase fw-medium" href="#">
+          Informative
         </Link>
         <button
           className="navbar-toggler"
@@ -44,13 +45,13 @@ function Header(args) {
             </li>
             <li className="nav-item"></li>
           </ul>
-          <Box className="d-flex">
-            <StyledButton onClick={toggleTheme}>
-              Toggle Theme ({theme === 'light' ? 'Dark' : 'Light'})
+          <Box className="d-flex align-items-center">
+            <StyledButton onClick={toggleTheme} pos={theme}>
+              <Box className="circle"></Box>
+              <SunIcon />
+              <MoonIcon />
             </StyledButton>
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
+            {/* <SearchIcon /> */}
           </Box>
         </Box>
       </Box>

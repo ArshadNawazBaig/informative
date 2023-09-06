@@ -11,21 +11,17 @@ import {
 import { Box } from '@/style';
 import Link from 'next/link';
 import Button from '../Button';
+import Image from 'next/legacy/image';
 
 const PostCard = ({ size, font, varient }) => {
   return (
     <Wrapper>
       <PostWrapper full={size} varient={varient}>
         <ImageWrapper>
-          <img
-            loading="lazy"
-            width="700"
-            height="500"
+          <Image
+            alt="Mountains"
             src="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/ben-masora-7GJr-Zxs-IY-unsplash-700x500.jpg"
-            className="attachment-rivax-medium size-rivax-medium wp-post-image"
-            alt=""
-            decoding="async"
-            title="Ready To Go Home After The Sunset View?"
+            layout="fill"
           />
         </ImageWrapper>
         <ContentWrapper>
