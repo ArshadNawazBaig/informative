@@ -2,11 +2,27 @@
 import Link from 'next/link';
 import { styled } from 'styled-components';
 
+export const Wrapper = styled.article`
+  & .date::before {
+    width: 4px;
+    height: 4px;
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    background: currentColor;
+    margin-left: 10px;
+  }
+`;
+
 export const PostWrapper = styled.article`
   height: 100%;
   min-height: ${({ full }) => (full === 'full' ? '60vh' : 'auto')};
   border-radius: 15px 15px 15px 15px;
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  /* box-shadow: ; */
+  box-shadow: ${({ varient }) =>
+    varient === 'ver'
+      ? '0px 10px 25px 4px rgba(23, 25, 32, 0.21176470588235294)'
+      : '0px 4px 10px 0px rgba(0, 0, 0, 0.25)'};
   display: flex;
   position: relative;
   overflow: hidden;
@@ -28,15 +44,6 @@ export const PostWrapper = styled.article`
   }
   &:hover img {
     transform: scale(1.1);
-  }
-  & .date::before {
-    width: 4px;
-    height: 4px;
-    content: '';
-    display: inline-block;
-    margin-right: 10px;
-    background: currentColor;
-    margin-left: 10px;
   }
 `;
 
@@ -70,8 +77,8 @@ export const TermItem = styled(Link)`
   color: #fff;
   display: inline-block;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 400;
   background-color: #ff2c54;
   padding: 1px 8px;
   margin-right: 5px;
@@ -80,9 +87,15 @@ export const TermItem = styled(Link)`
   transition: 0.3s ease-in-out;
 `;
 
+export const AuthorLink = styled(Link)`
+  color: ${({ theme }) => theme.secondary};
+`;
+
 export const Title = styled.h2`
   margin: 10px 0;
   word-wrap: break-word;
+  font-size: ${({ font }) => (font === 'md' ? '1.65rem' : '1.2rem')};
+  font-weight: 600;
   &:hover a {
     background-position: left 0% bottom;
     background-size: 100% 2px;

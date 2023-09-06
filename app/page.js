@@ -7,7 +7,7 @@ const Home = () => {
     <Box className="container">
       <Box className="row d-flex align-items-stretch row-gap-4">
         <Box className="col-md-8">
-          <PostCard />
+          <PostCard font="md" />
         </Box>
         <Box className="col-md-4">
           <Box className="row gap-4">
@@ -22,7 +22,18 @@ const Home = () => {
       </Box>
       <Box className="row mt-4">
         <Box className="col-md-4">
-          <PostCard size="full" />
+          <PostCard font="md" size="full" />
+        </Box>
+        <Box className="col-md-4">
+          <PostCard font="md" size="full" />
+        </Box>
+        <Box className="col-md-4">
+          <PostCard font="md" size="full" />
+        </Box>
+      </Box>
+      <Box className="row mt-4 mb-5">
+        <Box className="col-md-8">
+          <PostCard font="md" size="full" varient="ver" />
         </Box>
       </Box>
     </Box>

@@ -18,10 +18,10 @@ export const themes = {
 export const themeStyles = {
   light: css`
     background-color: ${lightTheme.primary};
-    color: ${lightTheme.secondary};
+    color: ${lightTheme.secondary} !important;
   `,
   dark: css`
     background-color: ${darkTheme.primary};
-    color: ${darkTheme.secondary};
+    color: ${darkTheme.secondary} !important;
   `,
 };

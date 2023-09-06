@@ -1,50 +1,91 @@
 import React from 'react';
 import {
+  AuthorLink,
   ContentWrapper,
   ImageWrapper,
   PostWrapper,
   TermItem,
   Title,
+  Wrapper,
 } from './style';
 import { Box } from '@/style';
 import Link from 'next/link';
+import Button from '../Button';
 
-const PostCard = ({ size }) => {
+const PostCard = ({ size, font, varient }) => {
   return (
-    <PostWrapper full={size}>
-      <ImageWrapper>
-        <img
-          loading="lazy"
-          width="700"
-          height="500"
-          src="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/ben-masora-7GJr-Zxs-IY-unsplash-700x500.jpg"
-          className="attachment-rivax-medium size-rivax-medium wp-post-image"
-          alt=""
-          decoding="async"
-          title="Ready To Go Home After The Sunset View?"
-        />
-      </ImageWrapper>
-      <ContentWrapper>
-        <Box className="d-flex flex-column align-items-center">
-          <TermItem href="/">Illustration</TermItem>
-          <Title>
-            <Link href="/">Ready To Go Home After The Sunset View?</Link>
-          </Title>
-        </Box>
-        <Box className="text-white d-flex justify-content-center">
-          <Box className="text-capitalize">
-            <span className="by">by</span>
-            <Link href="/" className="text-decoration-none ms-2 text-white">
-              Alice
-            </Link>
+    <Wrapper>
+      <PostWrapper full={size} varient={varient}>
+        <ImageWrapper>
+          <img
+            loading="lazy"
+            width="700"
+            height="500"
+            src="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/ben-masora-7GJr-Zxs-IY-unsplash-700x500.jpg"
+            className="attachment-rivax-medium size-rivax-medium wp-post-image"
+            alt=""
+            decoding="async"
+            title="Ready To Go Home After The Sunset View?"
+          />
+        </ImageWrapper>
+        <ContentWrapper>
+          <Box
+            className={`d-flex flex-column ${
+              varient ? 'align-items-baseline' : 'align-items-center'
+            }`}
+          >
+            <TermItem href="/">Illustration</TermItem>
+            <Title font={font}>
+              <Link href="/">Ready To Go Home After The Sunset View?</Link>
+            </Title>
           </Box>
-          <Box className="date d-flex align-items-center">
-            <i className="ri-calendar-2-line"></i>
-            November 18, 2021
+          {!varient && (
+            <Box className="text-white d-flex justify-content-center">
+              {!size && (
+                <Box className="text-capitalize">
+                  <span className="by">by</span>
+                  <Link
+                    href="/"
+                    className="text-decoration-none ms-2 text-white"
+                  >
+                    Alice
+                  </Link>
+                </Box>
+              )}
+              <Box className={`d-flex align-items-center ${!size && 'date'}`}>
+                <i className="ri-calendar-2-line"></i>
+                November 18, 2021
+              </Box>
+            </Box>
+          )}
+        </ContentWrapper>
+      </PostWrapper>
+      {varient === 'ver' && (
+        <Box className="text-center mt-4">
+          <Box className="d-flex justify-content-center mb-2">
+            <Box className="text-capitalize">
+              <span className="by">by</span>
+              <AuthorLink href="/" className="text-decoration-none ms-2">
+                Alice
+              </AuthorLink>
+            </Box>
+            <Box className={`d-flex align-items-center date`}>
+              <i className="ri-calendar-2-line"></i>
+              November 18, 2021
+            </Box>
+            <Box className={`d-flex align-items-center date`}>
+              <i className="ri-calendar-2-line"></i>
+              No comments
+            </Box>
           </Box>
+          <Box>
+            Far far away, behind the word mountains, far from the countries
+            Vokalia and Consonantia, there live...
+          </Box>
+          <Button className="mt-4">Read More</Button>
         </Box>
-      </ContentWrapper>
-    </PostWrapper>
+      )}
+    </Wrapper>
   );
 };
 
