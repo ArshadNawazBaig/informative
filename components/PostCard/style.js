@@ -15,11 +15,12 @@ export const Wrapper = styled.article`
   }
 `;
 
-export const PostWrapper = styled.article`
+export const PostWrapper = styled.div`
   height: 100%;
-  min-height: ${({ full }) => (full === 'full' ? '60vh' : 'auto')};
+  min-height: ${({ full }) =>
+    full === 'full' ? '60vh' : full === 'md' ? '30vh' : 'auto'};
+  min-height: ${({ varient }) => varient && '48vh !important'};
   border-radius: 15px 15px 15px 15px;
-  /* box-shadow: ; */
   box-shadow: ${({ varient }) =>
     varient === 'ver'
       ? '0px 10px 25px 4px rgba(23, 25, 32, 0.21176470588235294)'
@@ -45,6 +46,9 @@ export const PostWrapper = styled.article`
   }
   &:hover img {
     transform: scale(1.1);
+  }
+  @media (max-width: 768px) {
+    min-height: 90vh;
   }
 `;
 

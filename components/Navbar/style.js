@@ -10,7 +10,25 @@ export const Navbar = styled.nav`
     color: #ff2c54;
   }
   & .navbar-brand {
+    position: relative;
     color: ${({ theme }) => theme.secondary};
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50px;
+      left: -3px;
+      top: 0;
+      background-color: ${({ theme }) => theme.secondary};
+    }
+  }
+  & .navbar-toggler {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    padding: 0;
   }
 `;
 
@@ -36,6 +54,6 @@ export const StyledButton = styled.button`
     border-radius: 50px;
     /* top: 3px; */
     position: absolute;
-    left: ${({ pos }) => (pos === 'light' ? '2px' : '24px')};
+    right: ${({ pos }) => (pos === 'light' ? '2px' : '24px')};
   }
 `;

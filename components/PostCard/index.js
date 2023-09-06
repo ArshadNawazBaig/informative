@@ -12,10 +12,11 @@ import { Box } from '@/style';
 import Link from 'next/link';
 import Button from '../Button';
 import Image from 'next/legacy/image';
+import Para from '../Para';
 
-const PostCard = ({ size, font, varient }) => {
+const PostCard = ({ size, font, varient, className }) => {
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <PostWrapper full={size} varient={varient}>
         <ImageWrapper>
           <Image
@@ -31,7 +32,7 @@ const PostCard = ({ size, font, varient }) => {
             }`}
           >
             <TermItem href="/">Illustration</TermItem>
-            <Title font={font}>
+            <Title font={font} className={varient && 'text-start'}>
               <Link href="/">Ready To Go Home After The Sunset View?</Link>
             </Title>
           </Box>
@@ -58,7 +59,7 @@ const PostCard = ({ size, font, varient }) => {
       </PostWrapper>
       {varient === 'ver' && (
         <Box className="text-center mt-4">
-          <Box className="d-flex justify-content-center mb-2">
+          <Box className="d-flex justify-content-center mb-2 flex-wrap">
             <Box className="text-capitalize">
               <span className="by">by</span>
               <AuthorLink href="/" className="text-decoration-none ms-2">
@@ -75,8 +76,10 @@ const PostCard = ({ size, font, varient }) => {
             </Box>
           </Box>
           <Box>
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live...
+            <Para>
+              Far far away, behind the word mountains, far from the countries
+              Vokalia and Consonantia, there live...
+            </Para>
           </Box>
           <Button className="mt-4">Read More</Button>
         </Box>
