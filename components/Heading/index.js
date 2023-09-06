@@ -5,7 +5,7 @@ import { HeadingWrapper, Para } from './style';
 const Heading = ({ className, children, size, title }) => {
   return (
     <Box className={className}>
-      <HeadingWrapper className="fw-semibold" size={size}>
+      <HeadingWrapper className="fw-semibold mb-0" size={size}>
         {title}
       </HeadingWrapper>
       {children && <Para>{children}</Para>}

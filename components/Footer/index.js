@@ -5,14 +5,23 @@ import Heading from '../Heading';
 import Link from 'next/link';
 import Divider from '../Divider';
 import { FooterWrapper } from './style';
-import { FacebookIcon, GmailIcon, InstagramIcon, TwitterIcon } from '../Icons';
+import {
+  EmailIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  PinterestIcon,
+  TwitterIcon,
+} from 'next-share';
 
 const Footer = () => {
   return (
     <FooterWrapper className="container mt-5 mb-4">
-      <Box className="row">
+      <Box className="row gap-4">
         <Box className="col-md-3">
-          <h2>Informative</h2>
+          <Link className="navbar-brand text-uppercase" href="/">
+            Informative
+          </Link>
+          <Divider className="mb-3" />
           <Para>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
             tellus.
@@ -64,31 +73,31 @@ const Footer = () => {
         </Box>
         <Box className="col-md-4">
           <Heading title="Follow Us" size="md" />
-          <Divider className="mb-3" />
+          <Divider className="mb-4" />
           <Box className="d-flex justify-content-between w-100 gap-3">
             <Box className="social-wrapper">
               <a href="http://" className="social facebook">
-                <FacebookIcon />
+                <FacebookIcon size={32} round />
                 <Para>Facebook</Para>
               </a>
             </Box>
             <Box className="social-wrapper">
               <a href="http://" className="social">
-                <InstagramIcon />
-                <Para>Instagram</Para>
+                <LinkedinIcon size={32} round />
+                <Para>Linkedin</Para>
               </a>
             </Box>
           </Box>
           <Box className="d-flex justify-content-between w-100 gap-3 mt-3">
             <Box className="social-wrapper">
               <a href="http://" className="social">
-                <GmailIcon />
-                <Para>Gmail</Para>
+                <PinterestIcon size={32} round />
+                <Para>Pinterest</Para>
               </a>
             </Box>
             <Box className="social-wrapper">
               <a href="http://" className="social">
-                <TwitterIcon />
+                <TwitterIcon size={32} round />
                 <Para>Twitter</Para>
               </a>
             </Box>

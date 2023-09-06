@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const Navbar = styled.nav`
   ${({ theme }) => themeStyles[theme]};
+  border-bottom: 1px solid ${({ theme }) => theme.border};
   & .nav-link {
     color: ${({ theme }) => theme.secondary};
   }
@@ -29,6 +30,9 @@ export const Navbar = styled.nav`
     box-shadow: none;
     outline: none;
     padding: 0;
+    & svg {
+      stroke: ${({ theme }) => theme.secondary};
+    }
   }
 `;
 

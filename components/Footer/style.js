@@ -4,7 +4,6 @@ export const FooterWrapper = styled.div`
   & a.footer-link {
     text-decoration: none;
     color: ${({ theme }) => theme.secondary};
-    transition: ease-in-out all 0.5s;
     border-bottom: 1px solid ${({ theme }) => theme.border};
     &:hover {
       color: #ff2c54;
@@ -15,11 +14,9 @@ export const FooterWrapper = styled.div`
     color: ${({ theme }) => theme.secondary};
     width: 100%;
     height: 100%;
-    transition: ease-in-out all 1.5s;
+    transition: ease-in-out all 0.5s;
     &:hover {
-      & svg {
-        scale: 1.2;
-      }
+      transform: translateY(-3px);
     }
   }
   & .social-wrapper {
@@ -30,8 +27,24 @@ export const FooterWrapper = styled.div`
     align-items: center;
     justify-content: center;
     height: 100%;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 10px;
-    transition: ease-in-out all 1.5s;
+  }
+  & .navbar-brand {
+    position: relative;
+    color: ${({ theme }) => theme.secondary};
+    font-weight: 600;
+    font-size: 1.2rem;
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50px;
+      left: -3px;
+      top: -6px;
+      background-color: ${({ theme }) => theme.secondary};
+    }
   }
 `;

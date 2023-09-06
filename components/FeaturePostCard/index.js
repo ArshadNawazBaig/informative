@@ -1,29 +1,42 @@
 import { Box } from '@/style';
 import React from 'react';
-import { CardWrapper, ImageWrapper, Title } from './style';
+import { AuthorLink, CardWrapper, ImageWrapper, Outer, Title } from './style';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
 import Para from '../Para';
 
-const FeaturePostCard = ({ className }) => {
+const FeaturePostCard = ({
+  className,
+  title,
+  imageUrl,
+  date,
+  padding,
+  font,
+}) => {
   return (
-    <Box className={className}>
+    <Outer className={className}>
       <CardWrapper>
         <ImageWrapper>
-          <Image
-            alt="Mountains"
-            src="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/ben-masora-7GJr-Zxs-IY-unsplash-700x500.jpg"
-            layout="fill"
-          />
+          <Image alt={title} src={imageUrl} layout="fill" />
         </ImageWrapper>
       </CardWrapper>
-      <Box className="pt-4 px-3">
-        <Title>
-          <Link href="/">Ready To Go Home After The Sunset View?</Link>
+      <Box className={padding === 'low' ? 'px-1 pt-2' : 'pt-4 px-3'}>
+        <Title font={font}>
+          <Link href={`/blog/${title}`}>{title}</Link>
         </Title>
-        <Para>November 17, 2021</Para>
+        <Box className="d-flex mb-2 flex-wrap">
+          <Box className="text-capitalize">
+            <AuthorLink href="/" className="text-decoration-none">
+              Alice
+            </AuthorLink>
+          </Box>
+          <Box className={`d-flex align-items-center date`}>
+            <i className="ri-calendar-2-line"></i>
+            {date}
+          </Box>
+        </Box>
       </Box>
-    </Box>
+    </Outer>
   );
 };
 

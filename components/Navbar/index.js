@@ -15,9 +15,9 @@ function Header(args) {
   };
 
   return (
-    <Navbar className={`navbar navbar-expand-lg`}>
+    <Navbar className={`navbar navbar-expand-lg mb-4`}>
       <Box className="container">
-        <Link className="navbar-brand text-uppercase fw-medium" href="#">
+        <Link className="navbar-brand text-uppercase fw-medium" href="/">
           Informative
         </Link>
         <button

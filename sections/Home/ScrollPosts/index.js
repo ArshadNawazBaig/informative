@@ -11,7 +11,7 @@ const ScrollPosts = () => {
   return (
     <>
       <Box className="row">
-        <Box className="col-12">
+        <Box className="col-12 mt-5 mb-4">
           <Heading title="Editor's pick">
             Discover the most outstanding articles in all topics of life.
           </Heading>
@@ -66,10 +66,20 @@ const ScrollPosts = () => {
           </PostCard>
         </Box>
         <Box className="col-md-4">
-          <UserProfileCard />
+          <UserProfileCard
+            coverImage="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/elementor/thumbs/jon-tyson-sPim6Y8Wa7Y-unsplash-phfym1jjso3ao2hs4gsti4upoeqf3273k1ath2fkk0.jpg"
+            avatarImage="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/nora-hutton-tCJ44OIqceU-unsplash.jpg"
+            creator="Alice Qelvin"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborea aliqua."
+          />
           <Heading title="Featured Posts" size="md" className="mt-5"></Heading>
           <Divider />
-          <FeaturePostCard className="mt-4" />
+          <FeaturePostCard
+            title="These Fabulous Photos Will Have Astonishing"
+            date="November 17, 2021"
+            className="mt-4"
+            imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/benjamin-massello-BVNhd4c7rqg-unsplash-400x300.jpg"
+          />
           <Heading title="Categories" size="md" className="mt-5"></Heading>
           <Divider />
           <CategoryList className="mt-4" />

@@ -2,7 +2,7 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Navbar';
 import { useTheme } from '@/context/ThemeProvider';
-import { Body } from '@/style';
+import { Body, MainWrapper } from '@/style';
 import React from 'react';
 
 const Main = ({ className, children }) => {
@@ -10,7 +10,7 @@ const Main = ({ className, children }) => {
   return (
     <Body className={className} theme={theme}>
       <Header />
-      {children}
+      <MainWrapper>{children}</MainWrapper>
       <Footer />
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"

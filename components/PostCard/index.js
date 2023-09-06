@@ -41,7 +41,7 @@ const PostCard = ({
           >
             {category && <TermItem href="/">{category}</TermItem>}
             <Title font={font} className={varient && 'text-start'}>
-              <Link href="/">{title}</Link>
+              <Link href={`/blog/${title}`}>{title}</Link>
             </Title>
           </Box>
           {!varient && (

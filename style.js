@@ -7,3 +7,7 @@ export const Box = styled.div``;
 export const Body = styled.body`
   ${({ theme }) => themeStyles[theme]}
 `;
+
+export const MainWrapper = styled.div`
+  min-height: 66vh;
+`;

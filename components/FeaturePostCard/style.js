@@ -1,5 +1,21 @@
 'use client';
+import Link from 'next/link';
 import { styled } from 'styled-components';
+
+export const Outer = styled.div`
+  & .date {
+    font-size: 0.9rem;
+    &::before {
+      width: 4px;
+      height: 4px;
+      content: '';
+      display: inline-block;
+      margin-right: 10px;
+      background: currentColor;
+      margin-left: 10px;
+    }
+  }
+`;
 
 export const CardWrapper = styled.div`
   height: 100%;
@@ -46,7 +62,7 @@ export const ImageWrapper = styled.div`
 export const Title = styled.h2`
   margin: 10px 0;
   word-wrap: break-word;
-  font-size: ${({ font }) => (font === 'md' ? '1.65rem' : '1.4rem')};
+  font-size: ${({ font }) => (font === 'md' ? '1.3rem' : '1.4rem')};
   font-weight: 500;
   text-transform: capitalize;
   &:hover a {
@@ -65,4 +81,8 @@ export const Title = styled.h2`
     display: inline;
     padding: 2px 0;
   }
+`;
+
+export const AuthorLink = styled(Link)`
+  color: ${({ theme }) => theme.secondary};
 `;

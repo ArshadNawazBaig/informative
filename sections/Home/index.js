@@ -12,9 +12,7 @@ const HomeWrapper = () => {
         <Box className="row row-gap-4 mt-5">
           <EditorPicks />
         </Box>
-        <Box className="row row-gap-4 mt-5">
-          <ScrollPosts />
-        </Box>
+        <ScrollPosts />
       </Box>
     </>
   );
