@@ -8,7 +8,7 @@ const HomeWrapper = () => {
   return (
     <>
       <HeroSection />
-      <Box className="container">
+      <Box className="container overflow-hidden">
         <Box className="row row-gap-4 mt-5">
           <EditorPicks />
         </Box>

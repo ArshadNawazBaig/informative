@@ -18,7 +18,7 @@ export const Wrapper = styled.article`
 export const PostWrapper = styled.div`
   height: 100%;
   min-height: ${({ full }) =>
-    full === 'full' ? '60vh' : full === 'md' ? '30vh' : 'auto'};
+    full === 'full' ? '55vh' : full === 'md' ? '30vh' : 'auto'};
   min-height: ${({ varient }) => varient && '48vh !important'};
   border-radius: 15px 15px 15px 15px;
   box-shadow: ${({ varient }) =>

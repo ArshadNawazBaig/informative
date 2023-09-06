@@ -14,16 +14,24 @@ import Button from '../Button';
 import Image from 'next/legacy/image';
 import Para from '../Para';
 
-const PostCard = ({ size, font, varient, className }) => {
+const PostCard = ({
+  size,
+  font,
+  varient,
+  className,
+  title,
+  children,
+  imageUrl,
+  creator,
+  date,
+  comments,
+  category,
+}) => {
   return (
     <Wrapper className={className}>
       <PostWrapper full={size} varient={varient}>
         <ImageWrapper>
-          <Image
-            alt="Mountains"
-            src="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/ben-masora-7GJr-Zxs-IY-unsplash-700x500.jpg"
-            layout="fill"
-          />
+          <Image alt={title} src={imageUrl} layout="fill" />
         </ImageWrapper>
         <ContentWrapper>
           <Box
@@ -31,9 +39,9 @@ const PostCard = ({ size, font, varient, className }) => {
               varient ? 'align-items-baseline' : 'align-items-center'
             }`}
           >
-            <TermItem href="/">Illustration</TermItem>
+            {category && <TermItem href="/">{category}</TermItem>}
             <Title font={font} className={varient && 'text-start'}>
-              <Link href="/">Ready To Go Home After The Sunset View?</Link>
+              <Link href="/">{title}</Link>
             </Title>
           </Box>
           {!varient && (
@@ -45,13 +53,13 @@ const PostCard = ({ size, font, varient, className }) => {
                     href="/"
                     className="text-decoration-none ms-2 text-white"
                   >
-                    Alice
+                    {creator}
                   </Link>
                 </Box>
               )}
               <Box className={`d-flex align-items-center ${!size && 'date'}`}>
                 <i className="ri-calendar-2-line"></i>
-                November 18, 2021
+                {date}
               </Box>
             </Box>
           )}
@@ -63,23 +71,20 @@ const PostCard = ({ size, font, varient, className }) => {
             <Box className="text-capitalize">
               <span className="by">by</span>
               <AuthorLink href="/" className="text-decoration-none ms-2">
-                Alice
+                {creator}
               </AuthorLink>
             </Box>
             <Box className={`d-flex align-items-center date`}>
               <i className="ri-calendar-2-line"></i>
-              November 18, 2021
+              {date}
             </Box>
             <Box className={`d-flex align-items-center date`}>
               <i className="ri-calendar-2-line"></i>
-              No comments
+              {comments}
             </Box>
           </Box>
           <Box>
-            <Para>
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live...
-            </Para>
+            <Para>{children}</Para>
           </Box>
           <Button className="mt-4">Read More</Button>
         </Box>
