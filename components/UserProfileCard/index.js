@@ -4,7 +4,13 @@ import { Heading, UserCardWrapper } from './style';
 import Image from 'next/legacy/image';
 import Para from '../Para';
 
-const UserProfileCard = ({ avatarImage, coverImage, creator, description }) => {
+const UserProfileCard = ({
+  avatarImage,
+  coverImage,
+  creator,
+  description,
+  size,
+}) => {
   return (
     <UserCardWrapper>
       <Box className="image-wrapper position-relative">
@@ -27,7 +33,9 @@ const UserProfileCard = ({ avatarImage, coverImage, creator, description }) => {
       </Box>
       <Box className="text-center mt-4">
         <Heading className="fw-semibold">{creator}</Heading>
-        <Para>{description}</Para>
+        <Box className={size === 'full' && 'half-width'}>
+          <Para>{description}</Para>
+        </Box>
       </Box>
     </UserCardWrapper>
   );

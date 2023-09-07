@@ -3,9 +3,9 @@ import Heading from '../Heading';
 import { NewsLetterWrapper } from './style';
 import { Box } from '@/style';
 
-const NewsLetter = () => {
+const NewsLetter = ({ className }) => {
   return (
-    <NewsLetterWrapper>
+    <NewsLetterWrapper className={className}>
       <Box className="row g-5 align-items-center">
         <Box className="col-md-6">
           <Heading title="Subscribe to our newsletter and stay updated." />

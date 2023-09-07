@@ -2,17 +2,47 @@ import CategoryList from '@/components/CategoryList';
 import Divider from '@/components/Divider';
 import FeaturePostCard from '@/components/FeaturePostCard';
 import Heading from '@/components/Heading';
+import NewsLetter from '@/components/NewsLetter';
 import PostCard from '@/components/PostCard';
+import SocialFollow from '@/components/SocialFollow';
+import TagChip from '@/components/TagChip';
 import UserProfileCard from '@/components/UserProfileCard';
 import { Box } from '@/style';
 import React from 'react';
 
-const ScrollPosts = () => {
+const AuthorPage = () => {
+  const tags = [
+    'Art',
+    'Article',
+    'Audio',
+    'Drink',
+    'Fashion',
+    'featured 1',
+    'featured 2',
+    'featured 3',
+    'featured 4',
+    'featured 5',
+    'featured 6',
+    'featured 7',
+    'Flower',
+    'Food',
+    'Habit',
+    'Home',
+  ];
   return (
-    <>
+    <Box className="container">
       <Box className="row">
+        <Box className="col-12">
+          <UserProfileCard
+            coverImage="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/mihai-stefan-658815-unsplash-1000x600.jpg"
+            avatarImage="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/nora-hutton-tCJ44OIqceU-unsplash.jpg"
+            creator="Alice Qelvin"
+            description="My name is Alice, I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now."
+            size="full"
+          />
+        </Box>
         <Box className="col-12 mt-5 mb-4">
-          <Heading title="Editor's pick">
+          <Heading title="Author's Recent Posts">
             Discover the most outstanding articles in all topics of life.
           </Heading>
         </Box>
@@ -66,12 +96,9 @@ const ScrollPosts = () => {
           </PostCard>
         </Box>
         <Box className="col-md-4">
-          <UserProfileCard
-            coverImage="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/elementor/thumbs/jon-tyson-sPim6Y8Wa7Y-unsplash-phfym1jjso3ao2hs4gsti4upoeqf3273k1ath2fkk0.jpg"
-            avatarImage="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/nora-hutton-tCJ44OIqceU-unsplash.jpg"
-            creator="Alice Qelvin"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborea aliqua."
-          />
+          <Heading title="Follow Me" size="md" className=""></Heading>
+          <Divider />
+          <SocialFollow className="mt-4" />
           <Heading title="Featured Posts" size="md" className="mt-5"></Heading>
           <Divider />
           <FeaturePostCard
@@ -84,10 +111,20 @@ const ScrollPosts = () => {
           <Heading title="Categories" size="md" className="mt-5"></Heading>
           <Divider />
           <CategoryList className="mt-4" />
+          <Heading title="Tags" size="md" className="mt-4"></Heading>
+          <Divider className="mb-4" />
+          <Box className="d-flex gap-1 flex-wrap">
+            {tags.map((tag) => (
+              <TagChip key={tag} tag={tag} />
+            ))}
+          </Box>
         </Box>
       </Box>
-    </>
+      <Box className="row">
+        <NewsLetter className="my-5" />
+      </Box>
+    </Box>
   );
 };
 
-export default ScrollPosts;
+export default AuthorPage;

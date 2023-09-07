@@ -42,6 +42,7 @@ const BlogPost = () => {
                 title="These Fabulous Photos Will Have Astonishing"
                 date="November 17, 2021"
                 className="mt-4"
+                creator="Alice"
                 imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/benjamin-massello-BVNhd4c7rqg-unsplash-400x300.jpg"
                 padding="low"
                 font="md"

@@ -50,7 +50,7 @@ const PostCard = ({
                 <Box className="text-capitalize">
                   <span className="by">by</span>
                   <Link
-                    href="/"
+                    href={`/author/${creator}`}
                     className="text-decoration-none ms-2 text-white"
                   >
                     {creator}
@@ -70,7 +70,10 @@ const PostCard = ({
           <Box className="d-flex justify-content-center mb-2 flex-wrap">
             <Box className="text-capitalize">
               <span className="by">by</span>
-              <AuthorLink href="/" className="text-decoration-none ms-2">
+              <AuthorLink
+                href={`/author/${creator}`}
+                className="text-decoration-none ms-2"
+              >
                 {creator}
               </AuthorLink>
             </Box>

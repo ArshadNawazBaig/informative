@@ -12,6 +12,7 @@ const FeaturePostCard = ({
   date,
   padding,
   font,
+  creator,
 }) => {
   return (
     <Outer className={className}>
@@ -26,8 +27,11 @@ const FeaturePostCard = ({
         </Title>
         <Box className="d-flex mb-2 flex-wrap">
           <Box className="text-capitalize">
-            <AuthorLink href="/" className="text-decoration-none">
-              Alice
+            <AuthorLink
+              href={`/author/${creator}`}
+              className="text-decoration-none"
+            >
+              {creator}
             </AuthorLink>
           </Box>
           <Box className={`d-flex align-items-center date`}>
