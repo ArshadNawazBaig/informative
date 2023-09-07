@@ -18,7 +18,7 @@ const CreatorCard = () => {
   return (
     <CreatorCardWrapper>
       <Box className="row align-items-center row-gap-4">
-        <Box className="col-md-2">
+        <Box className="col-md-3 col-lg-2">
           <ImageWrapper className="d-flex justify-content-center mx-auto mx-md-0">
             <Link href="/">
               <Image
@@ -29,7 +29,7 @@ const CreatorCard = () => {
             </Link>
           </ImageWrapper>
         </Box>
-        <Box className="col-md-10">
+        <Box className="col-md-9 col-lg-10">
           <Box className="d-flex justify-content-between w-100 align-items-baseline">
             <Box className="">
               <h3>WRITTEN BY</h3>

@@ -37,7 +37,7 @@ const BlogPost = () => {
             <Divider />
           </Box>
           {[1, 2, 3, 4].map((item) => (
-            <Box className="col-md-3" key={item}>
+            <Box className="col-md-6 col-lg-3" key={item}>
               <FeaturePostCard
                 title="These Fabulous Photos Will Have Astonishing"
                 date="November 17, 2021"
