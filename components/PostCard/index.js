@@ -13,6 +13,7 @@ import Link from 'next/link';
 import Button from '../Button';
 import Image from 'next/legacy/image';
 import Para from '../Para';
+import { useRouter } from 'next/navigation';
 
 const PostCard = ({
   size,
@@ -89,7 +90,9 @@ const PostCard = ({
           <Box>
             <Para>{children}</Para>
           </Box>
-          <Button className="mt-4">Read More</Button>
+          <Link href={`/blog/${title}`}>
+            <Button className="mt-4">Read More</Button>
+          </Link>
         </Box>
       )}
     </Wrapper>

@@ -19,7 +19,7 @@ const CategoryList = ({ className }) => {
     <ListWrapper className={className}>
       {categories.map((category) => (
         <Link
-          href="/"
+          href={`/category/${category.name}`}
           className="d-flex w-full justify-content-between py-4"
           key={category.id}
         >

@@ -5,6 +5,7 @@ import { useTheme } from '@/context/ThemeProvider';
 import { Box } from '@/style';
 import Link from 'next/link';
 import { CloseIcon, MenuIcon, MoonIcon, SearchIcon, SunIcon } from '../Icons';
+import Divider from '../Divider';
 
 function Header(args) {
   const { theme, toggleTheme } = useTheme();
@@ -19,6 +20,7 @@ function Header(args) {
       <Box className="container">
         <Link className="navbar-brand text-uppercase fw-medium" href="/">
           Informative
+          <Divider />
         </Link>
         <button
           className="navbar-toggler"

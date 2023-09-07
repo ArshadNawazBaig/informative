@@ -7,8 +7,8 @@ const Loadingpage = () => {
       <Box className="container">
         <Box className="row">
           <Box className="col-12 text-center">
-            <div class="spinner-grow" role="status">
-              <span class="visually-hidden">Loading...</span>
+            <div className="spinner-grow" role="status">
+              <span className="visually-hidden">Loading...</span>
             </div>
           </Box>
         </Box>

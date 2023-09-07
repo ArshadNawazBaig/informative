@@ -3,7 +3,7 @@ import { TagChipWrapper } from './style';
 
 const TagChip = ({ className, tag }) => {
   return (
-    <TagChipWrapper href="/" className={className}>
+    <TagChipWrapper href={`/tag/${tag}`} className={className}>
       {tag}
     </TagChipWrapper>
   );

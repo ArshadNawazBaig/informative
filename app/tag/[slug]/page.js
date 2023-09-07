@@ -4,29 +4,11 @@ import FeaturePostCard from '@/components/FeaturePostCard';
 import Heading from '@/components/Heading';
 import NewsLetter from '@/components/NewsLetter';
 import PostCard from '@/components/PostCard';
-import TagChip from '@/components/TagChip';
+import TagsList from '@/components/TagsList';
 import { Box } from '@/style';
 import React from 'react';
 
 const TagPage = () => {
-  const tags = [
-    'Art',
-    'Article',
-    'Audio',
-    'Drink',
-    'Fashion',
-    'featured 1',
-    'featured 2',
-    'featured 3',
-    'featured 4',
-    'featured 5',
-    'featured 6',
-    'featured 7',
-    'Flower',
-    'Food',
-    'Habit',
-    'Home',
-  ];
   return (
     <Box className="container">
       <Box className="row">
@@ -100,11 +82,7 @@ const TagPage = () => {
           <CategoryList className="mt-4" />
           <Heading title="Tags" size="md" className="mt-4"></Heading>
           <Divider className="mb-4" />
-          <Box className="d-flex gap-1 flex-wrap">
-            {tags.map((tag) => (
-              <TagChip key={tag} tag={tag} />
-            ))}
-          </Box>
+          <TagsList />
         </Box>
       </Box>
       <Box className="row">

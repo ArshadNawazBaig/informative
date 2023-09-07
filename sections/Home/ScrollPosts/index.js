@@ -12,7 +12,7 @@ const ScrollPosts = () => {
     <>
       <Box className="row">
         <Box className="col-12 mt-5 mb-4">
-          <Heading title="Editor's pick">
+          <Heading title="Recent Posts">
             Discover the most outstanding articles in all topics of life.
           </Heading>
         </Box>
