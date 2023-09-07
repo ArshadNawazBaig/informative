@@ -14,7 +14,7 @@ const HeroSection = () => {
             font="md"
             imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/ben-masora-7GJr-Zxs-IY-unsplash-700x500.jpg"
             title="Ready To Go Home After The Sunset View?"
-            creator="By Alice"
+            creator="Alice"
             date="November 18, 2021"
             category="Illustration"
           />
@@ -25,7 +25,7 @@ const HeroSection = () => {
               <PostCard
                 imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/benjamin-massello-BVNhd4c7rqg-unsplash-700x500.jpg"
                 title="Watch Awesome Kate Manner Go Full Dancing"
-                creator="By Alice"
+                creator="Alice"
                 date="November 18, 2021"
                 category="Illustration"
               />
@@ -34,7 +34,7 @@ const HeroSection = () => {
               <PostCard
                 imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/ayo-ogunseinde-RrD8ypt8cjY-unsplash-700x500.jpg"
                 title="These Fabulous Photos Will Have Astonishing"
-                creator="By Alice"
+                creator="Alice"
                 date="November 18, 2021"
                 category="Music"
               />
