@@ -14,18 +14,14 @@ import {
 import Para from '../Para';
 import Link from 'next/link';
 
-const CreatorCard = () => {
+const CreatorCard = ({ author, imageUrl, description }) => {
   return (
     <CreatorCardWrapper>
       <Box className="row align-items-center row-gap-4">
         <Box className="col-md-3 col-lg-2">
           <ImageWrapper className="d-flex justify-content-center mx-auto mx-md-0">
-            <Link href="/">
-              <Image
-                alt="test"
-                src="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/very-petty-girl-WRotPmZiXZQ-unsplash-1000x600.jpg"
-                layout="fill"
-              />
+            <Link href={`/author/${author}`}>
+              <Image alt={description} src={imageUrl} layout="fill" />
             </Link>
           </ImageWrapper>
         </Box>
@@ -33,7 +29,7 @@ const CreatorCard = () => {
           <Box className="d-flex justify-content-between w-100 align-items-baseline">
             <Box className="">
               <h3>WRITTEN BY</h3>
-              <Heading size="md" className="mb-3" title="Alice" />
+              <Heading size="md" className="mb-3" title={author} />
             </Box>
             <Box className="d-flex gap-1 align-items-center social-wrapper">
               <a href="http://" className="social">
@@ -54,13 +50,7 @@ const CreatorCard = () => {
             </Box>
           </Box>
           <Box>
-            <Para>
-              My name is Alice, I am so happy, my dear friend, so absorbed in
-              the exquisite sense of mere tranquil existence, that I neglect my
-              talents. I should be incapable of drawing a single stroke at the
-              present moment; and yet I feel that I never was a greater artist
-              than now.
-            </Para>
+            <Para>{description}</Para>
           </Box>
         </Box>
       </Box>
