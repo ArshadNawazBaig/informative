@@ -29,7 +29,7 @@ const BlogHero = ({ post }) => {
           </Title>
         </Box>
         <Box className="text-white d-flex gap-3">
-          <Link href="/">
+          <Link href={`/author/${post.author.id}`}>
             <Box className="avatar">
               <Image alt="test" src={post.author.image} layout="fill" />
             </Box>

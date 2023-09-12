@@ -16,7 +16,7 @@ const LoginPage = () => {
   if (status === 'authenticated') {
     router.push('/');
   }
-  console.log(data, status);
+  // console.log(data, status);
   return (
     <LoginWrapper className="d-flex justify-content-center align-items-center h-100">
       <Box className="container overflow-hidden">

@@ -4,7 +4,7 @@ import React from 'react';
 
 const POST_PER_PAGE = 4;
 
-const ScrollPosts = async ({ page, posts, count }) => {
+const ScrollPosts = async ({ page, posts, count, category, tag }) => {
   const hasPrev = POST_PER_PAGE * (page - 1) > 0;
   const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
   return (
@@ -40,7 +40,13 @@ const ScrollPosts = async ({ page, posts, count }) => {
         )
       )}
       {(hasNext || hasPrev) && (
-        <Pagination page={page} hasNext={hasNext} hasPrev={hasPrev} />
+        <Pagination
+          page={page}
+          category={category}
+          tag={tag}
+          hasNext={hasNext}
+          hasPrev={hasPrev}
+        />
       )}
     </>
   );

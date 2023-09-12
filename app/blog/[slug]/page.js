@@ -8,6 +8,7 @@ import SocialShare from '@/components/SocialShare';
 import { Box } from '@/style';
 import Head from 'next/head';
 import React from 'react';
+import { notFound } from 'next/navigation';
 
 const getData = async (slug) => {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${slug}`, {
@@ -24,7 +25,10 @@ const getData = async (slug) => {
 const BlogPost = async ({ params }) => {
   const { slug } = params;
   const post = await getData(slug);
-  console.log(post, 'slug');
+
+  if (!post) {
+    return notFound();
+  }
   return (
     <>
       <Head>

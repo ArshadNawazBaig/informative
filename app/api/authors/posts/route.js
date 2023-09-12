@@ -4,19 +4,20 @@ import { NextResponse } from 'next/server';
 export const GET = async (req, res) => {
   const { searchParams } = new URL(req.url);
   const page = searchParams.get('page');
-  const category = searchParams.get('category');
+  const slug = searchParams.get('slug');
   const perPage = searchParams.get('perPage');
 
   const POSTS_PER_PAGE = parseInt(perPage);
   const query = {
     take: POSTS_PER_PAGE,
     skip: POSTS_PER_PAGE * (page - 1),
-    where: {
-      ...(category && { catSlug: category }),
-    },
     include: { author: true },
+    where: {
+      userEmail: slug,
+    },
   };
 
+  console.log(page);
   try {
     const [posts, count] = await prisma.$transaction([
       prisma.post.findMany(query),

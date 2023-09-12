@@ -32,6 +32,7 @@ const BlogPage = async ({ searchParams }) => {
   const page = parseInt(searchParams.page) || 1;
   const { category, tag } = searchParams;
   const { posts, count } = await getData(page, POST_PER_PAGE, category, tag);
+
   return (
     <Box className="container">
       <Box className="row">
@@ -46,7 +47,13 @@ const BlogPage = async ({ searchParams }) => {
       </Box>
       <Box className="row flex align-items-start gx-5">
         <Box className="col-md-8">
-          <ScrollPosts page={page} posts={posts} count={count} tag={tag} />
+          <ScrollPosts
+            page={page}
+            posts={posts}
+            count={count}
+            tag={tag}
+            category={category}
+          />
         </Box>
         <Box className="col-md-4">
           <Heading title="Featured Posts" size="md" className=""></Heading>

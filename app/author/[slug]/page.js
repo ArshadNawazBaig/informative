@@ -3,23 +3,65 @@ import Divider from '@/components/Divider';
 import FeaturePostCard from '@/components/FeaturePostCard';
 import Heading from '@/components/Heading';
 import NewsLetter from '@/components/NewsLetter';
-import PostCard from '@/components/PostCard';
 import SocialFollow from '@/components/SocialFollow';
 import TagsList from '@/components/TagsList';
 import UserProfileCard from '@/components/UserProfileCard';
+import ScrollPosts from '@/sections/Home/ScrollPosts';
 import { Box } from '@/style';
+import { notFound } from 'next/navigation';
 import React from 'react';
 
-const AuthorPage = () => {
+const getData = async (slug) => {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/authors/${slug}`, {
+    cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    return notFound();
+  }
+
+  return res.json();
+};
+
+const getAuthorPosts = async (page, perPage, email) => {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/authors/posts/?page=${page}&perPage=${perPage}&slug=${email}`,
+    {
+      cache: 'no-store',
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed');
+  }
+  return res.json();
+};
+
+const POST_PER_PAGE = 3;
+
+const AuthorPage = async ({ params, searchParams }) => {
+  const { slug } = params;
+  const page = parseInt(searchParams.page) || 1;
+  const author = await getData(slug);
+  const { posts, count } = await getAuthorPosts(
+    page,
+    POST_PER_PAGE,
+    author?.email
+  );
+
+  if (!author) {
+    return notFound();
+  }
+
   return (
     <Box className="container">
       <Box className="row">
         <Box className="col-12">
           <UserProfileCard
             coverImage="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/mihai-stefan-658815-unsplash-1000x600.jpg"
-            avatarImage="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/nora-hutton-tCJ44OIqceU-unsplash.jpg"
-            creator="Alice Qelvin"
-            description="My name is Alice, I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now."
+            avatarImage={author?.image}
+            creator={author?.name}
+            description={author?.description}
             size="full"
           />
         </Box>
@@ -31,51 +73,7 @@ const AuthorPage = () => {
       </Box>
       <Box className="row flex align-items-start gx-5">
         <Box className="col-md-8">
-          <PostCard
-            font="md"
-            size="md"
-            varient="ver"
-            className="mb-4"
-            imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/ben-masora-Oy5IKUo8lZM-unsplash-1000x600.jpg"
-            title="Together We Can Make The World A Better Place"
-            creator="Alice"
-            date="November 18, 2021"
-            comments="No comments"
-            category="Music"
-          >
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live...
-          </PostCard>
-          <PostCard
-            font="md"
-            size="md"
-            varient="ver"
-            className="mb-4"
-            imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/brooke-lark-atzWFItRHy8-unsplash-1000x600.jpg"
-            title="Together We Can Make The World A Better Place"
-            creator="Alice"
-            date="November 18, 2021"
-            comments="No comments"
-            category="Music"
-          >
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live...
-          </PostCard>
-          <PostCard
-            font="md"
-            size="md"
-            varient="ver"
-            className="mb-4"
-            imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/mihai-stefan-658815-unsplash-1000x600.jpg"
-            title="Best Dressed Girl in Fashion Industry in 2021"
-            creator="Alice"
-            date="November 18, 2021"
-            comments="No comments"
-            category="Fashion"
-          >
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live...
-          </PostCard>
+          <ScrollPosts posts={posts} count={count} page={page} />
         </Box>
         <Box className="col-md-4">
           <Heading title="Follow Me" size="md" className=""></Heading>

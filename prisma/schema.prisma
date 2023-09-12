@@ -43,7 +43,7 @@ model User {
   description   String?
   accounts      Account[]
   sessions      Session[]
-  Post         Post[]
+  posts         Post[]
   Comment      Comment[]
 }
 
@@ -59,7 +59,7 @@ model Category {
   slug String @unique
   name String 
   img String?
-  Posts Post[]
+  Post Post[]
 }
 
 model Post {

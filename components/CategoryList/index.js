@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { ListWrapper } from './style';
+import { RightArrow } from '../Icons';
 
 const getData = async () => {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/categories`, {
@@ -24,7 +25,9 @@ const CategoryList = async ({ className }) => {
           key={category.id}
         >
           <span>{category.name}</span>
-          <span>{category.posts?.lenght || 0}</span>
+          <span>
+            <RightArrow />
+          </span>
         </Link>
       ))}
     </ListWrapper>

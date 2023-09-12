@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar, StyledButton } from './style';
 import { useTheme } from '@/context/ThemeProvider';
 import { Box } from '@/style';
@@ -8,11 +8,31 @@ import { CloseIcon, MenuIcon, MoonIcon, SearchIcon, SunIcon } from '../Icons';
 import Divider from '../Divider';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/legacy/image';
+import useSWR from 'swr';
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 function Header(args) {
   const { data, status } = useSession();
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true); // Initially set to true
+
+  useEffect(() => {
+    if (data?.user?.email) {
+      fetch(`/api/authors/${data.user.email}`)
+        .then((response) => response.json())
+        .then((userData) => {
+          setUser(userData);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          setIsLoading(false);
+        });
+    }
+  }, [data]);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
@@ -94,7 +114,7 @@ function Header(args) {
                     <Link
                       className="nav-link"
                       aria-current="page"
-                      href="/author/1"
+                      href={`/author/${user?.id}`}
                     >
                       Name
                     </Link>

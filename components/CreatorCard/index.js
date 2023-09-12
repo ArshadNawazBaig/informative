@@ -20,7 +20,7 @@ const CreatorCard = ({ author, imageUrl, description, id }) => {
       <Box className="row align-items-center row-gap-4">
         <Box className="col-md-3 col-lg-2">
           <ImageWrapper className="d-flex justify-content-center mx-auto mx-md-0">
-            <Link href={`/author/${author}`}>
+            <Link href={`/author/${id}`}>
               <Image alt={description} src={imageUrl} layout="fill" />
             </Link>
           </ImageWrapper>
