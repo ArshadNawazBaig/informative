@@ -6,8 +6,11 @@ import { Box } from '@/style';
 import Link from 'next/link';
 import { CloseIcon, MenuIcon, MoonIcon, SearchIcon, SunIcon } from '../Icons';
 import Divider from '../Divider';
+import { signOut, useSession } from 'next-auth/react';
+import Image from 'next/legacy/image';
 
 function Header(args) {
+  const { data, status } = useSession();
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -54,15 +57,65 @@ function Header(args) {
                 Contact
               </Link>
             </li>
-            <li className="nav-item"></li>
           </ul>
-          <Box className="d-flex align-items-center">
+          <Box className="d-flex align-items-center gap-2">
             <StyledButton onClick={toggleTheme} pos={theme}>
               <Box className="circle"></Box>
               <MoonIcon />
               <SunIcon />
             </StyledButton>
-            {/* <SearchIcon /> */}
+            {status === 'authenticated' ? (
+              // <Link
+              //   className="nav-link"
+              //   aria-current="page"
+              //   href="/login"
+              //   onClick={() => signOut()}
+              // >
+              //   Logout
+              // </Link>
+              <Box className="nav-item dropdown position-relative">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <Box className="avatar">
+                    <Image
+                      alt="test"
+                      src="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/very-petty-girl-WRotPmZiXZQ-unsplash-1000x600.jpg"
+                      layout="fill"
+                    />
+                  </Box>
+                </a>
+                <ul className="dropdown-menu px-4">
+                  <li>
+                    <Link
+                      className="nav-link"
+                      aria-current="page"
+                      href="/author/1"
+                    >
+                      Name
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="nav-link"
+                      aria-current="page"
+                      href="#"
+                      onClick={() => signOut()}
+                    >
+                      Logout
+                    </Link>
+                  </li>
+                </ul>
+              </Box>
+            ) : (
+              <Link className="nav-link" aria-current="page" href="/login">
+                Login
+              </Link>
+            )}
           </Box>
         </Box>
       </Box>

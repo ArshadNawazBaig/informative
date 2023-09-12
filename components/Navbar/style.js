@@ -4,6 +4,10 @@ import styled from 'styled-components';
 export const Navbar = styled.nav`
   ${({ theme }) => themeStyles[theme]};
   border-bottom: 1px solid ${({ theme }) => theme.border};
+  & .dropdown-menu {
+    right: 0 !important;
+    left: unset;
+  }
   & .nav-link {
     color: ${({ theme }) => theme.secondary};
   }
@@ -32,6 +36,22 @@ export const Navbar = styled.nav`
     padding: 0;
     & svg {
       stroke: ${({ theme }) => theme.secondary};
+    }
+  }
+  .dropdown-toggle {
+    &::after {
+      display: none;
+    }
+  }
+  .avatar {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    overflow: hidden;
+    & img {
+      object-fit: cover;
+      object-position: center;
     }
   }
 `;

@@ -4,7 +4,7 @@ import EditorPicks from './EditorPicks';
 import { Box } from '@/style';
 import ScrollPosts from './ScrollPosts';
 
-const HomeWrapper = () => {
+const HomeWrapper = ({ page }) => {
   return (
     <>
       <HeroSection />
@@ -12,7 +12,7 @@ const HomeWrapper = () => {
         <Box className="row row-gap-4 mt-5">
           <EditorPicks />
         </Box>
-        <ScrollPosts />
+        <ScrollPosts page={page} />
       </Box>
     </>
   );

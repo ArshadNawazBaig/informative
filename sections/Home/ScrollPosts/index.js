@@ -7,7 +7,23 @@ import UserProfileCard from '@/components/UserProfileCard';
 import { Box } from '@/style';
 import React from 'react';
 
-const ScrollPosts = () => {
+const getData = async (page) => {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/posts?page=${page}`,
+    {
+      cache: 'no-store',
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error('Failed');
+  }
+  return res.json();
+};
+
+const ScrollPosts = async ({ page }) => {
+  const { posts, count } = await getData(page);
+  console.log(posts);
   return (
     <>
       <Box className="row">
@@ -19,51 +35,26 @@ const ScrollPosts = () => {
       </Box>
       <Box className="row flex align-items-start gx-5">
         <Box className="col-md-8">
-          <PostCard
-            font="md"
-            size="md"
-            varient="ver"
-            className="mb-4"
-            imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/ben-masora-Oy5IKUo8lZM-unsplash-1000x600.jpg"
-            title="Together We Can Make The World A Better Place"
-            creator="Alice"
-            date="November 18, 2021"
-            comments="No comments"
-            category="Music"
-          >
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live...
-          </PostCard>
-          <PostCard
-            font="md"
-            size="md"
-            varient="ver"
-            className="mb-4"
-            imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/brooke-lark-atzWFItRHy8-unsplash-1000x600.jpg"
-            title="Together We Can Make The World A Better Place"
-            creator="Alice"
-            date="November 18, 2021"
-            comments="No comments"
-            category="Music"
-          >
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live...
-          </PostCard>
-          <PostCard
-            font="md"
-            size="md"
-            varient="ver"
-            className="mb-4"
-            imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/mihai-stefan-658815-unsplash-1000x600.jpg"
-            title="Best Dressed Girl in Fashion Industry in 2021"
-            creator="Alice"
-            date="November 18, 2021"
-            comments="No comments"
-            category="Fashion"
-          >
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live...
-          </PostCard>
+          {posts?.map(
+            ({ _id, img, title, catSlug, comments, createdAt, author }) => (
+              <PostCard
+                key={_id}
+                font="md"
+                size="md"
+                varient="ver"
+                className="mb-4"
+                imageUrl={img}
+                title={title}
+                creator={author?.name}
+                date={createdAt.substring(0, 10)}
+                comments={comments?.length || 'No comments'}
+                category={catSlug}
+              >
+                Far far away, behind the word mountains, far from the countries
+                Vokalia and Consonantia, there live...
+              </PostCard>
+            )
+          )}
         </Box>
         <Box className="col-md-4">
           <UserProfileCard

@@ -10,6 +10,14 @@ export const Body = styled.body`
 
 export const MainWrapper = styled.div`
   min-height: 66vh;
+  display: grid;
+  grid-template-rows: 1fr;
+`;
+
+export const LoginWrapper = styled.div`
+  & .login-form {
+    background-color: ${({ theme }) => theme.border};
+  }
 `;
 
 export const LoadingWrapper = styled.div`

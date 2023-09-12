@@ -27,9 +27,10 @@ const PostCard = ({
   date,
   comments,
   category,
+  key,
 }) => {
   return (
-    <Wrapper className={className}>
+    <Wrapper className={className} key={key}>
       <PostWrapper full={size} varient={varient}>
         <ImageWrapper>
           <Image alt={title} src={imageUrl} layout="fill" />

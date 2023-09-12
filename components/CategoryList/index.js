@@ -1,30 +1,30 @@
-'use client';
 import Link from 'next/link';
 import React from 'react';
 import { ListWrapper } from './style';
 
-const categories = [
-  { id: 1, name: 'Entertainment', value: 15 },
-  { id: 2, name: 'Health', value: 16 },
-  { id: 3, name: 'Illustration', value: 19 },
-  { id: 4, name: 'Life Style', value: 10 },
-  { id: 5, name: 'Music', value: 12 },
-  { id: 6, name: 'Technology', value: 18 },
-  { id: 7, name: 'Travel', value: 18 },
-  { id: 8, name: 'Typography', value: 8 },
-];
+const getData = async () => {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/categories`, {
+    cache: 'no-store',
+  });
 
-const CategoryList = ({ className }) => {
+  if (!res.ok) {
+    throw new Error('Failed');
+  }
+  return res.json();
+};
+
+const CategoryList = async ({ className }) => {
+  const categories = await getData();
   return (
     <ListWrapper className={className}>
       {categories.map((category) => (
         <Link
-          href={`/category/${category.name}`}
+          href={`/category/${category.slug}`}
           className="d-flex w-full justify-content-between py-4"
           key={category.id}
         >
           <span>{category.name}</span>
-          <span>{category.value}</span>
+          <span>{category.posts?.lenght || 0}</span>
         </Link>
       ))}
     </ListWrapper>
