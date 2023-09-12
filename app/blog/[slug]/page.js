@@ -9,7 +9,22 @@ import { Box } from '@/style';
 import Head from 'next/head';
 import React from 'react';
 
-const BlogPost = () => {
+const getData = async (slug) => {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${slug}`, {
+    cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed');
+  }
+
+  return res.json();
+};
+
+const BlogPost = async ({ params }) => {
+  const { slug } = params;
+  const post = await getData(slug);
+  console.log(post, 'slug');
   return (
     <>
       <Head>
@@ -20,20 +35,17 @@ const BlogPost = () => {
       <Box className="container">
         <Box className="row">
           <Box className="col-12">
-            <BlogHero />
+            <BlogHero post={post} />
           </Box>
           <Box className="col-12 mt-4 mb-4">
             <SocialShare />
           </Box>
           <Box className="col-12">
             <CreatorCard
-              imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/very-petty-girl-WRotPmZiXZQ-unsplash-1000x600.jpg"
-              author="Alice"
-              description="My name is Alice, I am so happy, my dear friend, so absorbed in
-              the exquisite sense of mere tranquil existence, that I neglect my
-              talents. I should be incapable of drawing a single stroke at the
-              present moment; and yet I feel that I never was a greater artist
-              than now."
+              imageUrl={post.author.image}
+              author={post.author.name}
+              description={`${post.author.description.substring(0, 300)}...`}
+              id={post.author.id}
             />
           </Box>
           <Box className="col-12">

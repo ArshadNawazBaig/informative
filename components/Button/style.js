@@ -10,9 +10,14 @@ export const ButtonWrapper = styled.button`
   cursor: pointer;
   transition: ease-in-out all 0.5s;
   border-radius: 30px;
-  min-width: 150px;
+  /* min-width: 150px; */
   border: 1px solid ${({ theme }) => theme.secondary};
   &:hover {
+    background: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.secondary};
+  }
+  &:disabled {
+    cursor: not-allowed;
     background: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.secondary};
   }

@@ -25,6 +25,10 @@ export const CreatorCardWrapper = styled.div`
     background-color: ${({ theme }) => theme.border};
     border-radius: 50px;
   }
+  & .read-more {
+    color: ${({ theme }) => theme.secondary};
+    font-weight: 500;
+  }
 `;
 
 export const ImageWrapper = styled.div`

@@ -3,7 +3,10 @@ import { TagChipWrapper } from './style';
 
 const TagChip = ({ className, tag }) => {
   return (
-    <TagChipWrapper href={`/tag/${tag}`} className={className}>
+    <TagChipWrapper
+      href={`/blog?tag=${tag.toLowerCase()}`}
+      className={className}
+    >
       {tag}
     </TagChipWrapper>
   );

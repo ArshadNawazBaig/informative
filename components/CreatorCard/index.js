@@ -14,7 +14,7 @@ import {
 import Para from '../Para';
 import Link from 'next/link';
 
-const CreatorCard = ({ author, imageUrl, description }) => {
+const CreatorCard = ({ author, imageUrl, description, id }) => {
   return (
     <CreatorCardWrapper>
       <Box className="row align-items-center row-gap-4">
@@ -50,7 +50,12 @@ const CreatorCard = ({ author, imageUrl, description }) => {
             </Box>
           </Box>
           <Box>
-            <Para>{description}</Para>
+            <Para>
+              {description}{' '}
+              <Link href={`/author/${id}`} className="read-more ms-1">
+                Read more
+              </Link>
+            </Para>
           </Box>
         </Box>
       </Box>

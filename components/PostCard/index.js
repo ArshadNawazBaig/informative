@@ -13,7 +13,6 @@ import Link from 'next/link';
 import Button from '../Button';
 import Image from 'next/legacy/image';
 import Para from '../Para';
-import { useRouter } from 'next/navigation';
 
 const PostCard = ({
   size,
@@ -28,6 +27,7 @@ const PostCard = ({
   comments,
   category,
   key,
+  slug,
 }) => {
   return (
     <Wrapper className={className} key={key}>
@@ -41,9 +41,13 @@ const PostCard = ({
               varient ? 'align-items-baseline' : 'align-items-center'
             }`}
           >
-            {category && <TermItem href="/">{category}</TermItem>}
+            {category && (
+              <TermItem href={`/blog?category=${category.toLowerCase()}`}>
+                {category.split('-').join(' ')}
+              </TermItem>
+            )}
             <Title font={font} className={varient && 'text-start'}>
-              <Link href={`/blog/${title}`}>{title}</Link>
+              <Link href={`/blog/${slug}`}>{title}</Link>
             </Title>
           </Box>
           {!varient && (
@@ -52,10 +56,10 @@ const PostCard = ({
                 <Box className="text-capitalize">
                   <span className="by">by</span>
                   <Link
-                    href={`/author/${creator}`}
+                    href={`/author/${creator?.id}`}
                     className="text-decoration-none ms-2 text-white"
                   >
-                    {creator}
+                    {creator?.name}
                   </Link>
                 </Box>
               )}
@@ -73,10 +77,10 @@ const PostCard = ({
             <Box className="text-capitalize">
               <span className="by">by</span>
               <AuthorLink
-                href={`/author/${creator}`}
+                href={`/author/${creator?.id}`}
                 className="text-decoration-none ms-2"
               >
-                {creator}
+                {creator?.name}
               </AuthorLink>
             </Box>
             <Box className={`d-flex align-items-center date`}>
@@ -91,7 +95,7 @@ const PostCard = ({
           <Box>
             <Para>{children}</Para>
           </Box>
-          <Link href={`/blog/${title}`}>
+          <Link href={`/blog/${slug}`}>
             <Button className="mt-4">Read More</Button>
           </Link>
         </Box>
