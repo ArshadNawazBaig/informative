@@ -77,7 +77,6 @@ function Header(args) {
                       className={`nav-link ${
                         pathname === link.link && 'active'
                       }`}
-                      aria-current="page"
                       href={link.link}
                     >
                       {link.label}
