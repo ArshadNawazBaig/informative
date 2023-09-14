@@ -8,7 +8,7 @@ function useScrollToTopOnRouteChange() {
 
   useEffect(() => {
     const handleRouteChange = () => {
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);

@@ -11,7 +11,7 @@ const darkTheme = {
   primary: '#1f1f1f',
   secondary: '#fff',
   border: '#3434348a',
-  gray: '#F0F2F5',
+  gray: '#3434348a',
 };
 
 export const themes = {

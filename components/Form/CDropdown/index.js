@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { Box } from '@/style';
-
-// const categories = [
-//   "Category 1",
-//   "Category 2",
-//   "Category 3",
-//   // Add more categories as needed
-// ];
+import { DropdownWrapper } from './style';
 
 function CategoryDropdown({
   selectedCategory,
@@ -27,13 +21,18 @@ function CategoryDropdown({
 
   return (
     <>
-      <Box
-        className={`form-control cursor-pointer ${error ? 'is-invalid' : ''}`}
+      <DropdownWrapper
+        className={`form-control d-flex align-items-center w-100 cursor-pointer p-0 ${
+          error ? 'is-invalid' : ''
+        }`}
       >
-        <Box className="" onClick={toggleDropdown}>
+        <Box
+          className="w-100 h-100 d-flex align-items-center main"
+          onClick={toggleDropdown}
+        >
           {selectedCategory || 'Select a category'}
         </Box>
-      </Box>
+      </DropdownWrapper>
       {isOpen && (
         <ul className="list-group form-control p-0 mt-2">
           {categories.map((category, index) => (

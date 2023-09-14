@@ -8,6 +8,7 @@ import CategoryDropdown from '@/components/Form/CDropdown';
 import CustomInput from '@/components/Form/CInput';
 import CustomTextarea from '@/components/Form/CTextarea';
 import CustomFileUpload from '@/components/Form/CUpload';
+import CustomEditor from '@/components/Froala';
 
 const categories = [
   'Category 1',
@@ -102,6 +103,9 @@ function WriteWrapper() {
                 />
               )}
             />
+          </Box>
+          <Box className="col-md-12 mb-3">
+            <CustomEditor />
           </Box>
           {/* Add other form fields and error handling as needed */}
           <Box className="col-md-12 mb-3">

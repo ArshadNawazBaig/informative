@@ -30,6 +30,7 @@ const FeaturedCardList = async () => {
         posts?.map(({ author, title, img, slug, className }) => (
           <FeaturedCardWrapper
             className={`${className} d-flex p-2 gap-3 mt-3 rounded`}
+            key={slug}
           >
             <Box>
               <ImageWrapper className="d-flex justify-content-center mx-auto mx-md-0 rounded">
