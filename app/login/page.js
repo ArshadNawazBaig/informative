@@ -29,8 +29,8 @@ const LoginPage = () => {
               >
                 Sign in With Google
               </Button>
-              <Button className="w-100 py-3 mb-3">Sign in With Facebook</Button>
-              <Button className="w-100 py-3">Sign in With Github</Button>
+              {/* <Button className="w-100 py-3 mb-3">Sign in With Facebook</Button>
+              <Button className="w-100 py-3">Sign in With Github</Button> */}
             </Box>
           </Box>
         </Box>
