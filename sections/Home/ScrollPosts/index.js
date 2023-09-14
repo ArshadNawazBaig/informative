@@ -31,7 +31,7 @@ const ScrollPosts = async ({ page, posts, count, category, tag }) => {
             title={title}
             creator={author}
             date={createdAt.substring(0, 10)}
-            comments={comments?.length || 'No comments'}
+            comments={`${comments?.length || 0} comments`}
             category={catSlug}
             slug={slug}
           >

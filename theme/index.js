@@ -3,13 +3,15 @@ import { css } from 'styled-components';
 const lightTheme = {
   primary: '#fff',
   secondary: '#1f1f1f',
-  border: '#dee2e58a',
+  border: '#e8ecf3',
+  gray: '#F0F2F5',
 };
 
 const darkTheme = {
   primary: '#1f1f1f',
   secondary: '#fff',
   border: '#3434348a',
+  gray: '#F0F2F5',
 };
 
 export const themes = {

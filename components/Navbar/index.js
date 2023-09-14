@@ -8,16 +8,23 @@ import { CloseIcon, MenuIcon, MoonIcon, SearchIcon, SunIcon } from '../Icons';
 import Divider from '../Divider';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/legacy/image';
-import useSWR from 'swr';
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+import { usePathname } from 'next/navigation';
 
 function Header(args) {
   const { data, status } = useSession();
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true); // Initially set to true
+  const [isLoading, setIsLoading] = useState(true);
+
+  const links = [
+    { id: 1, label: 'Home', link: '/' },
+    { id: 2, label: 'About', link: '/about' },
+    { id: 3, label: 'Contact', link: '/contact' },
+    { id: 4, label: 'Write', link: '/write', isAuth: true },
+  ];
+
+  const pathname = usePathname();
 
   useEffect(() => {
     if (data?.user?.email) {
@@ -62,21 +69,23 @@ function Header(args) {
           id="navbarSupportedContent"
         >
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" href="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" aria-current="page" href="/">
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" aria-current="page" href="/">
-                Contact
-              </Link>
-            </li>
+            {links.map((link) => (
+              <Box key={link.id}>
+                {(link.isAuth && status === 'authenticated') || !link.isAuth ? (
+                  <li className="nav-item">
+                    <Link
+                      className={`nav-link ${
+                        pathname === link.link && 'active'
+                      }`}
+                      aria-current="page"
+                      href={link.link}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ) : null}
+              </Box>
+            ))}
           </ul>
           <Box className="d-flex align-items-center gap-2">
             <StyledButton onClick={toggleTheme} pos={theme}>
@@ -85,14 +94,6 @@ function Header(args) {
               <SunIcon />
             </StyledButton>
             {status === 'authenticated' ? (
-              // <Link
-              //   className="nav-link"
-              //   aria-current="page"
-              //   href="/login"
-              //   onClick={() => signOut()}
-              // >
-              //   Logout
-              // </Link>
               <Box className="nav-item dropdown position-relative">
                 <a
                   className="nav-link dropdown-toggle"
@@ -103,25 +104,34 @@ function Header(args) {
                 >
                   <Box className="avatar">
                     <Image
-                      alt="test"
-                      src="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/very-petty-girl-WRotPmZiXZQ-unsplash-1000x600.jpg"
+                      alt={data.user.name}
+                      src={data.user.image}
                       layout="fill"
                     />
                   </Box>
                 </a>
-                <ul className="dropdown-menu px-4">
+                <ul className="dropdown-menu py-0">
                   <li>
                     <Link
-                      className="nav-link"
+                      className="nav-link py-2 px-4 text-capitalize"
                       aria-current="page"
                       href={`/author/${user?.id}`}
                     >
-                      Name
+                      {data.user.name}
                     </Link>
                   </li>
                   <li>
                     <Link
-                      className="nav-link"
+                      className="nav-link py-2 px-4"
+                      aria-current="page"
+                      href="/write"
+                    >
+                      Write a post
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="nav-link py-2 px-4"
                       aria-current="page"
                       href="#"
                       onClick={() => signOut()}

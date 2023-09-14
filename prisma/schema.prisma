@@ -75,6 +75,7 @@ model Post {
   author User @relation(fields: [userEmail], references: [email])
   comments Comment[]
   createdAt DateTime @default(now())
+  isFeatured Boolean @default(false)
 }
 
 model Comment {

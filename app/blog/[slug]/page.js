@@ -9,6 +9,8 @@ import { Box } from '@/style';
 import Head from 'next/head';
 import React from 'react';
 import { notFound } from 'next/navigation';
+import Comments from '@/components/Comments';
+import SideMenu from '@/components/SideMenu';
 
 const getData = async (slug) => {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${slug}`, {
@@ -37,13 +39,21 @@ const BlogPost = async ({ params }) => {
         <meta property="og:description" content="" />
       </Head>
       <Box className="container">
-        <Box className="row">
+        <Box className="row gx-5">
           <Box className="col-12">
             <BlogHero post={post} />
           </Box>
           <Box className="col-12 mt-4 mb-4">
             <SocialShare />
           </Box>
+          <Box className="col-12 col-md-8 mt-4 mb-4">
+            <Comments postSlug={post.slug} />
+          </Box>
+          <Box className="col-12 col-md-4 mt-4 mb-4">
+            <SideMenu />
+          </Box>
+        </Box>
+        <Box className="row">
           <Box className="col-12">
             <CreatorCard
               imageUrl={post.author.image}

@@ -47,7 +47,7 @@ const HomeWrapper = async ({ page, category }) => {
             <ScrollPosts posts={posts} count={count} page={page} />
           </Box>
           <Box className="col-md-4">
-            <SideMenu />
+            <SideMenu posts={posts} />
           </Box>
         </Box>
         <Box className="row my-5">

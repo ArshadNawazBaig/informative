@@ -11,13 +11,12 @@ export const GET = async (req, res) => {
   const query = {
     take: POSTS_PER_PAGE,
     skip: POSTS_PER_PAGE * (page - 1),
-    include: { author: true },
+    include: { author: true, comments: true },
     where: {
       userEmail: slug,
     },
   };
 
-  console.log(page);
   try {
     const [posts, count] = await prisma.$transaction([
       prisma.post.findMany(query),

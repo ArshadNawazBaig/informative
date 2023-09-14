@@ -34,7 +34,6 @@ export const GET = async (req, { params }) => {
       return new NextResponse(JSON.stringify(userByEmail, { status: 200 }));
     }
   } catch (error) {
-    // console.log(error);
     return new NextResponse(
       JSON.stringify({ message: error.message }, { status: 500 })
     );

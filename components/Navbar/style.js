@@ -54,6 +54,17 @@ export const Navbar = styled.nav`
       object-position: center;
     }
   }
+  & .dropdown-menu {
+    background: ${({ theme }) => theme.primary} !important;
+    border: 1px solid ${({ theme }) => theme.border} !important;
+    min-width: 210px;
+    & a {
+      color: ${({ theme }) => theme.secondary};
+      &:hover {
+        background: ${({ theme }) => theme.border} !important;
+      }
+    }
+  }
 `;
 
 export const StyledButton = styled.button`

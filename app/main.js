@@ -6,10 +6,10 @@ import AuthProvider from '@/providers/AuthProvider';
 import { Body, MainWrapper } from '@/style';
 import React from 'react';
 
-const Main = ({ className, children }) => {
+const Main = ({ className, children, ...rest }) => {
   const { theme } = useTheme();
   return (
-    <Body className={className} theme={theme}>
+    <Body className={className} theme={theme} {...rest}>
       <AuthProvider>
         <Header />
         <MainWrapper>{children}</MainWrapper>

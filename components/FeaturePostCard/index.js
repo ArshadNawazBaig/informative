@@ -3,7 +3,6 @@ import React from 'react';
 import { AuthorLink, CardWrapper, ImageWrapper, Outer, Title } from './style';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
-import Para from '../Para';
 
 const FeaturePostCard = ({
   className,

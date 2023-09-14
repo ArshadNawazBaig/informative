@@ -1,6 +1,7 @@
 import CategoryList from '@/components/CategoryList';
 import Divider from '@/components/Divider';
 import FeaturePostCard from '@/components/FeaturePostCard';
+import FeaturedCardList from '@/components/FeaturedCardList';
 import Heading from '@/components/Heading';
 import NewsLetter from '@/components/NewsLetter';
 import SocialFollow from '@/components/SocialFollow';
@@ -53,6 +54,8 @@ const AuthorPage = async ({ params, searchParams }) => {
     return notFound();
   }
 
+  console.log(posts[0]);
+
   return (
     <Box className="container">
       <Box className="row">
@@ -74,20 +77,21 @@ const AuthorPage = async ({ params, searchParams }) => {
       <Box className="row flex align-items-start gx-5">
         <Box className="col-md-8">
           <ScrollPosts posts={posts} count={count} page={page} />
+          {posts.length <= 0 && (
+            <Heading
+              title="You don't have any posts!"
+              size="md"
+              className=""
+            ></Heading>
+          )}
         </Box>
         <Box className="col-md-4">
           <Heading title="Follow Me" size="md" className=""></Heading>
           <Divider />
           <SocialFollow className="mt-4" />
           <Heading title="Featured Posts" size="md" className="mt-5"></Heading>
-          <Divider />
-          <FeaturePostCard
-            title="These Fabulous Photos Will Have Astonishing"
-            date="November 17, 2021"
-            className="mt-4"
-            creator="Alice"
-            imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/benjamin-massello-BVNhd4c7rqg-unsplash-400x300.jpg"
-          />
+          <Divider className="mb-4" />
+          <FeaturedCardList />
           <Heading title="Categories" size="md" className="mt-5"></Heading>
           <Divider />
           <CategoryList className="mt-4" />

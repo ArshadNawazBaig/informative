@@ -1,6 +1,7 @@
 import CategoryList from '@/components/CategoryList';
 import Divider from '@/components/Divider';
 import FeaturePostCard from '@/components/FeaturePostCard';
+import FeaturedCardList from '@/components/FeaturedCardList';
 import Heading from '@/components/Heading';
 import NewsLetter from '@/components/NewsLetter';
 import TagsList from '@/components/TagsList';
@@ -57,14 +58,8 @@ const BlogPage = async ({ searchParams }) => {
         </Box>
         <Box className="col-md-4">
           <Heading title="Featured Posts" size="md" className=""></Heading>
-          <Divider />
-          <FeaturePostCard
-            title="These Fabulous Photos Will Have Astonishing"
-            date="November 17, 2021"
-            className="mt-4"
-            creator="Alice"
-            imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/benjamin-massello-BVNhd4c7rqg-unsplash-400x300.jpg"
-          />
+          <Divider className="mb-4" />
+          <FeaturedCardList />
           <Heading title="Categories" size="md" className="mt-5"></Heading>
           <Divider />
           <CategoryList className="mt-4" />

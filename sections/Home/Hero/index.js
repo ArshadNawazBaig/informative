@@ -2,7 +2,19 @@ import PostCard from '@/components/PostCard';
 import { Box } from '@/style';
 import React from 'react';
 
-const HeroSection = () => {
+const getData = async () => {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/popular`, {
+    cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed');
+  }
+  return res.json();
+};
+
+const HeroSection = async () => {
+  const posts = await getData();
   return (
     <Box className="container">
       <Box
@@ -12,31 +24,37 @@ const HeroSection = () => {
         <Box className="col-md-8">
           <PostCard
             font="md"
-            imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/ben-masora-7GJr-Zxs-IY-unsplash-700x500.jpg"
-            title="Ready To Go Home After The Sunset View?"
-            creator="Alice"
-            date="November 18, 2021"
-            category="Illustration"
+            imageUrl={posts && posts[0].img}
+            title={posts && posts[0].title}
+            creator={posts && posts[0].author}
+            date={posts && posts[0].createdAt.substring(0, 10)}
+            comments={(posts && posts[0].comments?.length) || 'No comments'}
+            category={posts && posts[0].catSlug}
+            slug={posts && posts[0].slug}
           />
         </Box>
         <Box className="col-md-4">
           <Box className="row gap-4 h-100">
             <Box className="col-md-12">
               <PostCard
-                imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/benjamin-massello-BVNhd4c7rqg-unsplash-700x500.jpg"
-                title="Watch Awesome Kate Manner Go Full Dancing"
-                creator="Alice"
-                date="November 18, 2021"
-                category="Illustration"
+                imageUrl={posts && posts[1].img}
+                title={posts && posts[1].title}
+                creator={posts && posts[1].author}
+                date={posts && posts[1].createdAt.substring(0, 10)}
+                comments={(posts && posts[1].comments?.length) || 'No comments'}
+                category={posts && posts[1].catSlug}
+                slug={posts && posts[1].slug}
               />
             </Box>
             <Box className="col-md-12">
               <PostCard
-                imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/ayo-ogunseinde-RrD8ypt8cjY-unsplash-700x500.jpg"
-                title="These Fabulous Photos Will Have Astonishing"
-                creator="Alice"
-                date="November 18, 2021"
-                category="Music"
+                imageUrl={posts && posts[2].img}
+                title={posts && posts[2].title}
+                creator={posts && posts[2].author}
+                date={posts && posts[2].createdAt.substring(0, 10)}
+                comments={(posts && posts[2].comments?.length) || 'No comments'}
+                category={posts && posts[2].catSlug}
+                slug={posts && posts[2].slug}
               />
             </Box>
           </Box>

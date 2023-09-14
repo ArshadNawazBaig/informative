@@ -6,6 +6,15 @@ export const Box = styled.div``;
 
 export const Body = styled.body`
   ${({ theme }) => themeStyles[theme]}
+  & .cursor-pointer {
+    cursor: pointer !important;
+  }
+  & .border-none {
+    border: none !important;
+  }
+  & .gray-border {
+    border: 1px solid ${({ theme }) => theme.border};
+  }
 `;
 
 export const MainWrapper = styled.div`
