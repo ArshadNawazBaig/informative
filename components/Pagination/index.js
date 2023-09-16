@@ -4,10 +4,10 @@ import React from 'react';
 import Button from '../Button';
 import { useRouter } from 'next/navigation';
 
-const Pagination = ({ page, hasNext, hasPrev, category, tag }) => {
+const Pagination = ({ page, hasNext, hasPrev, category, tag, className }) => {
   const router = useRouter();
   return (
-    <Box className="d-flex justify-content-between">
+    <Box className={`${className} d-flex justify-content-between`}>
       <Button
         className="rounded"
         disabled={!hasPrev}

@@ -1,3 +1,4 @@
+import Heading from '@/components/Heading';
 import NewsLetter from '@/components/NewsLetter';
 import Para from '@/components/Para';
 import { Box, ErrorWrapper } from '@/style';
@@ -17,7 +18,11 @@ const AboutPage = () => {
         <Box className="col-12 text-center">
           <ErrorWrapper className="d-inline-grid h-100 w-100 align-items-center">
             <Box>
-              <h1 className="fs-1">About Page is under construction</h1>
+              <Heading
+                title="About Page is under construction"
+                className="mb-2"
+                main="About"
+              ></Heading>
               <Box className="d-flex gap-2 justify-content-center flex-column w-100">
                 <Para>It looks like nothing was found at this location.</Para>
                 <Link href="/">Return to Home Page</Link>

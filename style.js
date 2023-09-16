@@ -15,6 +15,11 @@ export const Body = styled.body`
   & .gray-border {
     border: 1px solid ${({ theme }) => theme.border};
   }
+  & .w-md-auto {
+    @media (min-width: 768px) {
+      width: auto !important;
+    }
+  }
 `;
 
 export const MainWrapper = styled.div`

@@ -5,6 +5,7 @@ const lightTheme = {
   secondary: '#1f1f1f',
   border: '#e8ecf3',
   gray: '#F0F2F5',
+  lightGray: '#e7e7e7',
 };
 
 const darkTheme = {
@@ -12,6 +13,7 @@ const darkTheme = {
   secondary: '#fff',
   border: '#3434348a',
   gray: '#3434348a',
+  lightGray: '#2f2f2f',
 };
 
 export const themes = {

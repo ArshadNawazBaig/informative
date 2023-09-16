@@ -46,9 +46,13 @@ function Header(args) {
   };
 
   return (
-    <Navbar className={`navbar navbar-expand-lg mb-4`}>
-      <Box className="container">
-        <Link className="navbar-brand text-uppercase fw-medium" href="/">
+    <Navbar className={`navbar navbar-expand-lg mb-4 sticky-top`}>
+      <Box className="container position-relative">
+        <Link
+          className="navbar-brand text-uppercase fw-medium"
+          href="/"
+          onClick={() => setIsOpen(false)}
+        >
           Informative
           <Divider />
         </Link>
@@ -65,7 +69,9 @@ function Header(args) {
           {isOpen ? <CloseIcon /> : <MenuIcon />}
         </button>
         <Box
-          className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`}
+          className={`collapse navbar-collapse links-menu ${
+            isOpen ? 'show' : ''
+          }`}
           id="navbarSupportedContent"
         >
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
@@ -74,6 +80,7 @@ function Header(args) {
                 {(link.isAuth && status === 'authenticated') || !link.isAuth ? (
                   <li className="nav-item">
                     <Link
+                      onClick={() => setIsOpen(false)}
                       className={`nav-link ${
                         pathname === link.link && 'active'
                       }`}
@@ -86,14 +93,14 @@ function Header(args) {
               </Box>
             ))}
           </ul>
-          <Box className="d-flex align-items-center gap-2">
+          <Box className="d-block d-md-flex align-items-center gap-2">
             <StyledButton onClick={toggleTheme} pos={theme}>
               <Box className="circle"></Box>
               <MoonIcon />
               <SunIcon />
             </StyledButton>
             {status === 'authenticated' ? (
-              <Box className="nav-item dropdown position-relative">
+              <Box className="nav-item dropdown position-relative mt-4 mt-md-0">
                 <a
                   className="nav-link dropdown-toggle"
                   href="#"
@@ -115,6 +122,7 @@ function Header(args) {
                       className="nav-link py-2 px-4 text-capitalize"
                       aria-current="page"
                       href={`/author/${user?.id}`}
+                      onClick={() => setIsOpen(false)}
                     >
                       {data.user.name}
                     </Link>
@@ -124,6 +132,7 @@ function Header(args) {
                       className="nav-link py-2 px-4"
                       aria-current="page"
                       href="/write"
+                      onClick={() => setIsOpen(false)}
                     >
                       Write a post
                     </Link>
@@ -133,7 +142,10 @@ function Header(args) {
                       className="nav-link py-2 px-4"
                       aria-current="page"
                       href="#"
-                      onClick={() => signOut()}
+                      onClick={() => {
+                        signOut();
+                        setIsOpen(false);
+                      }}
                     >
                       Logout
                     </Link>
@@ -141,7 +153,12 @@ function Header(args) {
                 </ul>
               </Box>
             ) : (
-              <Link className="nav-link" aria-current="page" href="/login">
+              <Link
+                className="nav-link mt-3 mt-md-0"
+                aria-current="page"
+                href="/login"
+                onClick={() => setIsOpen(false)}
+              >
                 Login
               </Link>
             )}

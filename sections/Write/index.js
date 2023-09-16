@@ -10,12 +10,7 @@ import CustomTextarea from '@/components/Form/CTextarea';
 import CustomFileUpload from '@/components/Form/CUpload';
 import CustomEditor from '@/components/Froala';
 
-const categories = [
-  'Category 1',
-  'Category 2',
-  'Category 3',
-  // Add more categories as needed
-];
+const categories = ['Category 1', 'Category 2', 'Category 3'];
 
 // Define the validation schema
 const schema = yup.object().shape({
@@ -41,7 +36,7 @@ function WriteWrapper() {
   const onSubmit = (data) => {
     console.log(data);
   };
-  console.log(errors);
+
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
   };

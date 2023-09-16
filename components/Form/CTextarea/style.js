@@ -10,6 +10,7 @@ export const TextareaWrapper = styled.div`
     outline: none;
     border: 1px solid ${({ theme }) => theme.border};
     color: ${({ theme }) => theme.secondary};
+    min-height: 160px;
     &:focus {
       color: ${({ theme }) => theme.secondary};
       background-color: ${({ theme }) => theme.gray};

@@ -3,10 +3,30 @@ import styled from 'styled-components';
 
 export const Navbar = styled.nav`
   ${({ theme }) => themeStyles[theme]};
+  background-color: ${({ theme }) => theme.primary};
   border-bottom: 1px solid ${({ theme }) => theme.border};
   & .dropdown-menu {
     right: 0 !important;
     left: unset;
+    @media (max-width: 768px) {
+      position: relative !important;
+      border: none !important;
+      margin-top: 20px;
+      padding: 0;
+    }
+  }
+  @media (max-width: 768px) {
+    & .links-menu {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 56px;
+      padding: 0 16px;
+      background: white;
+      padding-top: 20px;
+      padding-bottom: 30px;
+      background-color: ${({ theme }) => theme.primary};
+    }
   }
   & .nav-link {
     color: ${({ theme }) => theme.secondary};

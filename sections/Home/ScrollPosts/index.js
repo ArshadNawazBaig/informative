@@ -46,6 +46,7 @@ const ScrollPosts = async ({ page, posts, count, category, tag }) => {
           tag={tag}
           hasNext={hasNext}
           hasPrev={hasPrev}
+          className="mb-4"
         />
       )}
     </>
