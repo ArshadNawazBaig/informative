@@ -54,8 +54,6 @@ const AuthorPage = async ({ params, searchParams }) => {
     return notFound();
   }
 
-  console.log(posts[0]);
-
   return (
     <Box className="container">
       <Box className="row">
@@ -77,7 +75,7 @@ const AuthorPage = async ({ params, searchParams }) => {
       <Box className="row flex align-items-start gx-md-5">
         <Box className="col-md-8">
           <ScrollPosts posts={posts} count={count} page={page} />
-          {posts.length <= 0 && (
+          {posts?.length <= 0 && (
             <Heading
               title="You don't have any posts!"
               size="md"

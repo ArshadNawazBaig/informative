@@ -18,18 +18,19 @@ const CategoryList = async ({ className }) => {
   const categories = await getData();
   return (
     <ListWrapper className={className}>
-      {categories.map((category) => (
-        <Link
-          href={`/blog?category=${category.slug}`}
-          className="d-flex w-full justify-content-between py-4"
-          key={category.id}
-        >
-          <span>{category.name}</span>
-          <span>
-            <RightArrow />
-          </span>
-        </Link>
-      ))}
+      {categories.length > 0 &&
+        categories?.map((category) => (
+          <Link
+            href={`/blog?category=${category.slug}`}
+            className="d-flex w-full justify-content-between py-4"
+            key={category.id}
+          >
+            <span>{category.name}</span>
+            <span>
+              <RightArrow />
+            </span>
+          </Link>
+        ))}
     </ListWrapper>
   );
 };

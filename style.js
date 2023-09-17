@@ -32,6 +32,50 @@ export const LoginWrapper = styled.div`
   & .login-form {
     background-color: ${({ theme }) => theme.border};
   }
+  & button {
+    border-radius: 5px;
+    overflow: hidden;
+    transition: ease-in-out all 0.5s;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    max-width: 300px;
+    height: 60px;
+    &:hover {
+      transform: translateY(-2px);
+      scale: 1.01;
+    }
+    &.google {
+      background-color: #fff;
+      color: #000;
+    }
+    &.github {
+      background-color: #000;
+      color: #fff;
+    }
+    &.facebook {
+      background-color: rgb(59, 89, 152) !important;
+      color: #fff !important;
+    }
+  }
+  & svg.logo {
+    max-width: 80px;
+    border-radius: 100px;
+    box-shadow: 0px 20px 20px -13px ${({ theme }) => theme.lightGray};
+  }
+  & .social-icon {
+    position: relative;
+    height: 30px;
+    width: 30px;
+    margin-left: 20px;
+    margin-right: 11px;
+    border-radius: 50px;
+    overflow: hidden;
+    & img {
+      object-fit: cover;
+      object-position: center;
+    }
+  }
 `;
 
 export const LoadingWrapper = styled.div`

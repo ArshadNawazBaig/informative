@@ -24,37 +24,41 @@ const HeroSection = async () => {
         <Box className="col-md-8">
           <PostCard
             font="md"
-            imageUrl={posts && posts[0].img}
-            title={posts && posts[0].title}
-            creator={posts && posts[0].author}
-            date={posts && posts[0].createdAt.substring(0, 10)}
-            comments={(posts && posts[0].comments?.length) || 'No comments'}
-            category={posts && posts[0].catSlug}
-            slug={posts && posts[0].slug}
+            imageUrl={posts && posts[0]?.img}
+            title={posts && posts[0]?.title}
+            creator={posts && posts[0]?.author}
+            date={posts && posts[0]?.createdAt.substring(0, 10)}
+            comments={(posts && posts[0]?.comments?.length) || 'No comments'}
+            category={posts && posts[0]?.catSlug}
+            slug={posts && posts[0]?.slug}
           />
         </Box>
         <Box className="col-md-4">
           <Box className="row gap-4 h-100">
             <Box className="col-md-12">
               <PostCard
-                imageUrl={posts && posts[1].img}
-                title={posts && posts[1].title}
-                creator={posts && posts[1].author}
-                date={posts && posts[1].createdAt.substring(0, 10)}
-                comments={(posts && posts[1].comments?.length) || 'No comments'}
-                category={posts && posts[1].catSlug}
-                slug={posts && posts[1].slug}
+                imageUrl={posts && posts[1]?.img}
+                title={posts && posts[1]?.title}
+                creator={posts && posts[1]?.author}
+                date={posts && posts[1]?.createdAt.substring(0, 10)}
+                comments={
+                  (posts && posts[1]?.comments?.length) || 'No comments'
+                }
+                category={posts && posts[1]?.catSlug}
+                slug={posts && posts[1]?.slug}
               />
             </Box>
             <Box className="col-md-12">
               <PostCard
-                imageUrl={posts && posts[2].img}
-                title={posts && posts[2].title}
-                creator={posts && posts[2].author}
-                date={posts && posts[2].createdAt.substring(0, 10)}
-                comments={(posts && posts[2].comments?.length) || 'No comments'}
-                category={posts && posts[2].catSlug}
-                slug={posts && posts[2].slug}
+                imageUrl={posts && posts[2]?.img}
+                title={posts && posts[2]?.title}
+                creator={posts && posts[2]?.author}
+                date={posts && posts[2]?.createdAt.substring(0, 10)}
+                comments={
+                  (posts && posts[2]?.comments?.length) || 'No comments'
+                }
+                category={posts && posts[2]?.catSlug}
+                slug={posts && posts[2]?.slug}
               />
             </Box>
           </Box>

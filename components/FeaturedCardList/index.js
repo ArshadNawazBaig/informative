@@ -26,7 +26,7 @@ const FeaturedCardList = async () => {
   const { posts } = await getData(page, perPage, isFeatured);
   return (
     <>
-      {posts.length > 0 &&
+      {posts?.length > 0 &&
         posts?.map(({ author, title, img, slug, className }) => (
           <FeaturedCardWrapper
             className={`${className} d-flex p-2 gap-3 mt-3 rounded`}
