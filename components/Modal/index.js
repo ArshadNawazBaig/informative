@@ -73,6 +73,7 @@ const Modal = () => {
                       className={className}
                       slug={slug}
                       len={60}
+                      key={slug}
                       data-bs-dismiss="modal"
                       aria-label="Close"
                     />
