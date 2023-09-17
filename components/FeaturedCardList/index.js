@@ -35,6 +35,7 @@ const FeaturedCardList = async () => {
             img={img}
             className={className}
             slug={slug}
+            key={slug}
           />
         ))}
     </>
