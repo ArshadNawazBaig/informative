@@ -19,7 +19,7 @@ const SearchPage = () => {
           ></Heading>
         </Box>
       </Box>
-      <Box className="row flex align-items-start gx-5">
+      <Box className="row flex align-items-start gx-md-5">
         <Box className="col-md-8">
           <PostCard
             font="md"

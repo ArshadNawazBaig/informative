@@ -42,7 +42,7 @@ const HomeWrapper = async ({ page, category }) => {
             </Heading>
           </Box>
         </Box>
-        <Box className="row flex align-items-start gx-5">
+        <Box className="row flex align-items-start gx-md-5">
           <Box className="col-md-8">
             <ScrollPosts posts={posts} count={count} page={page} />
           </Box>

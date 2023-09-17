@@ -39,7 +39,7 @@ const BlogPost = async ({ params }) => {
         <meta property="og:description" content="" />
       </Head>
       <Box className="container">
-        <Box className="row gx-5">
+        <Box className="row gx-md-5">
           <Box className="col-12">
             <BlogHero post={post} />
           </Box>
