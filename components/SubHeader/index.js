@@ -28,7 +28,7 @@ const SubHeader = () => {
                 ))}
               </Box>
               <SearchIcon
-                className="cursor-pointer"
+                className="cursor-pointer search-icon"
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
