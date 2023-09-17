@@ -1,6 +1,5 @@
 import CategoryList from '@/components/CategoryList';
 import Divider from '@/components/Divider';
-import FeaturePostCard from '@/components/FeaturePostCard';
 import FeaturedCardList from '@/components/FeaturedCardList';
 import Heading from '@/components/Heading';
 import NewsLetter from '@/components/NewsLetter';

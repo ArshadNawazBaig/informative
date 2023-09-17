@@ -4,7 +4,7 @@ import React from 'react';
 export const metadata = {
   title: 'Contact Us - Informative',
   description:
-    "Get in touch with [Your Website Name] for inquiries, feedback, or collaboration opportunities. We're here to assist you with any questions you may have. Contact us today!",
+    "Get in touch with Informative for inquiries, feedback, or collaboration opportunities. We're here to assist you with any questions you may have. Contact us today!",
 };
 
 const ContactPage = () => {
