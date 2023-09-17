@@ -12,4 +12,14 @@ export const ModalWrapper = styled.div`
     box-shadow: none;
     outline: none;
   }
+  & input {
+    background-color: ${({ theme }) => theme.bg} !important;
+  }
+  & input::placeholder,
+  .close-icon {
+    color: ${({ theme }) => theme.secondary};
+  }
+  & .see-more {
+    color: ${({ theme }) => theme.link};
+  }
 `;

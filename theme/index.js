@@ -7,6 +7,7 @@ const lightTheme = {
   gray: '#F0F2F5',
   bg: '#F0F2F5',
   lightGray: '#e7e7e7',
+  link: '#3e3eff',
 };
 
 const darkTheme = {
@@ -16,6 +17,7 @@ const darkTheme = {
   gray: '#3434348a',
   lightGray: '#2f2f2f',
   bg: '#3d3d3d',
+  link: '#b5b5ff',
 };
 
 export const themes = {

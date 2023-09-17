@@ -12,7 +12,7 @@ function CustomInput({
   ...rest
 }) {
   return (
-    <InputWrapper className="custom-input">
+    <InputWrapper className="custom-input w-100">
       <input
         type="text"
         className={`form-control ${className} ${error ? 'is-invalid' : ''}`}

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import CustomInput from '../Form/CInput';
 import { ModalWrapper } from './style';
-import { SearchIcon } from '../Icons';
+import { CloseIcon, SearchIcon } from '../Icons';
 import useSWR from 'swr';
 import FeaturedCard from '../FeaturedCard';
 import { Box } from '@/style';
@@ -44,12 +44,12 @@ const Modal = () => {
                 value={searchValue}
                 onChange={handleSearchInputChange}
               />
-              <button
-                type="button"
-                className="btn-close"
+              <CloseIcon
                 data-bs-dismiss="modal"
                 aria-label="Close"
-              ></button>
+                className="close-icon cursor-ponter"
+                style={{ cursor: 'pointer' }}
+              />
             </div>
             <div className="modal-body">
               {!isLoading && data?.posts.length <= 0 && (
@@ -86,7 +86,7 @@ const Modal = () => {
                 >
                   <Link
                     href={`/blog?search=${searchValue}`}
-                    className="fw-semibold text-decoration-none"
+                    className="fw-semibold text-decoration-none see-more"
                   >
                     See {data?.count - 3} more results
                   </Link>
