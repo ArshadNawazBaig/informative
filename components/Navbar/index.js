@@ -169,7 +169,7 @@ function Header() {
           </Box>
         </Box>
       </Navbar>
-      <SubHeader />
+      <SubHeader setIsOpen={setIsOpen} />
     </Box>
   );
 }

@@ -13,7 +13,7 @@ const categories = [
   { id: 6, title: 'Photography', link: '/blog?category=photography' },
 ];
 
-const SubHeader = () => {
+const SubHeader = ({ setIsOpen }) => {
   return (
     <SubHeaderWrapper>
       <Box className="container">
@@ -32,6 +32,7 @@ const SubHeader = () => {
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
+                onClick={() => setIsOpen(false)}
               />
             </Box>
           </Box>
