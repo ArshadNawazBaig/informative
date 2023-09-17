@@ -4,7 +4,7 @@ import React from 'react';
 
 const POST_PER_PAGE = 4;
 
-const ScrollPosts = async ({ page, posts, count, category, tag }) => {
+const ScrollPosts = async ({ page, posts, count, category, tag, search }) => {
   const hasPrev = POST_PER_PAGE * (page - 1) > 0;
   const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
   return (
@@ -44,6 +44,7 @@ const ScrollPosts = async ({ page, posts, count, category, tag }) => {
           page={page}
           category={category}
           tag={tag}
+          search={search}
           hasNext={hasNext}
           hasPrev={hasPrev}
           className="mb-4"

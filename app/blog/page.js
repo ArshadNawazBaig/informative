@@ -60,6 +60,7 @@ const BlogPage = async ({ searchParams }) => {
             count={count}
             tag={tag}
             category={category}
+            search={search}
           />
         </Box>
         <Box className="col-md-4">

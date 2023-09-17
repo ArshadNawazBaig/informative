@@ -4,7 +4,15 @@ import React from 'react';
 import Button from '../Button';
 import { useRouter } from 'next/navigation';
 
-const Pagination = ({ page, hasNext, hasPrev, category, tag, className }) => {
+const Pagination = ({
+  page,
+  hasNext,
+  hasPrev,
+  category,
+  tag,
+  className,
+  search,
+}) => {
   const router = useRouter();
   return (
     <Box className={`${className} d-flex justify-content-between`}>
@@ -13,7 +21,9 @@ const Pagination = ({ page, hasNext, hasPrev, category, tag, className }) => {
         disabled={!hasPrev}
         onClick={() =>
           router.push(
-            `?category=${category || ''}&tag=${tag || ''}&page=${page - 1}`
+            `?search=${search}&category=${category || ''}&tag=${
+              tag || ''
+            }&page=${page - 1}`
           )
         }
       >
@@ -24,7 +34,9 @@ const Pagination = ({ page, hasNext, hasPrev, category, tag, className }) => {
         disabled={!hasNext}
         onClick={() =>
           router.push(
-            `?category=${category || ''}&tag=${tag || ''}&page=${page + 1}`
+            `?search=${search}&category=${category || ''}&tag=${
+              tag || ''
+            }&page=${page + 1}`
           )
         }
       >
