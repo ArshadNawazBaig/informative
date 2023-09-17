@@ -30,6 +30,7 @@ export const Navbar = styled.nav`
   }
   & .nav-link {
     color: ${({ theme }) => theme.secondary};
+    font-weight: 500;
   }
   & .nav-link.active {
     color: #ff2c54;

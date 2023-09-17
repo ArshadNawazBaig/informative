@@ -18,7 +18,7 @@ export const InputWrapper = styled.div`
       outline: none;
     }
     &::placeholder {
-      color: ${({ theme }) => theme.secondary};
+      /* color: ${({ theme }) => theme.gray}; */
     }
   }
 `;

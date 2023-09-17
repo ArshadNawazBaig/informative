@@ -29,8 +29,15 @@ export const MainWrapper = styled.div`
 `;
 
 export const LoginWrapper = styled.div`
-  & .login-form {
+  & .inner-wrapper {
     background-color: ${({ theme }) => theme.border};
+    width: fit-content;
+    margin: 0 auto;
+    padding: 30px;
+    @media (max-width: 539px) {
+      padding: 20px;
+      width: 100%;
+    }
   }
   & button {
     border-radius: 5px;
@@ -39,7 +46,7 @@ export const LoginWrapper = styled.div`
     text-decoration: none;
     font-weight: 500;
     font-size: 1rem;
-    max-width: 300px;
+    min-width: 280px;
     height: 60px;
     &:hover {
       transform: translateY(-2px);

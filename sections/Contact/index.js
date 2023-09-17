@@ -33,7 +33,7 @@ const ContactWrapper = () => {
 
   return (
     <Box className="container">
-      <Box className="row my-5 pt-5">
+      <Box className="row my-sm-5 pt-5">
         <Box className="col-12 text-center py-5">
           <Box>
             <Heading main="Contact" title="Get In Touch With Us"></Heading>

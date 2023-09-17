@@ -2,3 +2,7 @@ html,
 body {
   scroll-behavior: smooth;
 }
+
+.w-fit {
+  width: fit-content !important;
+}

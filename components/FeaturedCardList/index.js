@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import Para from '../Para';
 import { FeaturedCardWrapper, ImageWrapper } from './style';
+import FeaturedCard from '../FeaturedCard';
 
 const getData = async (page, perPage, isFeatured) => {
   const res = await fetch(
@@ -28,32 +29,13 @@ const FeaturedCardList = async () => {
     <>
       {posts?.length > 0 &&
         posts?.map(({ author, title, img, slug, className }) => (
-          <FeaturedCardWrapper
-            className={`${className} d-flex p-2 gap-3 mt-3 rounded`}
-            key={slug}
-          >
-            <Box>
-              <ImageWrapper className="d-flex justify-content-center mx-auto mx-md-0 rounded">
-                <Link href={`/author/${author.id}`}>
-                  <Image alt={title} src={img} layout="fill" />
-                </Link>
-              </ImageWrapper>
-            </Box>
-            <Box className="d-flex flex-column justify-content-between py-2">
-              <Link
-                href={`/blog/${slug}`}
-                className="text-decoration-none fw-semibold"
-              >
-                <Para className="fs-5 lh-sm">{title.substring(0, 30)}...</Para>
-              </Link>
-              <Link
-                href={`/author/${author.id}`}
-                className="text-decoration-none"
-              >
-                <Para className="author-name">{author.name}</Para>
-              </Link>
-            </Box>
-          </FeaturedCardWrapper>
+          <FeaturedCard
+            author={author}
+            title={title}
+            img={img}
+            className={className}
+            slug={slug}
+          />
         ))}
     </>
   );

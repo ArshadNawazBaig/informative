@@ -47,7 +47,9 @@ const PostCard = ({
               </TermItem>
             )}
             <Title font={font} className={varient && 'text-start'}>
-              <Link href={`/blog/${slug}`}>{title}</Link>
+              <Link href={`/blog/${slug}`} className="text-capitalize">
+                {title}
+              </Link>
             </Title>
           </Box>
           {!varient && (
