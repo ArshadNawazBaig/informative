@@ -3,16 +3,14 @@ import React, { useEffect, useState } from 'react';
 import CustomInput from '../Form/CInput';
 import { ModalWrapper } from './style';
 import { SearchIcon } from '../Icons';
-import FeaturedCardList from '../FeaturedCardList';
 import useSWR from 'swr';
 import FeaturedCard from '../FeaturedCard';
 import { Box } from '@/style';
 import Para from '../Para';
-import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
-const Modal = ({ isOpen, setIsOpen }) => {
-  const pathname = usePathname();
+const Modal = () => {
   const [searchValue, setSearchValue] = useState('');
   const [debouncedSearchValue, setDebouncedSearchValue] = useState('');
   const { data, isLoading, mutate } = useSWR(
@@ -29,22 +27,12 @@ const Modal = ({ isOpen, setIsOpen }) => {
     return () => clearTimeout(timeout);
   }, [searchValue]);
 
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
-
   const handleSearchInputChange = (event) => {
-    setSearchValue(event.target.value);
+    setSearchValue(event.target.value.toLocaleLowerCase());
   };
   return (
     <ModalWrapper>
-      <div
-        className={`modal fade ${isOpen ? 'show' : 'hide'}`}
-        id="exampleModal"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
+      <div className={`modal fade `} id="exampleModal" tabIndex="-1">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
@@ -85,8 +73,24 @@ const Modal = ({ isOpen, setIsOpen }) => {
                       className={className}
                       slug={slug}
                       len={60}
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
                     />
                   ))}
+              {data?.posts?.length > 3 && (
+                <Box
+                  className="text-center mt-3"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <Link
+                    href={`/blog?search=${searchValue}`}
+                    className="fw-semibold text-decoration-none"
+                  >
+                    See {data?.count - 3} more results
+                  </Link>
+                </Box>
+              )}
             </div>
           </div>
         </div>

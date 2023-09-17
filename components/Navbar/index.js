@@ -11,7 +11,7 @@ import Image from 'next/legacy/image';
 import { usePathname } from 'next/navigation';
 import SubHeader from '../SubHeader';
 
-function Header({}) {
+function Header() {
   const { data, status } = useSession();
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);

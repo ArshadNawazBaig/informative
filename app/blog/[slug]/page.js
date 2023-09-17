@@ -18,7 +18,7 @@ const getData = async (slug) => {
   });
 
   if (!res.ok) {
-    throw new Error('Failed');
+    console.log('error');
   }
 
   return res.json();

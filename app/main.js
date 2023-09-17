@@ -9,14 +9,13 @@ import React, { useState } from 'react';
 
 const Main = ({ className, children, ...rest }) => {
   const { theme } = useTheme();
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <Body className={className} theme={theme} {...rest}>
       <AuthProvider>
         <Header />
         <MainWrapper>{children}</MainWrapper>
         <Footer />
-        <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+        <Modal />
       </AuthProvider>
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"

@@ -9,7 +9,7 @@ const getData = async () => {
   });
 
   if (!res.ok) {
-    throw new Error('Failed');
+    console.log('error');
   }
   return res.json();
 };

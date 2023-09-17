@@ -33,7 +33,7 @@ const getAuthorPosts = async (page, perPage, email) => {
   );
 
   if (!res.ok) {
-    throw new Error('Failed');
+    console.log('error');
   }
   return res.json();
 };

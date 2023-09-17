@@ -9,11 +9,11 @@ import ScrollPosts from '@/sections/Home/ScrollPosts';
 import { Box } from '@/style';
 import React from 'react';
 
-const getData = async (page, perPage, category, tag) => {
+const getData = async (page, perPage, category, tag, search) => {
   const res = await fetch(
     `${
       process.env.NEXTAUTH_URL
-    }/api/posts?page=${page}&perPage=${perPage}&category=${
+    }/api/posts?page=${page}&perPage=${perPage}&search=${search}&category=${
       category || ''
     }&tag=${tag || ''}`,
     {
@@ -22,7 +22,7 @@ const getData = async (page, perPage, category, tag) => {
   );
 
   if (!res.ok) {
-    throw new Error('Failed');
+    console.log('error');
   }
   return res.json();
 };
@@ -31,17 +31,23 @@ const POST_PER_PAGE = 4;
 
 const BlogPage = async ({ searchParams }) => {
   const page = parseInt(searchParams.page) || 1;
-  const { category, tag } = searchParams;
-  const { posts, count } = await getData(page, POST_PER_PAGE, category, tag);
+  const { category, tag, search } = searchParams;
+  const { posts, count } = await getData(
+    page,
+    POST_PER_PAGE,
+    category,
+    tag,
+    search
+  );
 
   return (
     <Box className="container">
       <Box className="row">
         <Box className="col-12">
           <Heading
-            title={`Browse ${category ? 'Category' : 'Tag'} - ${
-              category ? category : tag
-            }`}
+            title={`${search ? 'Search' : 'Browse'} ${
+              category ? 'Category' : tag ? 'Tag' : ''
+            } - ${category ? category : tag ? tag : search}`}
             className="mt-4 mb-4 text-capitalize"
           ></Heading>
         </Box>

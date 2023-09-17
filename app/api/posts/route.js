@@ -7,6 +7,7 @@ export const GET = async (req, res) => {
   const page = searchParams.get('page');
   const category = searchParams.get('category');
   const isFeatured = searchParams.get('featured');
+  const title = searchParams.get('search');
   const perPage = searchParams.get('perPage');
 
   const POSTS_PER_PAGE = parseInt(perPage);
@@ -15,6 +16,7 @@ export const GET = async (req, res) => {
     skip: POSTS_PER_PAGE * (page - 1),
     where: {
       ...(category && { catSlug: category }),
+      ...(title && { title: { contains: title } }),
       ...(isFeatured === 'true' && { isFeatured: true }),
     },
     include: { author: true, comments: true },

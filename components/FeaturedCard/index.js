@@ -5,11 +5,22 @@ import React from 'react';
 import Para from '../Para';
 import { FeaturedCardWrapper, ImageWrapper } from './style';
 
-const FeaturedCard = ({ author, title, img, slug, className, len }) => {
+const FeaturedCard = ({
+  author,
+  title,
+  img,
+  slug,
+  className,
+  len,
+  onClick,
+  ...rest
+}) => {
   return (
     <FeaturedCardWrapper
       className={`${className} d-flex p-2 gap-3 mt-3 rounded`}
       key={slug}
+      onClick={onClick}
+      {...rest}
     >
       <Box>
         <ImageWrapper className="d-flex justify-content-center mx-auto mx-md-0 rounded">
