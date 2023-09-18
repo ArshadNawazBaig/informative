@@ -12,6 +12,7 @@ import { notFound } from 'next/navigation';
 import Comments from '@/components/Comments';
 import SideMenu from '@/components/SideMenu';
 import Para from '@/components/Para';
+import TagChip from '@/components/TagChip';
 
 const getData = async (slug) => {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${slug}`, {
@@ -57,9 +58,20 @@ const BlogPost = async ({ params }) => {
               {post.desc}
             </Para>
             <Box
-              className="mb-4 content-wrapper"
+              className="content-wrapper"
               dangerouslySetInnerHTML={{ __html: post?.content }}
             ></Box>
+            {post?.tags && (
+              <>
+                <Heading title="Tags" size="md" className="mb-3"></Heading>
+                <Box className="d-flex flex-wrap gap-2 mb-5">
+                  {post.tags.map((tag) => (
+                    <TagChip tag={tag} key={tag} />
+                  ))}
+                </Box>
+              </>
+            )}
+
             <Comments postSlug={post.slug} />
           </Box>
           <Box className="col-12 col-md-4 mt-4 mb-4">

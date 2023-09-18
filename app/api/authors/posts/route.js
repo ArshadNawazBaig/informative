@@ -15,6 +15,9 @@ export const GET = async (req, res) => {
     where: {
       userEmail: slug,
     },
+    orderBy: {
+      createdAt: 'desc',
+    },
   };
 
   try {
