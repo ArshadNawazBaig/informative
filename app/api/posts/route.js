@@ -9,6 +9,9 @@ export const GET = async (req, res) => {
   const isFeatured = searchParams.get('featured');
   const title = searchParams.get('search');
   const perPage = searchParams.get('perPage');
+  const tagsString = searchParams.get('tag');
+
+  const tags = tagsString ? tagsString.split(',') : [];
 
   const POSTS_PER_PAGE = parseInt(perPage);
   const query = {
@@ -18,6 +21,7 @@ export const GET = async (req, res) => {
       ...(category && { catSlug: category }),
       ...(title && { title: { contains: title } }),
       ...(isFeatured === 'true' && { isFeatured: true }),
+      ...(tags.length > 0 && { tags: { hasSome: tags } }),
     },
     include: { author: true, comments: true },
   };

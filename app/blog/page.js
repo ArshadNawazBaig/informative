@@ -12,9 +12,9 @@ const getData = async (page, perPage, category, tag, search) => {
   const res = await fetch(
     `${
       process.env.NEXTAUTH_URL
-    }/api/posts?page=${page}&perPage=${perPage}&search=${search}&category=${
-      category || ''
-    }&tag=${tag || ''}`,
+    }/api/posts?page=${page}&perPage=${perPage}&search=${
+      search || ''
+    }&category=${category || ''}&tag=${tag || ''}`,
     {
       cache: 'no-store',
     }
@@ -71,7 +71,7 @@ const BlogPage = async ({ searchParams }) => {
           <CategoryList className="mt-4" />
           <Heading title="Tags" size="md" className="mt-4"></Heading>
           <Divider className="mb-4" />
-          <TagsList />
+          <TagsList page={page} />
         </Box>
       </Box>
       <Box className="row">
