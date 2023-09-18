@@ -40,11 +40,7 @@ const schema = yup.object().shape({
 const storage = getStorage(app);
 
 function WriteWrapper() {
-  const {
-    data: categories,
-    isLoading,
-    mutate,
-  } = useSWR(`/api/categories`, fetcher);
+  const { data: categories, mutate } = useSWR(`/api/categories`, fetcher);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [progress, setProgress] = useState(0);
   const [media, setMedia] = useState('');
@@ -55,7 +51,7 @@ function WriteWrapper() {
   const {
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors, isLoading },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -63,7 +59,6 @@ function WriteWrapper() {
   useEffect(() => {
     const upload = () => {
       const name = new Date().getTime() + featuredImage.name;
-      console.log(name, 'name');
       const storageRef = ref(storage, name);
 
       const uploadTask = uploadBytesResumable(storageRef, featuredImage);
@@ -109,7 +104,7 @@ function WriteWrapper() {
       body: JSON.stringify(formData),
     });
     if (response.status === 200) {
-      rouer.push(`/blog/${slugify(title)}`);
+      router.push(`/blog/${slugify(title)}`);
     }
   };
 
@@ -235,8 +230,12 @@ function WriteWrapper() {
           </Box>
 
           <Box className="col-md-12">
-            <Button className="rounded-1 mt-2" style={{ height: '60px' }}>
-              Publish your Article
+            <Button
+              disabled={isLoading}
+              className="rounded-1 mt-2"
+              style={{ height: '60px' }}
+            >
+              {isLoading ? 'Loading...' : 'Publish your Article'}
             </Button>
           </Box>
         </Box>
