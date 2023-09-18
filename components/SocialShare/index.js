@@ -1,7 +1,5 @@
 'use client';
 import {
-  EmailIcon,
-  EmailShareButton,
   FacebookIcon,
   FacebookMessengerIcon,
   FacebookMessengerShareButton,
@@ -70,13 +68,6 @@ const SocialShare = () => {
         >
           <TelegramIcon size={42} round />
         </TelegramShareButton>
-        <EmailShareButton
-          url={'https://github.com/next-share'}
-          subject={'Next Share'}
-          body="body"
-        >
-          <EmailIcon size={42} round />
-        </EmailShareButton>
         <PinterestShareButton
           url={'https://github.com/next-share'}
           media={

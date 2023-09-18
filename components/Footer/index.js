@@ -23,27 +23,27 @@ const Footer = () => {
           </Link>
           <Divider className="mb-3" />
           <Para>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-            tellus.
+            Your gateway to a world of knowledge, where curiosity meets
+            inspiration.
           </Para>
-          <Para className="mt-4">© 2021, All Rights Reserved.</Para>
+          <Para className="mt-4">© 2023, All Rights Reserved.</Para>
         </Box>
         <Box className="col">
           <Heading title="Quick Links" size="md" />
           <Divider className="mb-3" />
           <Box className="mb-2">
-            <Link href="/" className="footer-link">
+            <Link href="/contact" className="footer-link">
               Contact
             </Link>
           </Box>
           <Box className="mb-2">
-            <Link href="/" className="footer-link">
+            <Link href="/about" className="footer-link">
               About
             </Link>
           </Box>
           <Box className="mb-2">
             <Link href="/" className="footer-link">
-              Blog
+              Home
             </Link>
           </Box>
         </Box>
@@ -51,22 +51,22 @@ const Footer = () => {
           <Heading title="Category" size="md" />
           <Divider className="mb-3" />
           <Box className="mb-2">
-            <Link href="/" className="footer-link">
+            <Link href="/blog?category=health" className="footer-link">
               Health
             </Link>
           </Box>
           <Box className="mb-2">
-            <Link href="/" className="footer-link">
+            <Link href="/blog?category=typography" className="footer-link">
               Typography
             </Link>
           </Box>
           <Box className="mb-2">
-            <Link href="/" className="footer-link">
+            <Link href="/blog?category=music" className="footer-link">
               Music
             </Link>
           </Box>
           <Box className="mb-2">
-            <Link href="/" className="footer-link">
+            <Link href="/blog?category=travel" className="footer-link">
               Travel
             </Link>
           </Box>
