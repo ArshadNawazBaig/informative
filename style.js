@@ -28,6 +28,10 @@ export const Body = styled.body`
       border-left: 5px solid #ff2c54;
       padding: 5px 20px;
     }
+    & img {
+      max-width: 100%;
+      max-height: 100%;
+    }
   }
 `;
 

@@ -61,7 +61,7 @@ const BlogPost = async ({ params }) => {
               className="content-wrapper"
               dangerouslySetInnerHTML={{ __html: post?.content }}
             ></Box>
-            {post?.tags && (
+            {post?.tags.length > 0 && (
               <>
                 <Heading title="Tags" size="md" className="mb-3"></Heading>
                 <Box className="d-flex flex-wrap gap-2 mb-5">
@@ -71,7 +71,6 @@ const BlogPost = async ({ params }) => {
                 </Box>
               </>
             )}
-
             <Comments postSlug={post.slug} />
           </Box>
           <Box className="col-12 col-md-4 mt-4 mb-4">
