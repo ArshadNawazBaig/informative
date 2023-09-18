@@ -2,14 +2,14 @@ import Button from '@/components/Button';
 import { Box } from '@/style';
 import React from 'react';
 
-function CustomFileUpload({ onChange, error }) {
+function CustomFileUpload({ onChange, error, className, progress }) {
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     onChange(selectedFile);
   };
 
   return (
-    <Box className="custom-file-upload">
+    <Box className={`custom-file-upload ${className}`}>
       <input
         type="file"
         className={`form-control-file d-none ${error ? 'is-invalid' : ''}`}
@@ -17,12 +17,13 @@ function CustomFileUpload({ onChange, error }) {
         id="upload"
         onChange={handleFileChange}
       />
-      <Button className="rounded p-0 border-none">
+      <Button className="rounded p-0 border-none w-100">
         <label
           htmlFor="upload"
-          className="p-2 gray-border rounded cursor-pointer"
+          className="px-3 w-100 gray-border rounded cursor-pointer d-flex align-items-center"
+          style={{ height: '60px' }}
         >
-          Upload
+          Upload Image {progress > 0 ? `(uploading ${progress})%` : ''}
         </label>
       </Button>
       {error && <Box className="invalid-feedback">{error.message}</Box>}

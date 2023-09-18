@@ -21,7 +21,7 @@ const Pagination = ({
         disabled={!hasPrev}
         onClick={() =>
           router.push(
-            `?search=${search}&category=${category || ''}&tag=${
+            `?search=${search || ''}&category=${category || ''}&tag=${
               tag || ''
             }&page=${page - 1}`
           )
@@ -34,7 +34,7 @@ const Pagination = ({
         disabled={!hasNext}
         onClick={() =>
           router.push(
-            `?search=${search}&category=${category || ''}&tag=${
+            `?search=${search || ''}&category=${category || ''}&tag=${
               tag || ''
             }&page=${page + 1}`
           )

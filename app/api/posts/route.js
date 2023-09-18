@@ -24,6 +24,9 @@ export const GET = async (req, res) => {
       ...(tags.length > 0 && { tags: { hasSome: tags } }),
     },
     include: { author: true, comments: true },
+    orderBy: {
+      createdAt: 'desc',
+    },
   };
 
   try {

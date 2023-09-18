@@ -1,76 +1,65 @@
-// 'use client';
-// import dynamic from 'next/dynamic';
-// import React, { useState } from 'react';
-// import parse from 'html-react-parser';
-// import 'react-quill/dist/quill.snow.css';
+'use client';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+import 'react-quill/dist/quill.snow.css';
+import { EditorWrapper } from './style';
+import { Box } from '@/style';
 
-// const ReactQuill = dynamic(import('react-quill'), {
-//   ssr: true,
-// });
-
-// const modules = {
-//   toolbar: [
-//     [{ header: '1' }, { header: '2' }, { font: [] }],
-//     [{ size: [] }],
-//     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-//     [
-//       { list: 'ordered' },
-//       { list: 'bullet' },
-//       { indent: '-1' },
-//       { indent: '+1' },
-//     ],
-//     ['link', 'image', 'video'],
-//     ['clean'],
-//   ],
-//   clipboard: {
-//     // toggle to add extra line breaks when pasting HTML:
-//     matchVisual: false,
-//   },
-// };
-// /*
-//  * Quill editor formats
-//  * See https://quilljs.com/docs/formats/
-//  */
-// const formats = [
-//   'header',
-//   'font',
-//   'size',
-//   'bold',
-//   'italic',
-//   'underline',
-//   'strike',
-//   'blockquote',
-//   'list',
-//   'bullet',
-//   'indent',
-//   'link',
-//   'image',
-//   'video',
-// ];
-
-// export default function CustomEditor() {
-//   const [value, setValue] = useState('');
-
-//   const handleChange = (content) => {
-//     console.log(content); // Check if content is being updated
-//     setValue(content);
-//   };
-//   return (
-//     <ReactQuill
-//       modules={modules}
-//       placeholder="compose here"
-//       value={value}
-//       onChange={setValue}
-//       formats={formats}
-//       theme="snow"
-//     />
-//   );
-// }
-
-import React from 'react';
-
-const CustomEditor = () => {
-  return <div>CustomEditor</div>;
+const modules = {
+  toolbar: [
+    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ size: [] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [
+      { list: 'ordered' },
+      { list: 'bullet' },
+      { indent: '-1' },
+      { indent: '+1' },
+    ],
+    ['link', 'image', 'video'],
+    ['clean'],
+  ],
+  clipboard: {
+    matchVisual: false,
+  },
 };
 
-export default CustomEditor;
+const formats = [
+  'header',
+  'font',
+  'size',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+  'video',
+];
+
+function Editor({ error, onChange, value, className, ...rest }) {
+  return (
+    <EditorWrapper>
+      <ReactQuill
+        {...rest}
+        modules={modules}
+        placeholder="Type your content here..."
+        value={value}
+        onChange={onChange}
+        formats={formats}
+        className={`form-control px-0 overflow-hidden py-0 ${className} ${
+          error ? 'is-invalid' : ''
+        }`}
+        theme="snow"
+      />
+      {error && <Box className="invalid-feedback">{error.message}</Box>}
+    </EditorWrapper>
+  );
+}
+
+export default Editor;

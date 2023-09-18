@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box } from '@/style';
 import { DropdownWrapper } from './style';
+import { RightArrow } from '@/components/Icons';
 
 function CategoryDropdown({
   selectedCategory,
@@ -27,21 +28,25 @@ function CategoryDropdown({
         }`}
       >
         <Box
-          className="w-100 h-100 d-flex align-items-center main"
+          className="w-100 h-100 d-flex align-items-center main text-capitalize justify-content-between"
           onClick={toggleDropdown}
         >
-          {selectedCategory || 'Select a category'}
+          {selectedCategory || 'Select a category'}{' '}
+          <RightArrow
+            className={`${isOpen ? 'angle-up' : 'angle-down'}`}
+            width="20"
+          />
         </Box>
       </DropdownWrapper>
       {isOpen && (
         <ul className="list-group form-control p-0 mt-2">
-          {categories.map((category, index) => (
+          {categories?.map((category, index) => (
             <li
               key={index}
               className="list-group-item cursor-pointer border-none list-group-item-action"
-              onClick={() => handleCategorySelect(category)}
+              onClick={() => handleCategorySelect(category.slug)}
             >
-              {category}
+              {category.name}
             </li>
           ))}
         </ul>

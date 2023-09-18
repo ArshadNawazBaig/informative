@@ -20,6 +20,33 @@ export const Body = styled.body`
       width: auto !important;
     }
   }
+  & .content-wrapper p {
+    font-size: 17px;
+  }
+  & .content-wrapper {
+    & blockquote {
+      border-left: 5px solid #ff2c54;
+      padding: 5px 20px;
+    }
+  }
+`;
+
+export const WriteOuterWrapper = styled.div`
+  & .image-wrapper {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 220px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.24);
+    transition: 0.6s ease;
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.6s ease;
+    }
+  }
 `;
 
 export const MainWrapper = styled.div`
@@ -103,5 +130,51 @@ export const ErrorWrapper = styled.div`
   & p,
   a {
     font-size: 1.2rem;
+  }
+`;
+
+export const TagInputWrapper = styled.div`
+  & .react-tag-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    /* gap: 2px; */
+    width: 100%;
+    background-color: ${({ theme }) => theme.gray};
+    border: 1px solid ${({ theme }) => theme.border};
+    min-height: 60px;
+    & input {
+      width: 100%;
+      background-color: ${({ theme }) => theme.gray};
+      border: none;
+      padding: 0 10px;
+      box-shadow: none;
+      height: 60px;
+      outline: none;
+      flex: none;
+      color: ${({ theme }) => theme.secondary};
+      &::placeholder {
+        color: ${({ theme }) => theme.secondary};
+      }
+    }
+    & .react-tag-input__tag {
+      background-color: ${({ theme }) => theme.secondary};
+      color: ${({ theme }) => theme.primary};
+      padding: 6px 15px;
+      border-radius: 100px;
+      min-width: 80px;
+      text-align: center;
+      margin: 10px 5px 0 5px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    & .react-tag-input__tag__remove {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 `;

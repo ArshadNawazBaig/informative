@@ -40,11 +40,22 @@ model User {
   email         String   @unique
   emailVerified DateTime?
   image         String?
+  coverImage    String?
   description   String?
+  socialLinks   SocialLink[]
   accounts      Account[]
   sessions      Session[]
   posts         Post[]
   Comment      Comment[]
+}
+
+
+model SocialLink {
+  id        String @id @default(cuid()) @map("_id")
+  platform  String 
+  url       String
+  user      User   @relation(fields: [userId], references: [id])
+  userId    String
 }
 
 model VerificationToken {
@@ -68,6 +79,7 @@ model Post {
   title String
   desc String
   img String
+  content String?
   views Int @default(0)
   catSlug String 
   cat Category @relation(fields: [catSlug], references: [slug])

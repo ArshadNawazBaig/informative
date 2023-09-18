@@ -83,10 +83,14 @@ const AuthorPage = async ({ params, searchParams }) => {
           )}
         </Box>
         <Box className="col-md-4">
-          <Heading title="Follow Me" size="md" className=""></Heading>
-          <Divider />
-          <SocialFollow className="mt-4" />
-          <Heading title="Featured Posts" size="md" className="mt-5"></Heading>
+          {author?.socialLinks?.length > 0 && (
+            <>
+              <Heading title="Follow Me" size="md"></Heading>
+              <Divider className="mb-3" />
+            </>
+          )}
+          <SocialFollow socialLinks={author?.socialLinks} className="mb-4" />
+          <Heading title="Featured Posts" size="md" className=""></Heading>
           <Divider className="mb-4" />
           <FeaturedCardList />
           <Heading title="Categories" size="md" className="mt-5"></Heading>

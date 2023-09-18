@@ -5,29 +5,22 @@ export const GET = async (req, { params }) => {
   const { slug } = params;
 
   try {
-    // const author = await prisma.user.findUnique({
-    //   where: {
-    //     id: slug,
-    //     // OR: [{ id: slug }, { email: slug }],
-    //   },
-    // });
-    // return new NextResponse(JSON.stringify(author, { status: 200 }));
-
     const author = await prisma.user.findUnique({
       where: {
-        id: slug, // Check for id match
+        id: slug,
       },
+      include: { socialLinks: true },
     });
 
     if (author) {
       return new NextResponse(JSON.stringify(author, { status: 200 }));
     }
 
-    // If not found by ID, try to find a user by email
     const userByEmail = await prisma.user.findUnique({
       where: {
-        email: slug, // Check for email match
+        email: slug,
       },
+      include: { socialLinks: true },
     });
 
     if (userByEmail) {

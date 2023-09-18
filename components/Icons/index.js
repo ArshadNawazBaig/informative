@@ -206,7 +206,7 @@ export const RightArrow = (props) => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="feather feather-chevron-right"
+      className={`feather ${props.className} feather-chevron-right`}
       {...props}
     >
       <polyline points="9 18 15 12 9 6"></polyline>

@@ -2,9 +2,16 @@ import { Box } from '@/style';
 import React from 'react';
 import { TextareaWrapper } from './style';
 
-function CustomTextarea({ value, onChange, placeholder, name, error }) {
+function CustomTextarea({
+  value,
+  onChange,
+  placeholder,
+  name,
+  error,
+  className,
+}) {
   return (
-    <TextareaWrapper className="custom-textarea">
+    <TextareaWrapper className={`custom-textarea ${className}`}>
       <textarea
         className={`form-control ${error ? 'is-invalid' : ''}`}
         placeholder={placeholder}

@@ -11,6 +11,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import Comments from '@/components/Comments';
 import SideMenu from '@/components/SideMenu';
+import Para from '@/components/Para';
 
 const getData = async (slug) => {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${slug}`, {
@@ -44,9 +45,21 @@ const BlogPost = async ({ params }) => {
             <BlogHero post={post} />
           </Box>
           <Box className="col-12 mt-4 mb-4">
-            <SocialShare />
+            <SocialShare
+              url="https://informative-ivory.vercel.app/"
+              title={post.title}
+              quote={post.desc}
+              media={post.img}
+            />
           </Box>
           <Box className="col-12 col-md-8 mt-4 mb-4">
+            <Para className="mb-4" style={{ fontSize: '17px' }}>
+              {post.desc}
+            </Para>
+            <Box
+              className="mb-4 content-wrapper"
+              dangerouslySetInnerHTML={{ __html: post?.content }}
+            ></Box>
             <Comments postSlug={post.slug} />
           </Box>
           <Box className="col-12 col-md-4 mt-4 mb-4">

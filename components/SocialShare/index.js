@@ -20,60 +20,30 @@ import { SocialShareWrapper } from './style';
 import { Box } from '@/style';
 import Heading from '../Heading';
 
-const SocialShare = () => {
+const SocialShare = ({ url, title, media, quote }) => {
   return (
     <SocialShareWrapper className="text-center">
       <Heading title="Share Article" size="md" className="mb-3 mt-4" />
       <Box className="d-flex gap-1 h-100 justify-content-center">
-        <FacebookShareButton
-          url={'https://github.com/next-share'}
-          quote={
-            'next-share is a social share buttons for your next React apps.'
-          }
-          hashtag={'#nextshare'}
-        >
+        <FacebookShareButton url={url} quote={quote} hashtag={'#nextshare'}>
           <FacebookIcon size={42} round />
         </FacebookShareButton>
-        <TwitterShareButton
-          url={'https://github.com/next-share'}
-          title={
-            'next-share is a social share buttons for your next React apps.'
-          }
-        >
+        <TwitterShareButton url={url} title={title}>
           <TwitterIcon size={42} round />
         </TwitterShareButton>
-        <WhatsappShareButton
-          url={'https://github.com/next-share'}
-          title={
-            'next-share is a social share buttons for your next React apps.'
-          }
-          separator=":: "
-        >
+        <WhatsappShareButton url={url} title={title} separator=":: ">
           <WhatsappIcon size={42} round />
         </WhatsappShareButton>
-        <LinkedinShareButton url={'https://github.com/next-share'}>
+        <LinkedinShareButton url={url}>
           <LinkedinIcon size={42} round />
         </LinkedinShareButton>
-        <FacebookMessengerShareButton
-          url={'https://github.com/next-share'}
-          appId={''}
-        >
+        <FacebookMessengerShareButton url={url} appId={''}>
           <FacebookMessengerIcon size={42} round />
         </FacebookMessengerShareButton>
-        <TelegramShareButton
-          url={'https://github.com/next-share'}
-          title={
-            'next-share is a social share buttons for your next React apps.'
-          }
-        >
+        <TelegramShareButton url={url} title={title}>
           <TelegramIcon size={42} round />
         </TelegramShareButton>
-        <PinterestShareButton
-          url={'https://github.com/next-share'}
-          media={
-            'next-share is a social share buttons for your next React apps.'
-          }
-        >
+        <PinterestShareButton url={url} media={media}>
           <PinterestIcon size={42} round />
         </PinterestShareButton>
       </Box>

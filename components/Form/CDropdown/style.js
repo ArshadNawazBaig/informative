@@ -13,4 +13,10 @@ export const DropdownWrapper = styled.div`
   & .main {
     padding: 0 12px;
   }
+  & .angle-up {
+    transform: rotate(-90deg);
+  }
+  & .angle-down {
+    transform: rotate(90deg);
+  }
 `;
