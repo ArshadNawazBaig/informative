@@ -17,6 +17,7 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
+  const [mounted, setMounted] = useState(false);
   const [theme, setTheme] = useState(() => {
     return getFromLocalStorage();
   });
@@ -25,15 +26,20 @@ export const ThemeProvider = ({ children }) => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem('theme', theme);
-  // }, [theme]);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <StyledThemeProvider theme={themes[theme]}>
-        {children}
-      </StyledThemeProvider>
-    </ThemeContext.Provider>
-  );
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+  if (mounted) {
+    return (
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <StyledThemeProvider theme={themes[theme]}>
+          {children}
+        </StyledThemeProvider>
+      </ThemeContext.Provider>
+    );
+  }
 };
