@@ -34,11 +34,14 @@ const FeaturedCard = ({
           href={`/blog/${slug}`}
           className="text-decoration-none fw-semibold"
         >
-          <Para className="fs-5 lh-sm text-capitalize">
+          <Para className="fs-5 lh-sm text-capitalize title">
             {title.substring(0, len || 30)}...
           </Para>
         </Link>
-        <Link href={`/author/${author.id}`} className="text-decoration-none">
+        <Link
+          href={`/author/${author.id}`}
+          className="text-decoration-none author-name"
+        >
           <Para className="author-name">{author.name}</Para>
         </Link>
       </Box>

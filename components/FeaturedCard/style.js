@@ -9,6 +9,14 @@ export const FeaturedCardWrapper = styled.div`
   & .author-name {
     font-size: 14px;
   }
+  @media (max-width: 539px) {
+    & .author-name {
+      font-size: 12px;
+    }
+    & .title {
+      font-size: 1rem !important;
+    }
+  }
 `;
 
 export const ImageWrapper = styled.div`

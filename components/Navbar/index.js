@@ -54,7 +54,7 @@ function Header() {
   };
 
   return (
-    <Box className="sticky-top mb-2">
+    <Box className="sticky-top mb-md-2">
       <Navbar className={`navbar navbar-expand-lg`}>
         <Box className="container position-relative">
           <Link

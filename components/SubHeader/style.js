@@ -12,7 +12,7 @@ export const SubHeaderWrapper = styled.div`
     }
   }
   @media (max-width: 768px) {
-    padding: 5px 0;
+    padding: 0;
     .search-icon {
       position: absolute;
       top: 20px;
