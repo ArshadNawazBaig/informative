@@ -59,9 +59,9 @@ const PostCard = ({
                   <span className="by">by</span>
                   <Link
                     href={`/author/${creator?.id}`}
-                    className="text-decoration-none ms-2 text-white"
+                    className="text-decoration-none ms-2 text-white text-capitalize"
                   >
-                    {creator?.name}
+                    {creator?.name.trim()}
                   </Link>
                 </Box>
               )}

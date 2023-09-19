@@ -86,7 +86,7 @@ const UserProfileCard = ({
         )}
       </Box>
       <Box className="text-center mt-4">
-        <Heading className="fw-semibold">{creator}</Heading>
+        <Heading className="fw-semibold text-capitalize">{creator}</Heading>
         <Box className={size === 'full' && 'half-width'}>
           <Box>
             {edit && (
