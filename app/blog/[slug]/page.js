@@ -53,9 +53,9 @@ const BlogPost = async ({ params }) => {
   return (
     <>
       <Head>
-        <meta property="og:image" content={post.img} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.desc} />
+        <meta property="og:image" content={post?.img} />
+        <meta property="og:title" content={post?.title} />
+        <meta property="og:description" content={post?.desc} />
       </Head>
       <Box className="container">
         <Box className="row gx-md-5">
@@ -64,32 +64,32 @@ const BlogPost = async ({ params }) => {
           </Box>
           <Box className="col-12 mt-4 mb-4">
             <SocialShare
-              url={`https://informative-ivory.vercel.app/blog/${post.slug}`}
-              title={_.capitalize(post.title.trim())}
-              quote={post.desc}
-              media={post.img}
-              tags={post.tags}
+              url={`https://informative-ivory.vercel.app/blog/${post?.slug}`}
+              title={_.capitalize(post?.title?.trim())}
+              quote={post?.desc}
+              media={post?.img}
+              tags={post?.tags}
             />
           </Box>
           <Box className="col-12 col-md-8 mt-4 mb-4">
             <Para className="mb-4" style={{ fontSize: '17px' }}>
-              {post.desc}
+              {post?.desc}
             </Para>
             <Box
               className="content-wrapper"
               dangerouslySetInnerHTML={{ __html: post?.content }}
             ></Box>
-            {post?.tags.length > 0 && (
+            {post?.tags?.length > 0 && (
               <>
                 <Heading title="Tags" size="md" className="mb-3"></Heading>
                 <Box className="d-flex flex-wrap gap-2 mb-5">
-                  {post.tags.map((tag) => (
+                  {post?.tags.map((tag) => (
                     <TagChip tag={tag} key={tag} />
                   ))}
                 </Box>
               </>
             )}
-            <Comments postSlug={post.slug} />
+            <Comments postSlug={post?.slug} />
           </Box>
           <Box className="col-12 col-md-4 mt-4 mb-4">
             <SideMenu />
@@ -98,10 +98,14 @@ const BlogPost = async ({ params }) => {
         <Box className="row">
           <Box className="col-12">
             <CreatorCard
-              imageUrl={post.author.image}
-              author={post.author.name}
-              description={`${post.author.description.substring(0, 300)}...`}
-              id={post.author.id}
+              imageUrl={post?.author?.image}
+              author={post?.author?.name}
+              description={`${post?.author?.description.substring(0, 300)}...`}
+              id={post?.author?.id}
+              socialLinks={
+                post?.author?.socialLinks?.length > 0 &&
+                post?.author?.socialLinks
+              }
             />
           </Box>
           <Box className="col-12">

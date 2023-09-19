@@ -10,11 +10,12 @@ import {
   InstagramIcon,
   LinkedinIcon,
   TwitterIcon,
+  WhatsappIcon,
 } from 'next-share';
 import Para from '../Para';
 import Link from 'next/link';
 
-const CreatorCard = ({ author, imageUrl, description, id }) => {
+const CreatorCard = ({ author, imageUrl, description, id, socialLinks }) => {
   return (
     <CreatorCardWrapper>
       <Box className="row align-items-center row-gap-4">
@@ -31,23 +32,35 @@ const CreatorCard = ({ author, imageUrl, description, id }) => {
               <h3>WRITTEN BY</h3>
               <Heading size="md" className="mb-3" title={author} />
             </Box>
-            <Box className="d-flex gap-1 align-items-center social-wrapper">
-              <a href="http://" className="social">
-                <TwitterIcon size={32} round />
-              </a>
-              <a href="http://" className="social">
-                <FacebookIcon size={32} round />
-              </a>
-              <a href="http://" className="social">
-                <InstagramIcon size={32} round />
-              </a>
-              <a href="http://" className="social">
-                <LinkedinIcon size={32} round />
-              </a>
-              <a href="http://" className="social">
-                <EmailIcon size={32} round />
-              </a>
-            </Box>
+            {socialLinks.length > 0 && (
+              <Box className="d-flex gap-1 align-items-center social-wrapper">
+                {socialLinks.length > 0 &&
+                  socialLinks
+                    ?.filter(
+                      (socialLink) =>
+                        socialLink.url && socialLink.url.length > 0
+                    )
+                    .map((socialLink) => (
+                      <a
+                        href={socialLink.url}
+                        className={`social ${socialLink.platform} w-100`}
+                        key={socialLink.id}
+                      >
+                        {socialLink.platform === 'twitter' ? (
+                          <TwitterIcon size={32} round />
+                        ) : socialLink.platform === 'facebook' ? (
+                          <FacebookIcon size={32} round />
+                        ) : socialLink.platform === 'instagram' ? (
+                          <InstagramIcon size={32} round />
+                        ) : socialLink.platform === 'whatsapp' ? (
+                          <WhatsappIcon size={32} round />
+                        ) : (
+                          <LinkedinIcon size={32} round />
+                        )}
+                      </a>
+                    ))}
+              </Box>
+            )}
           </Box>
           <Box>
             <Para>

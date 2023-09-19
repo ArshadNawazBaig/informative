@@ -40,8 +40,8 @@ const EditAuthorPage = ({ params }) => {
     'facebook',
     'instagram',
     'twitter',
-    'whatsApp',
-    'linkedIn',
+    'whatsapp',
+    'linkedin',
   ];
 
   const handleSocialLinkChange = (platform, url) => {
@@ -206,7 +206,7 @@ const EditAuthorPage = ({ params }) => {
   return (
     <Box className="container">
       <Box className="row">
-        <Box className="col-12">
+        <Box className="col-12 mb-4">
           <UserProfileCard
             coverImage={cover || author?.coverImage}
             avatarImage={profile || author?.image}
@@ -247,7 +247,7 @@ const EditAuthorPage = ({ params }) => {
         })}
         <Box className="col-md-12 mt-3">
           <Button disabled={socialLoading} onClick={handleSaveChanges}>
-            {socialLoading ? 'Loading...' : 'Save Changes'}
+            {socialLoading ? 'Loading...' : 'Save Social Links'}
           </Button>
         </Box>
       </Box>

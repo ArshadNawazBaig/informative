@@ -28,7 +28,7 @@ const SocialFollow = ({ className, socialLinks }) => {
               <FacebookIcon size={50} />
             ) : socialLink.platform === 'instagram' ? (
               <InstagramIcon size={50} />
-            ) : socialLink.platform === 'whatsApp' ? (
+            ) : socialLink.platform === 'whatsapp' ? (
               <WhatsappIcon size={50} />
             ) : (
               <LinkedinIcon size={50} />
