@@ -23,6 +23,8 @@ const UserProfileCard = ({
   onUpdate,
   descEdit,
   setDescEdit,
+  progress,
+  profileProgress,
 }) => {
   return (
     <UserCardWrapper>
@@ -46,7 +48,11 @@ const UserProfileCard = ({
                 className="px-3 w-100 rounded cursor-pointer d-flex align-items-center"
                 style={{ height: '60px' }}
               >
-                <EditIcon />
+                {progress > 0 && progress < 100 ? (
+                  `${Math.floor(progress)}%`
+                ) : (
+                  <EditIcon />
+                )}
               </label>
               <input
                 onChange={onChange}
@@ -73,7 +79,11 @@ const UserProfileCard = ({
                 className="px-2 w-100 rounded cursor-pointer d-flex align-items-center"
                 style={{ height: '40px' }}
               >
-                <EditIcon />
+                {profileProgress > 0 && profileProgress < 100 ? (
+                  `${Math.floor(profileProgress)}%`
+                ) : (
+                  <EditIcon />
+                )}
               </label>
               <input
                 onChange={onChangeProfile}

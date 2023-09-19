@@ -29,6 +29,7 @@ const EditAuthorPage = ({ params }) => {
   const router = useRouter();
   const [cover, setCover] = useState('');
   const [progress, setProgress] = useState(0);
+  const [profileProgress, setProfileProgress] = useState(0);
   const [featuredImage, setFeaturedImage] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
   const [profile, setProfile] = useState('');
@@ -149,7 +150,7 @@ const EditAuthorPage = ({ params }) => {
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setProgress(progress);
+          setProfileProgress(progress);
           switch (snapshot.state) {
             case 'paused':
               console.log('Upload is paused');
@@ -221,6 +222,8 @@ const EditAuthorPage = ({ params }) => {
             onUpdate={handleDescUpdate}
             descEdit={descEdit}
             setDescEdit={setDescEdit}
+            progress={progress}
+            profileProgress={profileProgress}
           />
         </Box>
         <Box className="col-md-12">
