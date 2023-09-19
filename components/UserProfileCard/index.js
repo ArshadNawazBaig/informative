@@ -1,10 +1,13 @@
+'use client';
 import { Box } from '@/style';
-import React from 'react';
+import React, { useState } from 'react';
 import { Heading, UserCardWrapper } from './style';
 import Image from 'next/legacy/image';
 import Para from '../Para';
 import { UploaderWrapper } from '../Form/CUpload/style';
 import { EditIcon } from '../Icons';
+import CustomTextarea from '../Form/CTextarea';
+import Button from '../Button';
 
 const UserProfileCard = ({
   avatarImage,
@@ -15,13 +18,21 @@ const UserProfileCard = ({
   edit,
   onChange,
   onChangeProfile,
+  desc,
+  onDescChange,
+  onUpdate,
+  descEdit,
+  setDescEdit,
 }) => {
   return (
     <UserCardWrapper>
       <Box className="image-wrapper position-relative">
         <Image
           alt={description}
-          src={coverImage}
+          src={
+            coverImage ||
+            'https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/mihai-stefan-658815-unsplash-1000x600.jpg'
+          }
           layout="responsive"
           width={1000}
           height={600}
@@ -77,7 +88,27 @@ const UserProfileCard = ({
       <Box className="text-center mt-4">
         <Heading className="fw-semibold">{creator}</Heading>
         <Box className={size === 'full' && 'half-width'}>
-          <Para>{description}</Para>
+          <Box>
+            {edit && (
+              <EditIcon
+                className="cursor-pointer"
+                onClick={() => setDescEdit(!descEdit)}
+              />
+            )}
+            {!descEdit && <Para className="mt-3">{desc || description}</Para>}
+          </Box>
+          {edit && descEdit && (
+            <>
+              <CustomTextarea
+                name="description"
+                value={desc || ''}
+                onChange={onDescChange}
+                placeholder="Description"
+                className="mt-4 mb-2"
+              />
+              <Button onClick={onUpdate}>Update</Button>
+            </>
+          )}
         </Box>
       </Box>
     </UserCardWrapper>

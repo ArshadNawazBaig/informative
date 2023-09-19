@@ -16,6 +16,8 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 import { app } from '@/utils/firebase';
+import CustomInput from '@/components/Form/CInput';
+import Button from '@/components/Button';
 
 const storage = getStorage(app);
 
@@ -23,13 +25,50 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const EditAuthorPage = ({ params }) => {
   const { slug } = params;
+  const { data: author, mutate } = useSWR(`/api/authors/${slug}`, fetcher);
   const router = useRouter();
   const [cover, setCover] = useState('');
   const [progress, setProgress] = useState(0);
   const [featuredImage, setFeaturedImage] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
-  const [desc, setDesc] = useState('');
   const [profile, setProfile] = useState('');
+  const [desc, setDesc] = useState('');
+  const [descEdit, setDescEdit] = useState(false);
+  const [socialLoading, setSocialLoading] = useState(false);
+  const [updatedSocialLinks, setUpdatedSocialLinks] = useState([]);
+  const predefinedSocialLinks = [
+    'facebook',
+    'instagram',
+    'twitter',
+    'whatsApp',
+    'linkedIn',
+  ];
+
+  const handleSocialLinkChange = (platform, url) => {
+    const updatedLinks = updatedSocialLinks.map((social) =>
+      social.platform === platform ? { ...social, url } : social
+    );
+    setUpdatedSocialLinks(updatedLinks);
+  };
+
+  const handleSaveChanges = async () => {
+    const mergedSocialLinks = predefinedSocialLinks.reduce(
+      (uniqueLinks, platform) => {
+        const existingLink = updatedSocialLinks.find(
+          (link) => link.platform === platform
+        );
+        const url = existingLink ? existingLink.url : '';
+        uniqueLinks.push({ platform, url, userEmail: author?.email });
+        return uniqueLinks;
+      },
+      []
+    );
+
+    await updateLinks({
+      socialLinks: mergedSocialLinks,
+      userEmail: author?.email,
+    });
+  };
 
   const handleUpload = (e) => {
     setFeaturedImage(e.target.files[0]);
@@ -39,8 +78,32 @@ const EditAuthorPage = ({ params }) => {
     setProfileImage(e.target.files[0]);
   };
 
+  const onDescChange = (e) => {
+    setDesc(e.target.value);
+  };
+
+  const handleDescUpdate = async () => {
+    await updateUser({ description: desc });
+  };
+
+  useEffect(() => {
+    setDesc(author?.description);
+
+    if (author?.socialLinks) {
+      const updatedLinks = predefinedSocialLinks.map((platform) => {
+        const existingLink = author.socialLinks.find(
+          (link) => link.platform === platform.toLowerCase()
+        );
+        return {
+          platform,
+          url: existingLink?.url || '',
+        };
+      });
+      setUpdatedSocialLinks(updatedLinks);
+    }
+  }, [author]);
+
   const { data, status } = useSession();
-  const { data: author, mutate } = useSWR(`/api/authors/${slug}`, fetcher);
 
   useEffect(() => {
     const uploadCover = () => {
@@ -113,7 +176,22 @@ const EditAuthorPage = ({ params }) => {
       method: 'PUT',
       body: JSON.stringify({ ...data }),
     });
-    console.log(response, 'author');
+    if (response.status === 200) {
+      mutate();
+      setDescEdit(false);
+    }
+  };
+
+  const updateLinks = async (data) => {
+    setSocialLoading(true);
+    const response = await fetch('/api/authors/social', {
+      method: 'PUT',
+      body: JSON.stringify({ ...data }),
+    });
+    if (response.status === 200) {
+      mutate();
+      setSocialLoading(false);
+    }
   };
 
   if (status === 'loading') {
@@ -130,11 +208,7 @@ const EditAuthorPage = ({ params }) => {
       <Box className="row">
         <Box className="col-12">
           <UserProfileCard
-            coverImage={
-              cover ||
-              author?.coverImage ||
-              'https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/mihai-stefan-658815-unsplash-1000x600.jpg'
-            }
+            coverImage={cover || author?.coverImage}
             avatarImage={profile || author?.image}
             creator={author?.name}
             description={author?.description}
@@ -142,16 +216,39 @@ const EditAuthorPage = ({ params }) => {
             edit
             onChange={handleUpload}
             onChangeProfile={handleProfileUpload}
+            desc={desc}
+            onDescChange={onDescChange}
+            onUpdate={handleDescUpdate}
+            descEdit={descEdit}
+            setDescEdit={setDescEdit}
           />
         </Box>
-        <Box className="col-md-4">
-          {author?.socialLinks?.length > 0 && (
-            <>
-              <Heading title="Follow Me" size="md"></Heading>
-              <Divider className="mb-3" />
-            </>
-          )}
-          <SocialFollow socialLinks={author?.socialLinks} className="mb-4" />
+        <Box className="col-md-12">
+          <Heading title="Social Links" size="md"></Heading>
+          <Divider className="mb-3" />
+        </Box>
+        {predefinedSocialLinks.map((platform) => {
+          const social = updatedSocialLinks.find(
+            (link) => link.platform === platform
+          );
+          return (
+            <Box className="col-md-4 mb-2" key={platform}>
+              <label className="text-capitalize">{platform}</label>
+              <CustomInput
+                name={platform}
+                value={social?.url || ''}
+                onChange={(e) =>
+                  handleSocialLinkChange(platform, e.target.value)
+                }
+                placeholder="URL"
+              />
+            </Box>
+          );
+        })}
+        <Box className="col-md-12 mt-3">
+          <Button disabled={socialLoading} onClick={handleSaveChanges}>
+            {socialLoading ? 'Loading...' : 'Save Changes'}
+          </Button>
         </Box>
       </Box>
     </Box>

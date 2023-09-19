@@ -25,8 +25,11 @@ export const SocialFollowWrapper = styled.div`
     &.instagram {
       background-color: rgb(233, 68, 117);
     }
-    &.linkedin {
+    &.linkedIn {
       background-color: rgb(0, 127, 177);
+    }
+    &.whatsApp {
+      background-color: rgb(37, 211, 102);
     }
   }
 `;

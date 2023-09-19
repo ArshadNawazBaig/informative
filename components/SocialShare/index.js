@@ -20,12 +20,13 @@ import { SocialShareWrapper } from './style';
 import { Box } from '@/style';
 import Heading from '../Heading';
 
-const SocialShare = ({ url, title, media, quote }) => {
+const SocialShare = ({ url, title, media, quote, tags }) => {
+  const result = tags.map((tag) => `#${tag}`).join(',');
   return (
     <SocialShareWrapper className="text-center">
       <Heading title="Share Article" size="md" className="mb-3 mt-4" />
       <Box className="d-flex gap-1 h-100 justify-content-center">
-        <FacebookShareButton url={url} quote={quote} hashtag={'#nextshare'}>
+        <FacebookShareButton url={url} quote={quote} hashtag={result}>
           <FacebookIcon size={42} round />
         </FacebookShareButton>
         <TwitterShareButton url={url} title={title}>

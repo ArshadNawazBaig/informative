@@ -25,7 +25,6 @@ export const PUT = async (req) => {
 
   try {
     const body = await req.json();
-    console.log(session.user, 'session user');
     const updatedUser = await prisma.user.update({
       where: { email: session.user.email },
       data: {

@@ -13,6 +13,7 @@ import Comments from '@/components/Comments';
 import SideMenu from '@/components/SideMenu';
 import Para from '@/components/Para';
 import TagChip from '@/components/TagChip';
+import _ from 'lodash';
 
 const getData = async (slug) => {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${slug}`, {
@@ -26,6 +27,22 @@ const getData = async (slug) => {
   return res.json();
 };
 
+export async function generateMetadata({ params }) {
+  try {
+    const blog = await getData(params.slug);
+    return {
+      title: `${_.capitalize(blog?.title.trim())} - Informative`,
+      description: blog?.desc,
+    };
+  } catch (error) {
+    return {
+      title: 'Our Blog - Stay Informed and Inspired || Informative',
+      description:
+        'Explore our blog for the latest articles and insights on a variety of topics. Stay informed and inspired with our expertly written blog posts.',
+    };
+  }
+}
+
 const BlogPost = async ({ params }) => {
   const { slug } = params;
   const post = await getData(slug);
@@ -36,9 +53,9 @@ const BlogPost = async ({ params }) => {
   return (
     <>
       <Head>
-        <meta property="og:image" content="" />
-        <meta property="og:title" content="" />
-        <meta property="og:description" content="" />
+        <meta property="og:image" content={post.img} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.desc} />
       </Head>
       <Box className="container">
         <Box className="row gx-md-5">
@@ -47,10 +64,11 @@ const BlogPost = async ({ params }) => {
           </Box>
           <Box className="col-12 mt-4 mb-4">
             <SocialShare
-              url="https://informative-ivory.vercel.app/"
-              title={post.title}
+              url={`https://informative-ivory.vercel.app/blog/${post.slug}`}
+              title={_.capitalize(post.title.trim())}
               quote={post.desc}
               media={post.img}
+              tags={post.tags}
             />
           </Box>
           <Box className="col-12 col-md-8 mt-4 mb-4">

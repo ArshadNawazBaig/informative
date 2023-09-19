@@ -58,10 +58,10 @@ const AuthorPage = async ({ params, searchParams }) => {
       <Box className="row">
         <Box className="col-12">
           <UserProfileCard
-            coverImage={author?.coverImage}
-            avatarImage={author?.image}
-            creator={author?.name}
-            description={author?.description}
+            coverImage={author && author?.coverImage}
+            avatarImage={author && author?.image}
+            creator={author && author?.name}
+            description={author && author?.description}
             size="full"
           />
         </Box>
@@ -83,13 +83,17 @@ const AuthorPage = async ({ params, searchParams }) => {
           )}
         </Box>
         <Box className="col-md-4">
-          {author?.socialLinks?.length > 0 && (
-            <>
-              <Heading title="Follow Me" size="md"></Heading>
-              <Divider className="mb-3" />
-            </>
-          )}
-          <SocialFollow socialLinks={author?.socialLinks} className="mb-4" />
+          {author?.socialLinks?.length > 0 &&
+            author?.socialLinks[0]?.url?.length > 0 && (
+              <>
+                <Heading title="Follow Me" size="md"></Heading>
+                <Divider className="mb-3" />
+                <SocialFollow
+                  socialLinks={author?.socialLinks}
+                  className="mb-4"
+                />
+              </>
+            )}
           <Heading title="Featured Posts" size="md" className=""></Heading>
           <Divider className="mb-4" />
           <FeaturedCardList />
