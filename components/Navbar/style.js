@@ -70,6 +70,8 @@ export const Navbar = styled.nav`
     width: 40px;
     border-radius: 50px;
     overflow: hidden;
+    background-color: ${({ theme }) => theme.bg};
+
     & img {
       object-fit: cover;
       object-position: center;

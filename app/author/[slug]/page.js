@@ -58,7 +58,7 @@ const AuthorPage = async ({ params, searchParams }) => {
       <Box className="row">
         <Box className="col-12">
           <UserProfileCard
-            coverImage="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/mihai-stefan-658815-unsplash-1000x600.jpg"
+            coverImage={author?.coverImage}
             avatarImage={author?.image}
             creator={author?.name}
             description={author?.description}

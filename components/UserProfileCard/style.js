@@ -12,6 +12,16 @@ export const UserCardWrapper = styled.div`
       object-position: center;
     }
   }
+  & .edit {
+    position: absolute;
+    bottom: 20px;
+    right: 21px;
+  }
+  & .edit-profile {
+    position: absolute;
+    right: -22px;
+    top: 30px;
+  }
   & .avatar-wrapper {
     width: 150px;
     height: 150px;

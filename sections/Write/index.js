@@ -22,7 +22,6 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 import { app } from '@/utils/firebase';
-import Para from '@/components/Para';
 import Image from 'next/legacy/image';
 import { slugify } from '@/utils/helpers';
 import { useRouter } from 'next/navigation';

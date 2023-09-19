@@ -4,7 +4,14 @@ import { Navbar, StyledButton } from './style';
 import { useTheme } from '@/context/ThemeProvider';
 import { Box } from '@/style';
 import Link from 'next/link';
-import { CloseIcon, MenuIcon, MoonIcon, SearchIcon, SunIcon } from '../Icons';
+import {
+  CloseIcon,
+  MenuIcon,
+  MoonIcon,
+  SearchIcon,
+  SunIcon,
+  UserIcon,
+} from '../Icons';
 import Divider from '../Divider';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/legacy/image';
@@ -111,12 +118,16 @@ function Header() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <Box className="avatar">
-                      <Image
-                        alt={data.user.name}
-                        src={data.user.image}
-                        layout="fill"
-                      />
+                    <Box className="avatar d-flex justify-content-center align-items-center">
+                      {user?.image ? (
+                        <Image
+                          alt={data.user.name}
+                          src={user?.image}
+                          layout="fill"
+                        />
+                      ) : (
+                        <UserIcon />
+                      )}
                     </Box>
                   </a>
                   <ul className="dropdown-menu py-0">
@@ -128,6 +139,16 @@ function Header() {
                         onClick={() => setIsOpen(false)}
                       >
                         {data.user.name}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="nav-link py-2 px-4 text-capitalize"
+                        aria-current="page"
+                        href={`/author/edit/${user?.id}`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Settings
                       </Link>
                     </li>
                     <li>
