@@ -1,6 +1,4 @@
 'use client';
-
-'use client';
 import styled from 'styled-components';
 
 export const CategoryCardWrapper = styled.div`
@@ -50,5 +48,8 @@ export const CategoryCardWrapper = styled.div`
   }
   &.news {
     background-color: #59a6bf;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;

@@ -41,7 +41,7 @@ const CategoriesPage = async () => {
       <Box className="d-flex gap-4 flex-wrap w-100 mb-5">
         {categories?.length > 0 &&
           categories.map(({ name, id, img, slug }) => (
-            <Box key={id}>
+            <Box key={id} className="category-card-outer">
               <CategoryCard
                 name={name}
                 className={slug}

@@ -9,8 +9,11 @@ export const OuterWrapper = styled.h2`
       font-size: 6.25rem;
       font-weight: 700;
       @media (max-width: 768px) {
-        font-size: 3.5rem;
+        font-size: 3rem;
       }
+    }
+    @media (max-width: 768px) {
+      top: -60px;
     }
   }
 `;

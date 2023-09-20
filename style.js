@@ -36,6 +36,12 @@ export const Body = styled.body`
       max-height: 100%;
     }
   }
+
+  @media (max-width: 768px) {
+    & .category-card-outer {
+      width: 100%;
+    }
+  }
 `;
 
 export const WriteOuterWrapper = styled.div`
