@@ -5,6 +5,10 @@ export const CreatorCardWrapper = styled.div`
   padding: 40px 0;
   border-top: 1px solid ${({ theme }) => theme.border};
   border-bottom: 1px solid ${({ theme }) => theme.border};
+
+  & .author-name {
+    font-size: 1.3rem;
+  }
   & .social {
     transition: ease-in-out all 0.5s;
     &:hover {
@@ -14,7 +18,7 @@ export const CreatorCardWrapper = styled.div`
   & h3 {
     margin-bottom: 10px;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     letter-spacing: 1px;
   }
   & p {
@@ -28,6 +32,18 @@ export const CreatorCardWrapper = styled.div`
   & .read-more {
     color: ${({ theme }) => theme.secondary};
     font-weight: 500;
+  }
+  @media (max-width: 539px) {
+    & .creator-content {
+      justify-content: center !important;
+      & .inner {
+        text-align: center;
+      }
+    }
+    & .description {
+      margin-top: 20px;
+      text-align: center;
+    }
   }
 `;
 

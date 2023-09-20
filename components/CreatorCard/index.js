@@ -28,25 +28,20 @@ const CreatorCard = ({
     <CreatorCardWrapper>
       <Box className="row align-items-center row-gap-4">
         <Box className="col-md-3 col-lg-2">
-          <ImageWrapper className="d-flex justify-content-center mx-auto mx-md-0">
+          <ImageWrapper className="d-flex justify-content-center mx-auto mx-md-0 ">
             <Link href={`/author/${id}`}>
               <Image alt={description} src={imageUrl} layout="fill" />
             </Link>
           </ImageWrapper>
         </Box>
         <Box className="col-md-9 col-lg-10">
-          <Box className="d-flex justify-content-between w-100 align-items-baseline">
-            <Box className="">
+          <Box className="d-flex justify-content-between w-100 align-items-baseline flex-wrap creator-content">
+            <Box className="inner">
               <h3>WRITTEN BY</h3>
-              <Heading size="md" className="mb-3" title={author}>
-                {verified && (
-                  <VerifiedIcon
-                    width="20"
-                    className="ms-1 position-absolute"
-                    style={{ top: 0, right: '-26px' }}
-                  />
-                )}
-              </Heading>
+              <h4 className="author-name">
+                {author}
+                {verified && <VerifiedIcon width="20" className="ms-1" />}
+              </h4>
             </Box>
             {socialLinks.length > 0 && (
               <Box className="d-flex gap-1 align-items-center social-wrapper">
@@ -79,7 +74,7 @@ const CreatorCard = ({
             )}
           </Box>
           <Box>
-            <Para>
+            <Para className="description">
               {description}{' '}
               <Link href={`/author/${id}`} className="read-more ms-1">
                 Read more
