@@ -19,10 +19,10 @@ const CategoryList = async ({ className }) => {
   return (
     <ListWrapper className={className}>
       {categories.length > 0 &&
-        categories?.map((category) => (
+        categories?.slice(0, 5).map((category) => (
           <Link
             href={`/blog?category=${category.slug}`}
-            className="d-flex w-full justify-content-between py-4"
+            className="d-flex w-full justify-content-between py-4 text-capitalize"
             key={category.id}
           >
             <span>{category.name}</span>
@@ -31,6 +31,14 @@ const CategoryList = async ({ className }) => {
             </span>
           </Link>
         ))}
+      {categories?.length > 5 && (
+        <Link
+          href="/categories"
+          className="border-none text-center d-block w-100 text-blue mt-4"
+        >
+          See {categories?.length} more categories
+        </Link>
+      )}
     </ListWrapper>
   );
 };

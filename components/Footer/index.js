@@ -6,10 +6,9 @@ import Link from 'next/link';
 import Divider from '../Divider';
 import { FooterWrapper } from './style';
 import {
-  EmailIcon,
   FacebookIcon,
+  InstagramIcon,
   LinkedinIcon,
-  PinterestIcon,
   TwitterIcon,
 } from 'next-share';
 
@@ -76,13 +75,17 @@ const Footer = () => {
           <Divider className="mb-4" />
           <Box className="d-flex justify-content-between w-100 gap-3">
             <Box className="social-wrapper">
-              <a href="http://" className="social facebook">
+              <a
+                target="blank"
+                href="http://facebook.com"
+                className="social facebook"
+              >
                 <FacebookIcon size={32} round />
                 <Para>Facebook</Para>
               </a>
             </Box>
             <Box className="social-wrapper">
-              <a href="http://" className="social">
+              <a target="blank" href="http://linkedin.com" className="social">
                 <LinkedinIcon size={32} round />
                 <Para>Linkedin</Para>
               </a>
@@ -90,13 +93,13 @@ const Footer = () => {
           </Box>
           <Box className="d-flex justify-content-between w-100 gap-3 mt-3">
             <Box className="social-wrapper">
-              <a href="http://" className="social">
-                <PinterestIcon size={32} round />
-                <Para>Pinterest</Para>
+              <a target="blank" href="http://instagram.com" className="social">
+                <InstagramIcon size={32} round />
+                <Para>Instagram</Para>
               </a>
             </Box>
             <Box className="social-wrapper">
-              <a href="http://" className="social">
+              <a target="blank" href="http://twitter.com" className="social">
                 <TwitterIcon size={32} round />
                 <Para>Twitter</Para>
               </a>

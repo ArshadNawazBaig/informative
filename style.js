@@ -9,6 +9,9 @@ export const Body = styled.body`
   & .cursor-pointer {
     cursor: pointer !important;
   }
+  & .text-blue {
+    color: #3e3eff;
+  }
   & .border-none {
     border: none !important;
   }

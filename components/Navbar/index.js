@@ -30,7 +30,8 @@ function Header() {
     { id: 1, label: 'Home', link: '/' },
     { id: 2, label: 'About', link: '/about' },
     { id: 3, label: 'Contact', link: '/contact' },
-    { id: 4, label: 'Write', link: '/write', isAuth: true },
+    { id: 4, label: 'Categories', link: '/categories' },
+    { id: 5, label: 'Write', link: '/write', isAuth: true },
   ];
 
   const pathname = usePathname();
