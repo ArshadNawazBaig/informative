@@ -13,6 +13,7 @@ import Link from 'next/link';
 import Button from '../Button';
 import Image from 'next/legacy/image';
 import Para from '../Para';
+import { VerifiedIcon } from '../Icons';
 
 const PostCard = ({
   size,
@@ -62,6 +63,9 @@ const PostCard = ({
                     className="text-decoration-none ms-2 text-white text-capitalize"
                   >
                     {creator?.name.trim()}
+                    {creator?.verified && (
+                      <VerifiedIcon width="16" className="ms-1" />
+                    )}
                   </Link>
                 </Box>
               )}
@@ -83,6 +87,9 @@ const PostCard = ({
                 className="text-decoration-none ms-2"
               >
                 {creator?.name}
+                {creator?.verified && (
+                  <VerifiedIcon width="16" className="ms-1" />
+                )}
               </AuthorLink>
             </Box>
             <Box className={`d-flex align-items-center date`}>

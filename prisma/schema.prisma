@@ -42,6 +42,7 @@ model User {
   image         String?
   coverImage    String?
   description   String?
+  verified      Boolean?
   socialLinks   SocialLink[]
   accounts      Account[]
   sessions      Session[]

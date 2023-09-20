@@ -52,7 +52,6 @@ const AuthorPage = async ({ params, searchParams }) => {
   if (!author) {
     return notFound();
   }
-
   return (
     <Box className="container">
       <Box className="row">
@@ -63,6 +62,7 @@ const AuthorPage = async ({ params, searchParams }) => {
             creator={author && author?.name}
             description={author && author?.description}
             size="full"
+            verified={author && author?.verified}
           />
         </Box>
         <Box className="col-12 mt-5 mb-4">

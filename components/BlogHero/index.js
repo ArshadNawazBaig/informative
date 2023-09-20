@@ -9,6 +9,7 @@ import {
 } from './style';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
+import { VerifiedIcon } from '../Icons';
 
 const BlogHero = ({ post }) => {
   return (
@@ -40,7 +41,8 @@ const BlogHero = ({ post }) => {
                 href={`/author/${post?.author?.id}`}
                 className="text-decoration-none text-white text-capitalize"
               >
-                {post?.author?.name}
+                {post?.author?.name}{' '}
+                {post?.author?.verified && <VerifiedIcon width="18" />}
               </Link>
             </Box>
             <Box className="d-flex date">

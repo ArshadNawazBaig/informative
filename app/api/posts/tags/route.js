@@ -10,9 +10,11 @@ export const GET = async (req, res) => {
       },
     });
 
-    const uniqueTags = [...new Set(tags.flatMap((post) => post.tags))]; // Get unique tags
+    const uniqueTags = [...new Set(tags.flatMap((post) => post.tags))];
 
-    return new NextResponse(JSON.stringify(uniqueTags, { status: 200 }));
+    return new NextResponse(
+      JSON.stringify(uniqueTags.slice(0, 20), { status: 200 })
+    );
   } catch (error) {
     return new NextResponse(
       JSON.stringify({ message: error.message }, { status: 500 })

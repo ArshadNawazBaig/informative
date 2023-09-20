@@ -102,6 +102,7 @@ const BlogPost = async ({ params }) => {
               author={post?.author?.name}
               description={`${post?.author?.description.substring(0, 300)}...`}
               id={post?.author?.id}
+              verified={post?.author?.verified}
               socialLinks={
                 post?.author?.socialLinks?.length > 0 &&
                 post?.author?.socialLinks

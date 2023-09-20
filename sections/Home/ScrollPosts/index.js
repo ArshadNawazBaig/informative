@@ -1,3 +1,4 @@
+import Heading from '@/components/Heading';
 import Pagination from '@/components/Pagination';
 import PostCard from '@/components/PostCard';
 import React from 'react';
@@ -49,6 +50,9 @@ const ScrollPosts = async ({ page, posts, count, category, tag, search }) => {
           hasPrev={hasPrev}
           className="mb-4"
         />
+      )}
+      {posts.length <= 0 && (
+        <Heading title="No posts found!" size="md"></Heading>
       )}
     </>
   );

@@ -11,6 +11,7 @@ import {
   SearchIcon,
   SunIcon,
   UserIcon,
+  VerifiedIcon,
 } from '../Icons';
 import Divider from '../Divider';
 import { signOut, useSession } from 'next-auth/react';
@@ -119,6 +120,13 @@ function Header() {
                     aria-expanded="false"
                   >
                     <Box className="avatar d-flex justify-content-center align-items-center">
+                      {user?.verified && (
+                        <VerifiedIcon
+                          width="16"
+                          className="ms-1 position-absolute"
+                          style={{ right: '-2px', bottom: '-3px', zIndex: 9 }}
+                        />
+                      )}
                       {user?.image ? (
                         <Image
                           alt={data.user.name}

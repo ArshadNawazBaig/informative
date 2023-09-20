@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import Para from '../Para';
 import { FeaturedCardWrapper, ImageWrapper } from './style';
+import { VerifiedIcon } from '../Icons';
 
 const FeaturedCard = ({
   author,
@@ -42,7 +43,10 @@ const FeaturedCard = ({
           href={`/author/${author.id}`}
           className="text-decoration-none author-name"
         >
-          <Para className="author-name">{author.name}</Para>
+          <Para className="author-name">
+            {author.name}
+            {author?.verified && <VerifiedIcon width="16" className="ms-1" />}
+          </Para>
         </Link>
       </Box>
     </FeaturedCardWrapper>

@@ -5,7 +5,7 @@ import { Heading, UserCardWrapper } from './style';
 import Image from 'next/legacy/image';
 import Para from '../Para';
 import { UploaderWrapper } from '../Form/CUpload/style';
-import { EditIcon } from '../Icons';
+import { EditIcon, VerifiedIcon } from '../Icons';
 import CustomTextarea from '../Form/CTextarea';
 import Button from '../Button';
 
@@ -25,6 +25,7 @@ const UserProfileCard = ({
   setDescEdit,
   progress,
   profileProgress,
+  verified,
 }) => {
   return (
     <UserCardWrapper>
@@ -96,7 +97,9 @@ const UserProfileCard = ({
         )}
       </Box>
       <Box className="text-center mt-4">
-        <Heading className="fw-semibold text-capitalize">{creator}</Heading>
+        <Heading className="fw-semibold text-capitalize">
+          {creator} {verified && <VerifiedIcon width="20" />}
+        </Heading>
         <Box className={size === 'full' && 'half-width'}>
           <Box>
             {edit && (

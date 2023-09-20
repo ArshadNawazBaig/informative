@@ -224,6 +224,7 @@ const EditAuthorPage = ({ params }) => {
             setDescEdit={setDescEdit}
             progress={progress}
             profileProgress={profileProgress}
+            verified={author?.verified}
           />
         </Box>
         <Box className="col-md-12">

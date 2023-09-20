@@ -14,8 +14,16 @@ import {
 } from 'next-share';
 import Para from '../Para';
 import Link from 'next/link';
+import { VerifiedIcon } from '../Icons';
 
-const CreatorCard = ({ author, imageUrl, description, id, socialLinks }) => {
+const CreatorCard = ({
+  author,
+  imageUrl,
+  description,
+  id,
+  socialLinks,
+  verified,
+}) => {
   return (
     <CreatorCardWrapper>
       <Box className="row align-items-center row-gap-4">
@@ -30,7 +38,15 @@ const CreatorCard = ({ author, imageUrl, description, id, socialLinks }) => {
           <Box className="d-flex justify-content-between w-100 align-items-baseline">
             <Box className="">
               <h3>WRITTEN BY</h3>
-              <Heading size="md" className="mb-3" title={author} />
+              <Heading size="md" className="mb-3" title={author}>
+                {verified && (
+                  <VerifiedIcon
+                    width="20"
+                    className="ms-1 position-absolute"
+                    style={{ top: 0, right: '-26px' }}
+                  />
+                )}
+              </Heading>
             </Box>
             {socialLinks.length > 0 && (
               <Box className="d-flex gap-1 align-items-center social-wrapper">
