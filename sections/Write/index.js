@@ -25,6 +25,8 @@ import { app } from '@/utils/firebase';
 import Image from 'next/legacy/image';
 import { slugify } from '@/utils/helpers';
 import { useRouter } from 'next/navigation';
+import Para from '@/components/Para';
+import { SearchIcon } from '@/components/Icons';
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -43,10 +45,12 @@ function WriteWrapper() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [progress, setProgress] = useState(0);
   const [media, setMedia] = useState('');
+  const [noMedia, setNoMedia] = useState(false);
   const [featuredImage, setFeaturedImage] = useState(null);
   const [tags, setTags] = useState([]);
-  const { data, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
+
   const {
     handleSubmit,
     control,
@@ -57,6 +61,9 @@ function WriteWrapper() {
 
   useEffect(() => {
     const upload = () => {
+      if (media) {
+        return;
+      }
       const name = new Date().getTime() + featuredImage.name;
       const storageRef = ref(storage, name);
 
@@ -87,23 +94,30 @@ function WriteWrapper() {
     featuredImage && upload();
   }, [featuredImage]);
 
+  useEffect(() => {}, [media]);
+
   const onSubmit = async (data) => {
-    const { title, description, category, content } = data;
-    const formData = {
-      slug: slugify(title),
-      title: title.toLowerCase(),
-      img: media,
-      desc: description,
-      content,
-      catSlug: category,
-      tags,
-    };
-    const response = await fetch('/api/posts', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-    });
-    if (response.status === 200) {
-      router.push(`/blog/${slugify(title)}`);
+    if (!media) {
+      setNoMedia(true);
+    } else {
+      setNoMedia(false);
+      const { title, description, category, content } = data;
+      const formData = {
+        slug: slugify(title),
+        title: title.toLowerCase(),
+        img: media,
+        desc: description,
+        content,
+        catSlug: category,
+        tags,
+      };
+      const response = await fetch('/api/posts', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+      });
+      if (response.status === 200) {
+        router.push(`/blog/${slugify(title)}`);
+      }
     }
   };
 
@@ -120,12 +134,25 @@ function WriteWrapper() {
 
   return (
     <WriteOuterWrapper className="container mt-5">
+      <Box className="row">
+        <Box className="col-md-12">
+          <h5>Create a New Post</h5>
+        </Box>
+      </Box>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box className="row">
-          <Box className="col-md-12">
-            <h5>Create a New Post</h5>
-          </Box>
           <Box className="col-md-8 mb-3">
+            <Box className="mb-4">
+              <Box
+                className="cursor-pointer search-field"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#unsplashModal"
+              >
+                Search free images here
+              </Box>
+            </Box>
+
             <Controller
               name="title"
               control={control}
@@ -174,12 +201,12 @@ function WriteWrapper() {
             <Controller
               name="featuredImage"
               control={control}
-              defaultValue={null} // Initialize with null for file input
+              defaultValue={null}
               render={({ field }) => (
                 <CustomFileUpload
                   onChange={(file) => {
                     field.onChange(file);
-                    setFeaturedImage(file);
+                    setFeaturedImage(file || null);
                   }}
                   error={errors.featuredImage}
                   className="mb-4"
@@ -187,13 +214,35 @@ function WriteWrapper() {
                 />
               )}
             />
-            {featuredImage && (
+            <Box className="mb-4 position-relative">
+              <Para
+                className="position-absolute w-100 text-center"
+                style={{ top: '-23px' }}
+              >
+                OR
+              </Para>
+              <Controller
+                name="featuredImage"
+                control={control}
+                defaultValue={null}
+                render={({ field }) => (
+                  <CustomInput
+                    name="featuredImage"
+                    value={media}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      setMedia(e.target.value);
+                      setFeaturedImage(null);
+                    }}
+                    placeholder="Paste Image URL"
+                    error={errors.featuredImage}
+                  />
+                )}
+              />
+            </Box>
+            {media && (
               <Box className="d-flex justify-content-center mx-auto mx-md-0 rounded image-wrapper mb-4">
-                <Image
-                  alt="featured"
-                  src={URL.createObjectURL(featuredImage)}
-                  layout="fill"
-                />
+                <img alt="featured" className="img-fluid" src={media} />
               </Box>
             )}
             <Controller
@@ -229,9 +278,14 @@ function WriteWrapper() {
           </Box>
 
           <Box className="col-md-12">
+            {noMedia && !media && (
+              <Para className="text-danger" style={{ fontSize: '14px' }}>
+                Please upload or paste featured image link
+              </Para>
+            )}
             <Button
               disabled={isLoading}
-              className="rounded-1 mt-2"
+              className="rounded-1 mt-2 submit-button"
               style={{ height: '60px' }}
             >
               {isLoading ? 'Loading...' : 'Publish your Article'}

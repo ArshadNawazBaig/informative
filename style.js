@@ -4,7 +4,7 @@ import { themeStyles } from './theme';
 
 export const Box = styled.div``;
 
-export const Body = styled.body`
+export const Body = styled.div`
   ${({ theme }) => themeStyles[theme]}
   & .cursor-pointer {
     cursor: pointer !important;
@@ -14,6 +14,9 @@ export const Body = styled.body`
   }
   & .border-none {
     border: none !important;
+  }
+  & .z-4 {
+    z-index: 4;
   }
   & .gray-border {
     border: 1px solid ${({ theme }) => theme.border};
@@ -58,6 +61,23 @@ export const WriteOuterWrapper = styled.div`
       height: 100%;
       object-fit: cover;
       transition: 0.6s ease;
+    }
+  }
+  & .search-field {
+    height: 60px;
+    background-color: ${({ theme }) => theme.gray};
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+    border: 1px solid ${({ theme }) => theme.border};
+    color: ${({ theme }) => theme.secondary};
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+  }
+  @media (max-width: 539px) {
+    & .submit-button {
+      width: 100%;
     }
   }
 `;

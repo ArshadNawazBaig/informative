@@ -5,6 +5,7 @@ const nextConfig = {
       'demo.rivaxstudio.com',
       'lh3.googleusercontent.com',
       'firebasestorage.googleapis.com',
+      'images.unsplash.com',
     ],
   },
 };

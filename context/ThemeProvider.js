@@ -18,7 +18,9 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState(() => getFromLocalStorage());
+  const [theme, setTheme] = useState(() => {
+    return getFromLocalStorage();
+  });
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));

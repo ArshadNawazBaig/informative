@@ -18,13 +18,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <StyledComponentsRegistry>
-        <ThemeProvider>
-          <Main className={poppins.className} id="main">
-            {children}
-          </Main>
-        </ThemeProvider>
-      </StyledComponentsRegistry>
+      <body>
+        <StyledComponentsRegistry>
+          <ThemeProvider>
+            <Main className={poppins.className} id="main">
+              {children}
+            </Main>
+          </ThemeProvider>
+        </StyledComponentsRegistry>
+      </body>
     </html>
   );
 }

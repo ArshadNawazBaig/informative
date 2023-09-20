@@ -1,6 +1,7 @@
 'use client';
 import Footer from '@/components/Footer';
 import Modal from '@/components/Modal';
+import Unsplash from '@/components/Modal/Unsplash';
 import Header from '@/components/Navbar';
 import { useTheme } from '@/context/ThemeProvider';
 import AuthProvider from '@/providers/AuthProvider';
@@ -16,6 +17,7 @@ const Main = ({ className, children, ...rest }) => {
         <MainWrapper>{children}</MainWrapper>
         <Footer />
         <Modal />
+        <Unsplash />
       </AuthProvider>
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"

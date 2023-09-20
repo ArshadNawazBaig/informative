@@ -32,7 +32,6 @@ const SubHeader = ({ setIsOpen }) => {
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
-                onClick={() => setIsOpen(false)}
               />
             </Box>
           </Box>

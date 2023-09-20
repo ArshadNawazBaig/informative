@@ -24,7 +24,8 @@ function CustomFileUpload({ onChange, error, className, progress }) {
           className="px-3 w-100 gray-border rounded cursor-pointer d-flex align-items-center"
           style={{ height: '60px' }}
         >
-          Upload Image {progress > 0 ? `(uploading ${progress})%` : ''}
+          Upload your own image{' '}
+          {progress > 0 && progress < 100 ? `(uploading ${progress})%` : ''}
         </label>
       </Box>
       {error && <Box className="invalid-feedback">{error.message}</Box>}

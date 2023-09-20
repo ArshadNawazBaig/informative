@@ -23,7 +23,7 @@ function CategoryDropdown({
   return (
     <>
       <DropdownWrapper
-        className={`form-control d-flex align-items-center w-100 cursor-pointer p-0 ${
+        className={`form-control d-flex flex-column position-relative align-items-center w-100 cursor-pointer p-0 ${
           error ? 'is-invalid' : ''
         }`}
       >
@@ -37,20 +37,23 @@ function CategoryDropdown({
             width="20"
           />
         </Box>
+        {isOpen && (
+          <ul
+            className="list-group form-control p-0 mt-2 position-absolute z-4"
+            style={{ top: '60px' }}
+          >
+            {categories?.map((category, index) => (
+              <li
+                key={index}
+                className="list-group-item cursor-pointer border-none list-group-item-action"
+                onClick={() => handleCategorySelect(category.slug)}
+              >
+                {category.name}
+              </li>
+            ))}
+          </ul>
+        )}
       </DropdownWrapper>
-      {isOpen && (
-        <ul className="list-group form-control p-0 mt-2">
-          {categories?.map((category, index) => (
-            <li
-              key={index}
-              className="list-group-item cursor-pointer border-none list-group-item-action"
-              onClick={() => handleCategorySelect(category.slug)}
-            >
-              {category.name}
-            </li>
-          ))}
-        </ul>
-      )}
       {error && <Box className="invalid-feedback">{error.message}</Box>}
     </>
   );
