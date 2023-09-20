@@ -15,8 +15,8 @@ const NewsLetter = ({ className }) => {
             <input
               type="text"
               className="form-control"
-              placeholder="Enter your email address"
-              aria-label="Enter your email address"
+              placeholder="Your email address"
+              aria-label="Your email address"
               aria-describedby="button-addon2"
             />
             <button

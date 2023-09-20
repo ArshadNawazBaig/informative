@@ -54,7 +54,7 @@ const PostCard = ({
             </Title>
           </Box>
           {!varient && (
-            <Box className="text-white d-flex justify-content-center">
+            <Box className="text-white d-flex justify-content-center flex-wrap">
               {!size && (
                 <Box className="text-capitalize">
                   <span className="by">by</span>
@@ -79,7 +79,7 @@ const PostCard = ({
       </PostWrapper>
       {varient === 'ver' && (
         <Box className="text-center mt-4">
-          <Box className="d-flex justify-content-center mb-2 flex-wrap">
+          <Box className="d-flex justify-content-center flex-wrap mb-2 flex-wrap">
             <Box className="text-capitalize">
               <span className="by">by</span>
               <AuthorLink
