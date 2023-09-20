@@ -9,7 +9,7 @@ export const CategoryCardWrapper = styled.div`
   border-radius: 5px;
   cursor: pointer;
   background-color: #ff5b84;
-  color: ${({ theme }) => theme.primary};
+  color: #fff;
   & .avatar {
     position: relative;
     height: 40px;
