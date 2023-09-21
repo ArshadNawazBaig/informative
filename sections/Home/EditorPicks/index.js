@@ -35,6 +35,7 @@ const EditorPicks = async () => {
               imageUrl={post.img}
               date={post?.createdAt?.substring(0, 10)}
               views={post?.views}
+              slug={post?.slug}
             />
           </Box>
         ))}
