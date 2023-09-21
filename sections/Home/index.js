@@ -11,10 +11,7 @@ const getData = async (page, perPage, category) => {
   const res = await fetch(
     `${
       process.env.NEXTAUTH_URL
-    }/api/posts?page=${page}&perPage=${perPage}&category=${category || ''}`,
-    {
-      cache: 'no-store',
-    }
+    }/api/posts?page=${page}&perPage=${perPage}&category=${category || ''}`
   );
 
   if (!res.ok) {
