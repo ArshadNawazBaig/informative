@@ -5,7 +5,9 @@ import { Box } from '@/style';
 import React from 'react';
 
 const getData = async () => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/picks`);
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/picks`, {
+    next: { revalidate: 3600 },
+  });
 
   if (!res.ok) {
     console.log('error');

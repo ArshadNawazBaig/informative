@@ -36,10 +36,7 @@ const PostCard = ({
     <Wrapper className={className} key={key}>
       <PostWrapper full={size} varient={varient}>
         <Box className="views">
-          <ViewsIcon />{' '}
-          <Box className="count">
-            {shortenNumber(views || 0)} {views}
-          </Box>
+          <ViewsIcon /> <Box className="count">{shortenNumber(views || 0)}</Box>
         </Box>
         <ImageWrapper>
           <Image alt={title} src={imageUrl} layout="fill" />
