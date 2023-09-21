@@ -1,9 +1,7 @@
 import CategoryCard from '@/components/CategoryCard';
 import Heading from '@/components/Heading';
 import NewsLetter from '@/components/NewsLetter';
-import Para from '@/components/Para';
 import { Box } from '@/style';
-import Link from 'next/link';
 import React from 'react';
 
 export const metadata = {
