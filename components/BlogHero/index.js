@@ -10,6 +10,7 @@ import {
 import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { VerifiedIcon } from '../Icons';
+import { shortenNumber } from '@/utils/helpers';
 
 const BlogHero = ({ post }) => {
   return (
@@ -48,7 +49,7 @@ const BlogHero = ({ post }) => {
             <Box className="d-flex date">
               <i className="ri-calendar-2-line text-capitalize"></i>
               {post?.createdAt?.substring(0, 10)}{' '}
-              <span className="mx-3">/</span> 3 mins read
+              <span className="mx-3">/</span> Views {shortenNumber(post?.views)}
             </Box>
           </Box>
         </Box>

@@ -16,6 +16,7 @@ export const Wrapper = styled.article`
 `;
 
 export const PostWrapper = styled.div`
+  position: relative;
   height: 100%;
   min-height: ${({ full }) =>
     full === 'full' ? '55vh' : full === 'md' ? '30vh' : 'auto'};
@@ -49,6 +50,25 @@ export const PostWrapper = styled.div`
   }
   @media (max-width: 768px) {
     min-height: 90vh;
+  }
+  & .views {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 3px 10px;
+    padding-top: 1px;
+    border-radius: 26px;
+    position: absolute;
+    z-index: 9;
+    right: 15px;
+    top: 15px;
+    & .count {
+      position: relative;
+      top: 2px;
+      margin-left: 2px;
+      font-size: 14px;
+    }
   }
 `;
 

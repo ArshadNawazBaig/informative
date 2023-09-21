@@ -13,7 +13,8 @@ import Link from 'next/link';
 import Button from '../Button';
 import Image from 'next/legacy/image';
 import Para from '../Para';
-import { VerifiedIcon } from '../Icons';
+import { VerifiedIcon, ViewsIcon } from '../Icons';
+import { shortenNumber } from '@/utils/helpers';
 
 const PostCard = ({
   size,
@@ -29,10 +30,14 @@ const PostCard = ({
   category,
   key,
   slug,
+  views,
 }) => {
   return (
     <Wrapper className={className} key={key}>
       <PostWrapper full={size} varient={varient}>
+        <Box className="views">
+          <ViewsIcon /> <Box className="count">{shortenNumber(views || 0)}</Box>
+        </Box>
         <ImageWrapper>
           <Image alt={title} src={imageUrl} layout="fill" />
         </ImageWrapper>

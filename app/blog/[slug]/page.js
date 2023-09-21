@@ -14,6 +14,7 @@ import SideMenu from '@/components/SideMenu';
 import Para from '@/components/Para';
 import TagChip from '@/components/TagChip';
 import _ from 'lodash';
+import RelatedPosts from '@/components/RelatedPosts';
 
 const getData = async (slug) => {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${slug}`, {
@@ -46,6 +47,7 @@ export async function generateMetadata({ params }) {
 const BlogPost = async ({ params }) => {
   const { slug } = params;
   const post = await getData(slug);
+  console.log(post);
 
   if (!post) {
     return notFound();
@@ -109,27 +111,7 @@ const BlogPost = async ({ params }) => {
               }
             />
           </Box>
-          <Box className="col-12">
-            <Heading
-              title="Related posts"
-              size="md"
-              className="mt-5 text-capitalize"
-            ></Heading>
-            <Divider />
-          </Box>
-          {[1, 2, 3, 4].map((item) => (
-            <Box className="col-md-6 col-lg-3" key={item}>
-              <FeaturePostCard
-                title="These Fabulous Photos Will Have Astonishing"
-                date="November 17, 2021"
-                className="mt-4"
-                creator="Alice"
-                imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/benjamin-massello-BVNhd4c7rqg-unsplash-400x300.jpg"
-                padding="low"
-                font="md"
-              />
-            </Box>
-          ))}
+          {post && <RelatedPosts post={post} targetId={post?.id} />}
           <Box className="col-md-12 my-5">
             <NewsLetter />
           </Box>

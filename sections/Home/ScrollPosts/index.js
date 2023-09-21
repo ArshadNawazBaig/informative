@@ -21,6 +21,7 @@ const ScrollPosts = async ({ page, posts, count, category, tag, search }) => {
           author,
           slug,
           desc,
+          views,
         }) => (
           <PostCard
             key={_id}
@@ -35,6 +36,7 @@ const ScrollPosts = async ({ page, posts, count, category, tag, search }) => {
             comments={`${comments?.length || 0} comments`}
             category={catSlug}
             slug={slug}
+            views={views}
           >
             {desc.substring(0, 160)}...
           </PostCard>

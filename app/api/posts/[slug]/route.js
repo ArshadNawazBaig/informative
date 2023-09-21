@@ -5,8 +5,20 @@ export const GET = async (req, { params }) => {
   const { slug } = params;
 
   try {
-    const post = await prisma.post.findUnique({
+    // First, retrieve the post based on its slug
+    const existingPost = await prisma.post.findUnique({
       where: { slug },
+    });
+
+    if (!existingPost) {
+      return new NextResponse(
+        JSON.stringify({ message: 'Post not found' }, { status: 404 })
+      );
+    }
+
+    const updatedPost = await prisma.post.update({
+      where: { id: existingPost.id },
+      data: { views: existingPost.views + 1 },
       include: {
         author: {
           include: {
@@ -15,9 +27,10 @@ export const GET = async (req, { params }) => {
         },
       },
     });
-    return new NextResponse(JSON.stringify(post, { status: 200 }));
+
+    return new NextResponse(JSON.stringify(updatedPost, { status: 200 }));
   } catch (error) {
-    // console.log(error);
+    // Handle any errors that may occur
     return new NextResponse(
       JSON.stringify({ message: error.message }, { status: 500 })
     );

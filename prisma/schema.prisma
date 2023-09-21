@@ -89,6 +89,7 @@ model Post {
   comments Comment[]
   createdAt DateTime @default(now())
   isFeatured Boolean @default(false)
+  editorPick Boolean @default(false)
   tags String[]
 }
 

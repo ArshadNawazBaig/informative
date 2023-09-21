@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export const GET = async (req, res) => {
   try {
     const tags = await prisma.post.findMany({
-      distinct: ['tags'], // Retrieve distinct tags
+      distinct: ['tags'],
       select: {
         tags: true,
       },

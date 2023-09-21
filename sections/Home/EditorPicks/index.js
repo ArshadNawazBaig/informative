@@ -1,9 +1,23 @@
 import Heading from '@/components/Heading';
+import Para from '@/components/Para';
 import PostCard from '@/components/PostCard';
 import { Box } from '@/style';
 import React from 'react';
 
-const EditorPicks = () => {
+const getData = async () => {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/picks`, {
+    cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    console.log('error');
+  }
+
+  return res.json();
+};
+
+const EditorPicks = async () => {
+  const posts = await getData();
   return (
     <>
       <Box className="col-12">
@@ -11,33 +25,21 @@ const EditorPicks = () => {
           Discover the most outstanding articles in all topics of life.
         </Heading>
       </Box>
-      <Box className="col-md-4">
-        <PostCard
-          font="md"
-          size="full"
-          title="What It Takes to Live in the World of Denial and Fear"
-          imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/noah-buscher-1-kPytLsVkY-unsplash-400x600.jpg"
-          date="November 18, 2021"
-        />
-      </Box>
-      <Box className="col-md-4">
-        <PostCard
-          font="md"
-          size="full"
-          imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/nantu-das-08SgCUfxSoE-unsplash-400x600.jpg"
-          date="November 18, 2021"
-          title="This Is My Favourite Fashion That I Watching"
-        />
-      </Box>
-      <Box className="col-md-4">
-        <PostCard
-          font="md"
-          size="full"
-          imageUrl="https://demo.rivaxstudio.com/kayleen/wp-content/uploads/2021/11/divine-effiong-ovMPeGM3W-s-unsplash-400x600.jpg"
-          date="November 18, 2021"
-          title="How to Keep Work and Personal Life Apart"
-        />
-      </Box>
+      {posts?.length > 0 &&
+        posts?.map((post) => (
+          <Box className="col-md-4" key={post.id}>
+            <PostCard
+              font="md"
+              size="full"
+              title={post.title}
+              imageUrl={post.img}
+              date={post?.createdAt?.substring(0, 10)}
+              views={post?.views}
+            />
+          </Box>
+        ))}
+
+      {posts?.length <= 0 && <Para className="my-3">No posts found</Para>}
     </>
   );
 };

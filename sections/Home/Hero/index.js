@@ -31,6 +31,7 @@ const HeroSection = async () => {
             comments={(posts && posts[0]?.comments?.length) || 'No comments'}
             category={posts && posts[0]?.catSlug}
             slug={posts && posts[0]?.slug}
+            views={posts && posts[0]?.views}
           />
         </Box>
         <Box className="col-md-4">
@@ -46,6 +47,7 @@ const HeroSection = async () => {
                 }
                 category={posts && posts[1]?.catSlug}
                 slug={posts && posts[1]?.slug}
+                views={posts && posts[1]?.views}
               />
             </Box>
             <Box className="col-md-12">
@@ -59,6 +61,7 @@ const HeroSection = async () => {
                 }
                 category={posts && posts[2]?.catSlug}
                 slug={posts && posts[2]?.slug}
+                views={posts && posts[2]?.views}
               />
             </Box>
           </Box>
