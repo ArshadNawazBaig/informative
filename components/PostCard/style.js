@@ -67,6 +67,7 @@ export const PostWrapper = styled.div`
       position: relative;
       top: 2px;
       margin-left: 2px;
+      color: #000000;
       font-size: 14px;
     }
   }
