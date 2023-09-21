@@ -51,6 +51,8 @@ function WriteWrapper() {
   const { status } = useSession();
   const router = useRouter();
 
+  console.log(status);
+
   const {
     handleSubmit,
     control,
@@ -128,7 +130,8 @@ function WriteWrapper() {
   if (status === 'loading') {
     return <Loadingpage />;
   }
-  if (status === 'unthenticated') {
+
+  if (status === 'unauthenticated') {
     router.push('/');
   }
 

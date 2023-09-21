@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { Navbar, StyledButton } from './style';
+import { Navbar, OutterWrapper, StyledButton } from './style';
 import { useTheme } from '@/context/ThemeProvider';
 import { Box } from '@/style';
 import Link from 'next/link';
@@ -56,9 +56,9 @@ function Header() {
   };
 
   return (
-    <Box className="sticky-top mb-1 mb-md-2">
-      <Navbar className={`navbar navbar-expand-lg`}>
-        <Box className="container position-relative">
+    <OutterWrapper className="sticky-top mb-1 mb-md-2">
+      <Box className="container position-relative">
+        <Navbar className={`navbar navbar-expand-md`}>
           <Link
             className="navbar-brand text-uppercase fw-medium"
             href="/"
@@ -105,7 +105,7 @@ function Header() {
                 </Box>
               ))}
             </ul>
-            <Box className="d-block d-md-flex align-items-center gap-2">
+            <Box className="d-none d-md-flex align-items-center gap-2">
               <StyledButton onClick={toggleTheme} pos={theme}>
                 <Box className="circle"></Box>
                 <MoonIcon />
@@ -192,15 +192,21 @@ function Header() {
                   href="/login"
                   onClick={() => setIsOpen(false)}
                 >
-                  Login
+                  <UserIcon />
                 </Link>
               )}
             </Box>
           </Box>
-        </Box>
-      </Navbar>
-      <SubHeader setIsOpen={setIsOpen} />
-    </Box>
+        </Navbar>
+        <hr />
+        <SubHeader
+          setIsOpen={setIsOpen}
+          status={status}
+          data={data}
+          user={user}
+        />
+      </Box>
+    </OutterWrapper>
   );
 }
 

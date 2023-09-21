@@ -1,10 +1,52 @@
 import { themeStyles } from '@/theme';
 import styled from 'styled-components';
 
+export const OutterWrapper = styled.div`
+  background-color: ${({ theme }) => theme.primary};
+  border-bottom: 1px solid ${({ theme }) => theme.border};
+  .avatar {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background-color: ${({ theme }) => theme.bg};
+
+    & img {
+      border-radius: 50px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  & .dropdown-menu {
+    background: ${({ theme }) => theme.primary} !important;
+    border: 1px solid ${({ theme }) => theme.border} !important;
+    min-width: 210px;
+    & a {
+      color: ${({ theme }) => theme.secondary};
+      &:hover {
+        background: ${({ theme }) => theme.border} !important;
+      }
+    }
+  }
+  .dropdown-toggle {
+    &::after {
+      display: none;
+    }
+  }
+  & hr {
+    position: fixed;
+    margin: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    color: ${({ theme }) => theme.hr};
+  }
+`;
+
 export const Navbar = styled.nav`
   ${({ theme }) => themeStyles[theme]};
   background-color: ${({ theme }) => theme.primary};
-  border-bottom: 1px solid ${({ theme }) => theme.border};
+  /* border-bottom: 1px solid ${({ theme }) => theme.border}; */
   & .dropdown-menu {
     right: 0 !important;
     left: unset;
@@ -57,35 +99,6 @@ export const Navbar = styled.nav`
     padding: 0;
     & svg {
       stroke: ${({ theme }) => theme.secondary};
-    }
-  }
-  .dropdown-toggle {
-    &::after {
-      display: none;
-    }
-  }
-  .avatar {
-    position: relative;
-    height: 40px;
-    width: 40px;
-    border-radius: 50px;
-    background-color: ${({ theme }) => theme.bg};
-
-    & img {
-      border-radius: 50px;
-      object-fit: cover;
-      object-position: center;
-    }
-  }
-  & .dropdown-menu {
-    background: ${({ theme }) => theme.primary} !important;
-    border: 1px solid ${({ theme }) => theme.border} !important;
-    min-width: 210px;
-    & a {
-      color: ${({ theme }) => theme.secondary};
-      &:hover {
-        background: ${({ theme }) => theme.border} !important;
-      }
     }
   }
 `;
