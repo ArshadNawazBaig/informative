@@ -17,7 +17,9 @@ const getData = async (page, perPage, category) => {
     `${
       process.env.NEXTAUTH_URL
     }/api/posts?page=${page}&perPage=${perPage}&category=${category || ''}`,
-    { next: { revalidate: 3600 } }
+    {
+      cache: 'no-store',
+    }
   );
 
   if (!res.ok) {
