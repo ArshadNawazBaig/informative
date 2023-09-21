@@ -1,28 +1,21 @@
+'use client';
 import CategoryCard from '@/components/CategoryCard';
 import Heading from '@/components/Heading';
 import NewsLetter from '@/components/NewsLetter';
 import { Box } from '@/style';
 import React from 'react';
+import useSWR from 'swr';
 
-export const metadata = {
-  title: 'Explore Categories - Informative',
-  description:
-    'Discover a diverse range of categories on the Informative App. Explore articles, insights, and knowledge across topics like Entertainment, Health, Technology, Travel, and more.',
-};
+// export const metadata = {
+//   title: 'Explore Categories - Informative',
+//   description:
+//     'Discover a diverse range of categories on the Informative App. Explore articles, insights, and knowledge across topics like Entertainment, Health, Technology, Travel, and more.',
+// };
 
-const getData = async () => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/categories`, {
-    cache: 'no-store',
-  });
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-  if (!res.ok) {
-    console.log('error');
-  }
-  return res.json();
-};
-
-const CategoriesPage = async () => {
-  const categories = await getData();
+const CategoriesPage = () => {
+  const { data, isLoading } = useSWR('/api/categories', fetcher);
   return (
     <Box className="container">
       <Box className="row mt-sm-5 pt-5">
@@ -37,8 +30,8 @@ const CategoriesPage = async () => {
         </Box>
       </Box>
       <Box className="d-flex gap-4 flex-wrap w-100 mb-5">
-        {categories?.length > 0 &&
-          categories.map(({ name, id, img, slug }) => (
+        {data?.length > 0 &&
+          data.map(({ name, id, img, slug }) => (
             <Box key={id} className="category-card-outer">
               <CategoryCard
                 name={name}
