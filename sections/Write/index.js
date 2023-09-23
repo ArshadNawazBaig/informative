@@ -51,8 +51,6 @@ function WriteWrapper() {
   const { status } = useSession();
   const router = useRouter();
 
-  console.log(status);
-
   const {
     handleSubmit,
     control,

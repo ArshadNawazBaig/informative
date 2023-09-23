@@ -180,6 +180,9 @@ const EditAuthorPage = ({ params }) => {
     if (response.status === 200) {
       mutate();
       setDescEdit(false);
+      if (typeof window !== 'undefined') {
+        window.location.reload();
+      }
     }
   };
 
