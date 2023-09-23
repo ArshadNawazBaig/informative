@@ -7,25 +7,7 @@ import Heading from '@/components/Heading';
 import SideMenu from '@/components/SideMenu';
 import NewsLetter from '@/components/NewsLetter';
 
-const getData = async (page, perPage, category) => {
-  const res = await fetch(
-    `${
-      process.env.NEXTAUTH_URL
-    }/api/posts?page=${page}&perPage=${perPage}&category=${category || ''}`,
-    { next: { revalidate: 3600 } }
-  );
-
-  if (!res.ok) {
-    console.log('error');
-  }
-  return res.json();
-};
-
-const POST_PER_PAGE = 4;
-
-const HomeWrapper = async ({ page, category }) => {
-  const { posts, count } = await getData(page, POST_PER_PAGE, category);
-
+const HomeWrapper = async ({ page, posts, count }) => {
   return (
     <>
       <HeroSection />
