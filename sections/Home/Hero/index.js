@@ -2,19 +2,19 @@ import PostCard from '@/components/PostCard';
 import { Box } from '@/style';
 import React from 'react';
 
-const getData = async () => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/popular`, {
-    cache: 'no-store',
-  });
+// const getData = async () => {
+//   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/popular`, {
+//     cache: 'no-store',
+//   });
 
-  if (!res.ok) {
-    console.log('error');
-  }
-  return res.json();
-};
+//   if (!res.ok) {
+//     console.log('error');
+//   }
+//   return res.json();
+// };
 
-const HeroSection = async () => {
-  const posts = await getData();
+const HeroSection = async ({ posts }) => {
+  // const posts = await getData();
   return (
     <Box className="container">
       <Box

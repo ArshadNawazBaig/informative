@@ -10,6 +10,7 @@ export const GET = async (req, res) => {
   const title = searchParams.get('search');
   const perPage = searchParams.get('perPage');
   const tagsString = searchParams.get('tag');
+  const popular = searchParams.get('popular');
 
   const tags = tagsString ? tagsString.split(',') : [];
 
@@ -28,6 +29,14 @@ export const GET = async (req, res) => {
       createdAt: 'desc',
     },
   };
+
+  if (popular === 'true') {
+    // Modify the query to order by views in descending order and limit to 3 posts
+    query.orderBy = {
+      views: 'desc',
+    };
+    query.take = 3;
+  }
 
   try {
     const [posts, count] = await prisma.$transaction([
