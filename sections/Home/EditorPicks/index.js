@@ -4,20 +4,20 @@ import PostCard from '@/components/PostCard';
 import { Box } from '@/style';
 import React from 'react';
 
-const getData = async () => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/picks`, {
-    cache: 'no-store',
-  });
+// const getData = async () => {
+//   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/picks`, {
+//     cache: 'no-store',
+//   });
 
-  if (!res.ok) {
-    console.log('error');
-  }
+//   if (!res.ok) {
+//     console.log('error');
+//   }
 
-  return res.json();
-};
+//   return res.json();
+// };
 
-const EditorPicks = async () => {
-  const posts = await getData();
+const EditorPicks = async ({ posts }) => {
+  // const posts = await getData();
   return (
     <>
       <Box className="col-12">

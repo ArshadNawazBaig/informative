@@ -11,6 +11,7 @@ export const GET = async (req, res) => {
   const perPage = searchParams.get('perPage');
   const tagsString = searchParams.get('tag');
   const popular = searchParams.get('popular');
+  const editorPick = searchParams.get('editor');
 
   const tags = tagsString ? tagsString.split(',') : [];
 
@@ -22,6 +23,7 @@ export const GET = async (req, res) => {
       ...(category && { catSlug: category }),
       ...(title && { title: { contains: title } }),
       ...(isFeatured === 'true' && { isFeatured: true }),
+      ...(editorPick === 'true' && { editorPick: true }),
       ...(tags.length > 0 && { tags: { hasSome: tags } }),
     },
     include: { author: true, comments: true },
@@ -31,7 +33,13 @@ export const GET = async (req, res) => {
   };
 
   if (popular === 'true') {
-    // Modify the query to order by views in descending order and limit to 3 posts
+    query.orderBy = {
+      views: 'desc',
+    };
+    query.take = 3;
+  }
+
+  if (editorPick === 'true') {
     query.orderBy = {
       views: 'desc',
     };

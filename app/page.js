@@ -17,9 +17,23 @@ const getData = async (page, perPage, category) => {
   return res.json();
 };
 
-const getPopular = async (page, perPage) => {
+const getPopular = async () => {
   const res = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/posts?page=${page}&perPage=${perPage}&popular=true`,
+    `${process.env.NEXTAUTH_URL}/api/posts/popular?popular=true`,
+    {
+      cache: 'no-store',
+    }
+  );
+
+  if (!res.ok) {
+    console.log('error');
+  }
+  return res.json();
+};
+
+const getEditorPicks = async () => {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/posts/picks?editor=true`,
     {
       cache: 'no-store',
     }
@@ -44,8 +58,15 @@ const Home = async ({ searchParams }) => {
   const category = searchParams.category;
   const { posts, count } = await getData(page, POST_PER_PAGE, category);
   const { posts: popular } = await getPopular(page, POST_PER_PAGE);
+  const { posts: editorPicks } = await getEditorPicks(page, POST_PER_PAGE);
   return (
-    <HomeWrapper posts={posts} count={count} popular={popular} page={page} />
+    <HomeWrapper
+      posts={posts}
+      count={count}
+      popular={popular}
+      page={page}
+      editorPicks={editorPicks}
+    />
   );
 };
 

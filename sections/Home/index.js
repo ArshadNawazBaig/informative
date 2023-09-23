@@ -7,13 +7,13 @@ import Heading from '@/components/Heading';
 import SideMenu from '@/components/SideMenu';
 import NewsLetter from '@/components/NewsLetter';
 
-const HomeWrapper = async ({ page, posts, count, popular }) => {
+const HomeWrapper = async ({ page, posts, count, popular, editorPicks }) => {
   return (
     <>
       <HeroSection posts={popular} />
       <Box className="container overflow-hidden">
         <Box className="row row-gap-4 mt-5">
-          <EditorPicks />
+          <EditorPicks posts={editorPicks} />
         </Box>
         <Box className="row row-gap-4">
           <Box className="col-12 mt-5 mb-4">
