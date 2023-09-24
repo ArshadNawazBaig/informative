@@ -15,6 +15,11 @@ export const Body = styled.div`
   & .border-none {
     border: none !important;
   }
+  & .custom-close-btn {
+    border: none !important;
+    box-shadow: none;
+    outline: none;
+  }
   & .z-4 {
     z-index: 4;
   }

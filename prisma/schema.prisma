@@ -102,3 +102,10 @@ model Comment {
   post Post @relation(fields: [postSlug], references: [slug])
   createdAt DateTime @default(now())
 }
+
+model Message {
+  id String @id @default(cuid()) @map("_id")
+  name String
+  email String
+  message String
+}
