@@ -120,7 +120,12 @@ const PostCard = ({
             </Box>
             <Box className={`d-flex align-items-center date`}>
               <i className="ri-calendar-2-line"></i>
-              {comments}
+              {comments}{' '}
+              {comments == 0
+                ? 'comments'
+                : comments == 1
+                ? 'comment'
+                : 'comments'}
             </Box>
           </Box>
           <Box>
