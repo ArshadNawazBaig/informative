@@ -17,7 +17,7 @@ const AboutPage = () => {
   return (
     <Box className="container">
       <Box className="row">
-        <Box className="col-12 text-center mt-5 pt-md-5">
+        <Box className="col-12 text-center mt-5 pt-4 pt-md-5">
           <Heading
             title="Meet everyone who made this possible"
             className="mb-2"
