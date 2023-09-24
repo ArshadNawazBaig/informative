@@ -44,6 +44,9 @@ export const CardWrapper = styled.div`
   &:hover img {
     transform: scale(1.1);
   }
+  @media (max-width: 539px) {
+    min-height: ${({ user }) => (user ? '60vh' : '50vh')};
+  }
 `;
 
 export const ImageWrapper = styled.div`
