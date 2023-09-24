@@ -31,7 +31,7 @@ const RelatedPosts = async ({ post, targetId }) => {
   const posts = await getData(post);
   return (
     <>
-      {posts?.length > 0 && (
+      {posts?.length > 1 && (
         <Box className="col-12">
           <Heading
             title="Related posts"
@@ -41,7 +41,7 @@ const RelatedPosts = async ({ post, targetId }) => {
           <Divider />
         </Box>
       )}
-      {posts?.length > 0 &&
+      {posts?.length > 1 &&
         posts
           ?.filter((post) => post.id !== targetId)
           .map((post) => (
