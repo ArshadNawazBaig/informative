@@ -19,7 +19,7 @@ export const Outer = styled.div`
 
 export const CardWrapper = styled.div`
   height: 100%;
-  min-height: 30vh;
+  min-height: ${({ user }) => (user ? '40vh' : '30vh')};
   border-radius: 15px 15px 15px 15px;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -64,6 +64,8 @@ export const Title = styled.h2`
   word-wrap: break-word;
   font-size: ${({ font }) => (font === 'md' ? '1.3rem' : '1.4rem')};
   font-weight: 500;
+  display: flex;
+  align-items: center;
   text-transform: capitalize;
   &:hover a {
     background-position: left 0% bottom;

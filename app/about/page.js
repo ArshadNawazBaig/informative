@@ -1,6 +1,8 @@
+import FeaturePostCard from '@/components/FeaturePostCard';
 import Heading from '@/components/Heading';
 import NewsLetter from '@/components/NewsLetter';
 import Para from '@/components/Para';
+import { team } from '@/data/team';
 import { Box, ErrorWrapper } from '@/style';
 import Link from 'next/link';
 import React from 'react';
@@ -15,21 +17,29 @@ const AboutPage = () => {
   return (
     <Box className="container">
       <Box className="row">
-        <Box className="col-12 text-center">
-          <ErrorWrapper className="d-inline-grid h-100 w-100 align-items-center">
-            <Box>
-              <Heading
-                title="About Page is under construction"
-                className="mb-2"
-                main="About"
-              ></Heading>
-              <Box className="d-flex gap-2 justify-content-center flex-column w-100">
-                <Para>It looks like nothing was found at this location.</Para>
-                <Link href="/">Return to Home Page</Link>
-              </Box>
-            </Box>
-          </ErrorWrapper>
+        <Box className="col-12 text-center mt-5 pt-md-5">
+          <Heading
+            title="Meet everyone who made this possible"
+            className="mb-2"
+            main="our Team"
+          ></Heading>
         </Box>
+        {team?.length > 0 &&
+          team.map((member) => (
+            <Box className="col-sm-6 col-lg-4" key={member.id}>
+              <FeaturePostCard
+                title={member.name}
+                className="mt-4"
+                creator={member.name}
+                slug={member.id}
+                imageUrl={member.img}
+                status={member.status}
+                user
+                padding="low"
+                font="md"
+              />
+            </Box>
+          ))}
         <Box className="col-12 text-center my-5">
           <NewsLetter />
         </Box>

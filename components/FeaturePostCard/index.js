@@ -13,18 +13,35 @@ const FeaturePostCard = ({
   font,
   creator,
   slug,
+  status,
+  user,
 }) => {
   return (
     <Outer className={className}>
-      <CardWrapper>
+      <CardWrapper user={user}>
         <ImageWrapper>
           <Image alt={title} src={imageUrl} layout="fill" />
         </ImageWrapper>
       </CardWrapper>
       <Box className={padding === 'low' ? 'px-1 pt-2' : 'pt-4 px-3'}>
-        <Title font={font}>
-          <Link href={`/blog/${slug}`}>{title.substring(0, 40)}...</Link>
-        </Title>
+        {user ? (
+          <Title font={font}>
+            <Link href={`/author/${slug}`}>
+              {title.substring(0, 40)}
+              {title.length >= 40 && '...'}
+            </Link>
+            {status && (
+              <span className="ms-2 fs-6 fw-semibold pt-1">{status}</span>
+            )}
+          </Title>
+        ) : (
+          <Title font={font}>
+            <Link href={`/blog/${slug}`}>
+              {title.substring(0, 40)}
+              {title.length >= 40 && '...'}
+            </Link>
+          </Title>
+        )}
         <Box className="d-flex mb-2 flex-wrap">
           <Box className="text-capitalize">
             <AuthorLink
@@ -34,10 +51,12 @@ const FeaturePostCard = ({
               {creator.name}
             </AuthorLink>
           </Box>
-          <Box className={`d-flex align-items-center date`}>
-            <i className="ri-calendar-2-line"></i>
-            {date}
-          </Box>
+          {date && (
+            <Box className={`d-flex align-items-center date`}>
+              <i className="ri-calendar-2-line"></i>
+              {date}
+            </Box>
+          )}
         </Box>
       </Box>
     </Outer>
