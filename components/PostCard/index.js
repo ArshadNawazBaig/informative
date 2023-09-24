@@ -28,6 +28,7 @@ const PostCard = ({
   date,
   comments,
   category,
+  catSlug,
   key,
   slug,
   views,
@@ -37,8 +38,12 @@ const PostCard = ({
       <PostWrapper full={size} varient={varient}>
         {(views || comments) && (
           <Box className="views">
-            <CommentsIcon />
-            <Box className="count me-1">{shortenNumber(comments || 0)}</Box>
+            {comments >= 0 && (
+              <>
+                <CommentsIcon />
+                <Box className="count me-1">{shortenNumber(comments || 0)}</Box>
+              </>
+            )}
             {views && (
               <>
                 <ViewsIcon />
@@ -57,7 +62,10 @@ const PostCard = ({
             }`}
           >
             {category && (
-              <TermItem href={`/blog?category=${category.toLowerCase()}`}>
+              <TermItem
+                className={catSlug}
+                href={`/blog?category=${category.toLowerCase()}`}
+              >
                 {category.split('-').join(' ')}
               </TermItem>
             )}

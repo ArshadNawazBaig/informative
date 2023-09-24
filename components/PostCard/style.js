@@ -111,6 +111,37 @@ export const TermItem = styled(Link)`
   border-radius: 3px;
   text-transform: capitalize;
   transition: 0.3s ease-in-out;
+
+  /* &.life-style {
+    background-color: #d9709a;
+  }
+  &.entertainment {
+    background-color: #7093d9;
+  }
+  &.illustration {
+    background-color: #ff955b;
+  }
+  &.health {
+    background-color: #86aa73;
+  }
+  &.travel {
+    background-color: #ff5b5b;
+  }
+  &.photography {
+    background-color: #b5b84c;
+  }
+  &.music {
+    background-color: #9c6fbf;
+  }
+  &.technology {
+    background-color: #429681;
+  }
+  &.culture {
+    background-color: #a0a09b;
+  }
+  &.news {
+    background-color: #59a6bf;
+  } */
 `;
 
 export const AuthorLink = styled(Link)`

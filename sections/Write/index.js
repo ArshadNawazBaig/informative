@@ -46,6 +46,8 @@ function WriteWrapper() {
   const [progress, setProgress] = useState(0);
   const [media, setMedia] = useState('');
   const [noMedia, setNoMedia] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
   const [featuredImage, setFeaturedImage] = useState(null);
   const [tags, setTags] = useState([]);
   const { status } = useSession();
@@ -54,7 +56,7 @@ function WriteWrapper() {
   const {
     handleSubmit,
     control,
-    formState: { errors, isLoading },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -97,6 +99,8 @@ function WriteWrapper() {
   useEffect(() => {}, [media]);
 
   const onSubmit = async (data) => {
+    setIsLoading(true);
+    setErrorMessage(false);
     if (!media) {
       setNoMedia(true);
     } else {
@@ -115,8 +119,12 @@ function WriteWrapper() {
         method: 'POST',
         body: JSON.stringify(formData),
       });
-      if (response.status === 200) {
+      if (response.ok) {
         router.push(`/blog/${slugify(title)}`);
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
+        setErrorMessage(true);
       }
     }
   };
@@ -283,6 +291,14 @@ function WriteWrapper() {
               <Para className="text-danger" style={{ fontSize: '14px' }}>
                 Please upload or paste featured image link
               </Para>
+            )}
+            {errorMessage && (
+              <div
+                class={`alert alert-danger fade mt-4 ${errorMessage && 'show'}`}
+                role="alert"
+              >
+                Something went wrong.
+              </div>
             )}
             <Button
               disabled={isLoading}

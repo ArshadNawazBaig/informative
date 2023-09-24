@@ -37,6 +37,7 @@ const ScrollPosts = async ({ page, posts, count, category, tag, search }) => {
             category={catSlug}
             slug={slug}
             views={views}
+            catSlug={catSlug}
           >
             {desc.substring(0, 160)}...
           </PostCard>
