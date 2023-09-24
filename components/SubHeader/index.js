@@ -139,12 +139,14 @@ const SubHeader = ({ setIsOpen, status, user, data }) => {
                   </Link>
                 )}
               </Box>
-              <SearchIcon
-                className="cursor-pointer d-none d-md-block search-icon"
+              <Box
+                className="search-outer cusor-pointer d-none d-md-block"
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
-              />
+              >
+                <SearchIcon className="cursor-pointer  search-icon" />
+              </Box>
             </Box>
           </Box>
         </Box>

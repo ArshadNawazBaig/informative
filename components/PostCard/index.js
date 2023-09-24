@@ -13,7 +13,7 @@ import Link from 'next/link';
 import Button from '../Button';
 import Image from 'next/legacy/image';
 import Para from '../Para';
-import { VerifiedIcon, ViewsIcon } from '../Icons';
+import { CommentsIcon, VerifiedIcon, ViewsIcon } from '../Icons';
 import { shortenNumber } from '@/utils/helpers';
 
 const PostCard = ({
@@ -35,9 +35,18 @@ const PostCard = ({
   return (
     <Wrapper className={className} key={key}>
       <PostWrapper full={size} varient={varient}>
-        <Box className="views">
-          <ViewsIcon /> <Box className="count">{shortenNumber(views || 0)}</Box>
-        </Box>
+        {(views || comments) && (
+          <Box className="views">
+            <CommentsIcon />
+            <Box className="count me-1">{shortenNumber(comments || 0)}</Box>
+            {views && (
+              <>
+                <ViewsIcon />
+                <Box className="count">{shortenNumber(views || 0)}</Box>
+              </>
+            )}
+          </Box>
+        )}
         <ImageWrapper>
           <Image alt={title} src={imageUrl} layout="fill" />
         </ImageWrapper>

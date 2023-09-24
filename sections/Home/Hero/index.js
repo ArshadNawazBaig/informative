@@ -2,19 +2,7 @@ import PostCard from '@/components/PostCard';
 import { Box } from '@/style';
 import React from 'react';
 
-// const getData = async () => {
-//   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/popular`, {
-//     cache: 'no-store',
-//   });
-
-//   if (!res.ok) {
-//     console.log('error');
-//   }
-//   return res.json();
-// };
-
 const HeroSection = async ({ posts }) => {
-  // const posts = await getData();
   return (
     <Box className="container">
       <Box
@@ -28,7 +16,7 @@ const HeroSection = async ({ posts }) => {
             title={posts && posts[0]?.title}
             creator={posts && posts[0]?.author}
             date={posts && posts[0]?.createdAt.substring(0, 10)}
-            comments={(posts && posts[0]?.comments?.length) || 'No comments'}
+            comments={posts && posts[0]?.comments?.length}
             category={posts && posts[0]?.catSlug}
             slug={posts && posts[0]?.slug}
             views={posts && posts[0]?.views}
@@ -42,9 +30,7 @@ const HeroSection = async ({ posts }) => {
                 title={posts && posts[1]?.title}
                 creator={posts && posts[1]?.author}
                 date={posts && posts[1]?.createdAt.substring(0, 10)}
-                comments={
-                  (posts && posts[1]?.comments?.length) || 'No comments'
-                }
+                comments={posts && posts[1]?.comments?.length}
                 category={posts && posts[1]?.catSlug}
                 slug={posts && posts[1]?.slug}
                 views={posts && posts[1]?.views}
@@ -56,9 +42,7 @@ const HeroSection = async ({ posts }) => {
                 title={posts && posts[2]?.title}
                 creator={posts && posts[2]?.author}
                 date={posts && posts[2]?.createdAt.substring(0, 10)}
-                comments={
-                  (posts && posts[2]?.comments?.length) || 'No comments'
-                }
+                comments={posts && posts[2]?.comments?.length}
                 category={posts && posts[2]?.catSlug}
                 slug={posts && posts[2]?.slug}
                 views={posts && posts[2]?.views}
