@@ -31,8 +31,8 @@ const Footer = () => {
           <Heading title="Quick Links" size="md" />
           <Divider className="mb-3" />
           <Box className="mb-2">
-            <Link href="/contact" className="footer-link">
-              Contact
+            <Link href="/" className="footer-link">
+              Home
             </Link>
           </Box>
           <Box className="mb-2">
@@ -41,8 +41,13 @@ const Footer = () => {
             </Link>
           </Box>
           <Box className="mb-2">
-            <Link href="/" className="footer-link">
-              Home
+            <Link href="/contact" className="footer-link">
+              Contact
+            </Link>
+          </Box>
+          <Box className="mb-2">
+            <Link href="/privacy-policy" className="footer-link">
+              Privacy Policy
             </Link>
           </Box>
         </Box>
