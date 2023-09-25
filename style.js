@@ -45,6 +45,32 @@ export const Body = styled.div`
     }
   }
 
+  & .privacy-policy {
+    & h1 {
+      color: ${({ theme }) => theme.lightGray};
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      @media (max-width: 768px) {
+        font-size: 1.3rem;
+      }
+    }
+    & h2,
+    h3 {
+      color: ${({ theme }) => theme.lightGray};
+      font-size: 1.6rem;
+      font-weight: 700 !important;
+      margin-bottom: 20px;
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+    & p {
+      line-height: 28px;
+      margin-bottom: 20px;
+    }
+  }
+
   @media (max-width: 768px) {
     & .category-card-outer {
       width: 100%;
