@@ -65,7 +65,7 @@ const BlogPost = async ({ params }) => {
           </Box>
           <Box className="col-12 mt-4 mb-4">
             <SocialShare
-              url={`https://informative-ivory.vercel.app/blog/${post?.slug}`}
+              url={`https://informative-eta.vercel.app/blog/${post?.slug}`}
               title={_.capitalize(post?.title?.trim())}
               quote={post?.desc}
               media={post?.img}
