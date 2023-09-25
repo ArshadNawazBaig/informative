@@ -52,19 +52,19 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export async function generateStaticParams() {
-  const { posts } = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/posts?perPage=${100000}&page=${1}`,
-    {
-      cache: 'no-store',
-    }
-  );
-  if (!posts) return [];
+// export async function generateStaticParams() {
+//   const { posts } = await fetch(
+//     `${process.env.NEXTAUTH_URL}/api/posts?perPage=${100000}&page=${1}`,
+//     {
+//       cache: 'no-store',
+//     }
+//   );
+//   if (!posts) return [];
 
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
+//   return posts.map((post) => ({
+//     slug: post.slug,
+//   }));
+// }
 
 const BlogPost = async ({ params }) => {
   const { slug } = params;
