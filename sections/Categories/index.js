@@ -34,6 +34,13 @@ const CategoriesWrapper = ({}) => {
               />
             </Box>
           ))}
+        {isLoading && (
+          <Box className="text-center w-100">
+            <div className="spinner-grow" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </Box>
+        )}
       </Box>
       <Box className="row">
         <Box className="col-12 text-center my-5">

@@ -1,14 +1,12 @@
 import FeaturePostCard from '@/components/FeaturePostCard';
 import Heading from '@/components/Heading';
 import NewsLetter from '@/components/NewsLetter';
-import Para from '@/components/Para';
 import { team } from '@/data/team';
-import { Box, ErrorWrapper } from '@/style';
-import Link from 'next/link';
+import { Box } from '@/style';
 import React from 'react';
 
 export const metadata = {
-  title: 'About Us - Informative',
+  title: 'About Us',
   description:
     'Learn more about [Your Website Name] - who we are, our mission, and what drives us. Explore our story and vision for providing valuable content and services to our audience.',
 };

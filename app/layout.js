@@ -10,9 +10,13 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: 'Infomative - Your Gateway to Diverse Topics',
+  metadataBase: new URL('https://informative-eta.vercel.app'),
+  title: {
+    default: 'Infomative',
+    template: `%s | Infomative`,
+  },
   description:
-    'Explore a World of Knowledge and Inspiration with Infomative. Discover the Latest in Entertainment, Health, Illustration, Life Style, Music, Technology, Travel, Typography, and More. Dive into a Wealth of Informative Content Today!',
+    'Explore a World of Knowledge and Inspiration with Infomative. Discover the Latest in Entertainment, Health, Illustration, Life Style, Music, Sports, Technology, Travel, Typography, and More. Dive into a Wealth of Informative Content Today!',
 };
 
 export default function RootLayout({ children }) {

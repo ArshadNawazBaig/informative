@@ -28,6 +28,12 @@ const getData = async (page, perPage, category, tag, search) => {
 
 const POST_PER_PAGE = 4;
 
+export const metadata = {
+  title: 'Blogs - Your Gateway to Diverse Topics.',
+  description:
+    'Explore a World of Knowledge and Inspiration with Infomative. Discover the Latest in Entertainment, Health, Illustration, Life Style, Music, Sports, Technology, Travel, Typography, and More. Dive into a Wealth of Informative Content Today!',
+};
+
 const BlogPage = async ({ searchParams }) => {
   const page = parseInt(searchParams.page) || 1;
   const { category, tag, search } = searchParams;
@@ -46,7 +52,7 @@ const BlogPage = async ({ searchParams }) => {
           <Heading
             title={`${search ? 'Search' : 'Browse'} ${
               category ? 'Category' : tag ? 'Tag' : ''
-            } - ${category ? category : tag ? tag : search}`}
+            } - ${category ? category : tag ? tag : search ? search : 'Blogs'}`}
             className="mt-4 mb-4 text-capitalize"
           ></Heading>
         </Box>

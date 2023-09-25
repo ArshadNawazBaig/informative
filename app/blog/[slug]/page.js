@@ -1,12 +1,9 @@
 import BlogHero from '@/components/BlogHero';
 import CreatorCard from '@/components/CreatorCard';
-import Divider from '@/components/Divider';
-import FeaturePostCard from '@/components/FeaturePostCard';
 import Heading from '@/components/Heading';
 import NewsLetter from '@/components/NewsLetter';
 import SocialShare from '@/components/SocialShare';
 import { Box } from '@/style';
-import Head from 'next/head';
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Comments from '@/components/Comments';
@@ -31,33 +28,51 @@ const getData = async (slug) => {
 export async function generateMetadata({ params }) {
   try {
     const blog = await getData(params.slug);
+
+    if (!blog) {
+      return {
+        title: 'Not Found',
+        description: 'The page you are looking for is not found.',
+      };
+    }
+
     return {
-      title: `${_.capitalize(blog?.title.trim())} - Informative`,
+      title: `${_.capitalize(blog?.title.trim())}`,
       description: blog?.desc,
+      alternates: {
+        canonical: `/blog/${blog?.slug}`,
+      },
     };
   } catch (error) {
     return {
-      title: 'Our Blog - Stay Informed and Inspired || Informative',
+      title: 'Our Blog - Stay Informed and Inspired',
       description:
         'Explore our blog for the latest articles and insights on a variety of topics. Stay informed and inspired with our expertly written blog posts.',
     };
   }
 }
 
+export async function generateStaticParams() {
+  const { posts } = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/posts?perPage=${100000}&page=${1}`,
+    {
+      cache: 'no-store',
+    }
+  );
+  if (!posts) return [];
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 const BlogPost = async ({ params }) => {
   const { slug } = params;
   const post = await getData(slug);
 
-  if (!post) {
-    return notFound();
-  }
+  if (!post) return notFound();
   return (
     <>
-      <Head>
-        <meta property="og:image" content={post?.img} />
-        <meta property="og:title" content={post?.title} />
-        <meta property="og:description" content={post?.desc} />
-      </Head>
       <Box className="container">
         <Box className="row gx-md-5">
           <Box className="col-12">

@@ -50,7 +50,7 @@ const POST_PER_PAGE = 4;
 export const metadata = {
   title: 'Infomative - Your Gateway to Diverse Topics.',
   description:
-    'Explore a World of Knowledge and Inspiration with Infomative. Discover the Latest in Entertainment, Health, Illustration, Life Style, Music, Technology, Travel, Typography, and More. Dive into a Wealth of Informative Content Today!',
+    'Explore a World of Knowledge and Inspiration with Infomative. Discover the Latest in Entertainment, Health, Illustration, Life Style, Music, Sports, Technology, Travel, Typography, and More. Dive into a Wealth of Informative Content Today!',
 };
 
 const Home = async ({ searchParams }) => {

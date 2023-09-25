@@ -14,7 +14,7 @@ import {
 
 const Footer = () => {
   return (
-    <FooterWrapper className="container mt-5 mb-4">
+    <FooterWrapper className="container mt-5 pb-4">
       <Box className="row gap-4">
         <Box className="col-md-3">
           <Link className="navbar-brand text-uppercase" href="/">
@@ -43,6 +43,11 @@ const Footer = () => {
           <Box className="mb-2">
             <Link href="/contact" className="footer-link">
               Contact
+            </Link>
+          </Box>
+          <Box className="mb-2">
+            <Link href="/blog" className="footer-link">
+              Blogs
             </Link>
           </Box>
           <Box className="mb-2">
