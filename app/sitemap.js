@@ -19,32 +19,39 @@ export default async function sitemap() {
       return {
         url: `${process.env.NEXTAUTH_URL}/blog/${post.slug}`,
         lastModified: new Date(),
+        changeFrequency: 'monthly',
       };
     }) ?? [];
   return [
     {
       url: process.env.NEXTAUTH_URL,
       lastModified: new Date(),
+      changeFrequency: 'monthly',
     },
     {
       url: `${process.env.NEXTAUTH_URL}/about`,
       lastModified: new Date(),
+      changeFrequency: 'monthly',
     },
     {
       url: `${process.env.NEXTAUTH_URL}/categories`,
       lastModified: new Date(),
+      changeFrequency: 'monthly',
     },
     {
       url: `${process.env.NEXTAUTH_URL}/contact`,
       lastModified: new Date(),
+      changeFrequency: 'monthly',
     },
     {
       url: `${process.env.NEXTAUTH_URL}/blog`,
       lastModified: new Date(),
+      changeFrequency: 'monthly',
     },
     {
       url: `${process.env.NEXTAUTH_URL}/write`,
       lastModified: new Date(),
+      changeFrequency: 'monthly',
     },
     ...postsUrls,
   ];
