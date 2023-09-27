@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import StyledComponentsRegistry from '../lib/registry';
 import { ThemeProvider } from '@/context/ThemeProvider';
 import Main from './main';
+import Head from 'next/head';
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -22,6 +23,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="MUzhURRO1S3WZus6Xb82Hrj8FvGBDey_v_tVrpjiGiQ"
+        />
+      </Head>
       <body>
         <StyledComponentsRegistry>
           <ThemeProvider>
