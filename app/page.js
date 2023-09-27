@@ -1,4 +1,5 @@
 import HomeWrapper from '@/sections/Home';
+import Head from 'next/head';
 import React from 'react';
 
 const getData = async (page, perPage, category) => {
@@ -60,13 +61,21 @@ const Home = async ({ searchParams }) => {
   const { posts: popular } = await getPopular(page, POST_PER_PAGE);
   const { posts: editorPicks } = await getEditorPicks(page, POST_PER_PAGE);
   return (
-    <HomeWrapper
-      posts={posts}
-      count={count}
-      popular={popular}
-      page={page}
-      editorPicks={editorPicks}
-    />
+    <>
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="MUzhURRO1S3WZus6Xb82Hrj8FvGBDey_v_tVrpjiGiQ"
+        />
+      </Head>
+      <HomeWrapper
+        posts={posts}
+        count={count}
+        popular={popular}
+        page={page}
+        editorPicks={editorPicks}
+      />
+    </>
   );
 };
 
