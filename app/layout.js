@@ -23,6 +23,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="MUzhURRO1S3WZus6Xb82Hrj8FvGBDey_v_tVrpjiGiQ"
+        />
+        <meta name="robots" content="all" />
+      </head>
       <body>
         <StyledComponentsRegistry>
           <ThemeProvider>
