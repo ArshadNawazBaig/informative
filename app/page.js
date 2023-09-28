@@ -63,10 +63,10 @@ const Home = async ({ searchParams }) => {
   return (
     <>
       <Head>
-        <meta
+        {/* <meta
           name="google-site-verification"
           content="MUzhURRO1S3WZus6Xb82Hrj8FvGBDey_v_tVrpjiGiQ"
-        />
+        /> */}
       </Head>
       <HomeWrapper
         posts={posts}
