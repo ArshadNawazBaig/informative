@@ -1,13 +1,13 @@
 'use client';
 import {
   FacebookIcon,
-  FacebookMessengerIcon,
-  FacebookMessengerShareButton,
   FacebookShareButton,
   LinkedinIcon,
   LinkedinShareButton,
   PinterestIcon,
   PinterestShareButton,
+  RedditIcon,
+  RedditShareButton,
   TelegramIcon,
   TelegramShareButton,
   TwitterIcon,
@@ -38,9 +38,9 @@ const SocialShare = ({ url, title, media, quote, tags }) => {
         <LinkedinShareButton url={url}>
           <LinkedinIcon size={42} round />
         </LinkedinShareButton>
-        <FacebookMessengerShareButton url={url} appId={''}>
-          <FacebookMessengerIcon size={42} round />
-        </FacebookMessengerShareButton>
+        <RedditShareButton url={url} title={title}>
+          <RedditIcon size={42} round />
+        </RedditShareButton>
         <TelegramShareButton url={url} title={title}>
           <TelegramIcon size={42} round />
         </TelegramShareButton>
