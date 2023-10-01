@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CustomInput from '../Form/CInput';
 import { ModalWrapper } from './style';
 import { CloseIcon, SearchIcon } from '../Icons';
@@ -11,6 +11,7 @@ import Button from '../Button';
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const Unsplash = () => {
+  const searchInputRef = useRef(null);
   const [searchValue, setSearchValue] = useState('');
   const [debouncedSearchValue, setDebouncedSearchValue] = useState('');
   const [copySuccess, setCopySuccess] = useState(null);
@@ -41,6 +42,18 @@ const Unsplash = () => {
     return () => clearTimeout(timeout);
   }, [searchValue]);
 
+  useEffect(() => {
+    const modalElement = document.getElementById('unsplashModal');
+    modalElement.addEventListener('shown.bs.modal', () => {
+      searchInputRef.current.focus();
+    });
+    return () => {
+      modalElement.removeEventListener('shown.bs.modal', () => {
+        searchInputRef.current.focus();
+      });
+    };
+  }, []);
+
   const handleSearchInputChange = (event) => {
     setSearchValue(event.target.value.toLocaleLowerCase());
   };
@@ -57,6 +70,7 @@ const Unsplash = () => {
                 style={{ height: '40px !important' }}
                 value={searchValue}
                 onChange={handleSearchInputChange}
+                ref={searchInputRef}
               />
               <CloseIcon
                 data-bs-dismiss="modal"

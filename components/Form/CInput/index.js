@@ -1,16 +1,11 @@
 import { Box } from '@/style';
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { InputWrapper } from './style';
 
-function CustomInput({
-  value,
-  onChange,
-  placeholder,
-  name,
-  error,
-  className,
-  ...rest
-}) {
+const CustomInput = forwardRef((props, ref) => {
+  const { value, onChange, placeholder, name, error, className, ...rest } =
+    props;
+
   return (
     <InputWrapper className="custom-input w-100">
       <input
@@ -20,11 +15,12 @@ function CustomInput({
         name={name}
         value={value}
         onChange={onChange}
+        ref={ref}
         {...rest}
       />
       {error && <Box className="invalid-feedback">{error.message}</Box>}
     </InputWrapper>
   );
-}
+});
 
 export default CustomInput;
