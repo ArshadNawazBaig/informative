@@ -13,11 +13,44 @@ const poppins = Poppins({
 export const metadata = {
   metadataBase: new URL('https://informative-eta.vercel.app'),
   title: {
-    default: 'Infomative',
-    template: `%s | Infomative`,
+    default: 'Infomative - Your Gateway to Diverse Topics',
+    template: `%s - Infomative - Your Gateway to Diverse Topics`,
   },
   description:
     'Explore a World of Knowledge and Inspiration with Infomative. Discover the Latest in Entertainment, Health, Illustration, Life Style, Music, Sports, Technology, Travel, Typography, and More. Dive into a Wealth of Informative Content Today!',
+  applicationName: 'Infomative',
+  keywords: [
+    'News',
+    'Education',
+    'Articles',
+    'Tutorials',
+    'Lifestyle',
+    'Technology',
+    'Science',
+    'Health',
+    'Travel',
+    'Culture',
+    'Sports',
+  ],
+  authors: [
+    {
+      name: 'Arshad Nawaz Baig',
+      url: 'https://www.instagram.com/arshad_nawaz_baig/',
+    },
+  ],
+  creator: 'Arshad Nawaz Baig',
+  publisher: 'Arshad Nawaz Baig',
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+    },
+  },
+  openGraph: {
+    title: 'Infomative - Your Gateway to Diverse Topics',
+    description:
+      'Explore a World of Knowledge and Inspiration with Infomative. Discover the Latest in Entertainment, Health, Illustration, Life Style, Music, Sports, Technology, Travel, Typography, and More. Dive into a Wealth of Informative Content Today!',
+  },
 };
 
 export default function RootLayout({ children }) {

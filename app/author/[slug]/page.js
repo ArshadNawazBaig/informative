@@ -37,6 +37,32 @@ const getAuthorPosts = async (page, perPage, email) => {
   return res.json();
 };
 
+export async function generateMetadata({ params }) {
+  try {
+    const author = await getData(params.slug);
+
+    if (!author) {
+      return {
+        title: 'Not Found',
+        description: 'The page you are looking for is not found.',
+      };
+    }
+
+    return {
+      title: author?.name,
+      description: author?.description || '',
+      alternates: {
+        canonical: `/author/${author?.id}`,
+      },
+    };
+  } catch (error) {
+    return {
+      title: 'Author',
+      description: 'Authors description',
+    };
+  }
+}
+
 const POST_PER_PAGE = 3;
 
 const AuthorPage = async ({ params, searchParams }) => {

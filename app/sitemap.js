@@ -1,5 +1,25 @@
 export default async function sitemap() {
-  const getAllPosts = async (page, perPage, category) => {
+  const getAllAuthors = async () => {
+    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/authors`, {
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      console.log('error');
+    }
+
+    return res.json();
+  };
+  const authors = await getAllAuthors();
+  const authorsUrls =
+    authors.map((author) => {
+      return {
+        url: `${process.env.NEXTAUTH_URL}/author/${author.id}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+      };
+    }) ?? [];
+  const getAllPosts = async (page, perPage) => {
     const res = await fetch(
       `${process.env.NEXTAUTH_URL}/api/posts?page=${page}&perPage=${perPage}`,
       {
@@ -54,5 +74,6 @@ export default async function sitemap() {
       changeFrequency: 'monthly',
     },
     ...postsUrls,
+    ...authorsUrls,
   ];
 }

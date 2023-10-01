@@ -7,7 +7,6 @@ export const GET = async () => {
     const authors = await prisma.user.findMany();
     return new NextResponse(JSON.stringify(authors, { status: 200 }));
   } catch (error) {
-    // console.log(error);
     return new NextResponse(
       JSON.stringify({ message: error.message }, { status: 500 })
     );
