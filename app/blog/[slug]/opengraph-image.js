@@ -60,6 +60,7 @@ export default async function og({ params: { slug } }) {
             <div
               style={{
                 display: 'flex',
+                justifyContent: 'center',
               }}
             >
               <h4
@@ -78,10 +79,12 @@ export default async function og({ params: { slug } }) {
             <h2
               style={{
                 marginTop: '10px',
-                fontSize: '4rem',
+                fontSize: '2rem',
                 fontWeight: '900',
                 textTransform: 'capitalize',
                 marginBottom: 0,
+                textAlign: 'center',
+                maxWidth: '400px',
               }}
             >
               {post?.title}
@@ -91,6 +94,7 @@ export default async function og({ params: { slug } }) {
                 display: 'flex',
                 gap: '10px',
                 alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <img
