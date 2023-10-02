@@ -13,7 +13,7 @@ export const GET = async (req, res) => {
           hasSome: tags,
         },
       },
-      take: 5,
+      take: 4,
       include: {
         author: true,
       },
