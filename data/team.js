@@ -2,7 +2,7 @@ import Dostar from '@/public/team/1.jpg';
 import Arshad from '@/public/team/2.jpg';
 import Fayyaz from '@/public/team/3.jpg';
 export const team = [
-  { id: 22221, name: 'DR Dostar', status: 'CEO & Coordinator', img: Dostar },
+  { id: 22221, name: 'DR Dostar Akram', status: 'CEO & Coordinator', img: Dostar },
   {
     id: 'clmfx6299000069mxhz4d88fi',
     name: 'Arshad Nawaz',
