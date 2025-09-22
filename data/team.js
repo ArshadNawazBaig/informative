@@ -15,7 +15,7 @@ export const team = [
   },
   {
     id: 'clmsemmvg0000l908j1b9r2b6',
-    name: 'Fayaz Karim',
+    name: 'Dostdar Akram',
     status: 'Project Manager',
     img: Dostar,
   },
