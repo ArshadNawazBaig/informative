@@ -13,10 +13,10 @@ export const team = [
     status: 'Co-Founder',
     img: Arshad,
   },
-  // {
-  //   id: 'clmsemmvg0000l908j1b9r2b6',
-  //   name: 'Fayaz Karim',
-  //   status: 'CEO & Coordinator',
-  //   img: Fayyaz,
-  // },
+  {
+    id: 'clmsemmvg0000l908j1b9r2b6',
+    name: 'Fayaz Karim',
+    status: 'Project Manager',
+    img: Dostar,
+  },
 ];
