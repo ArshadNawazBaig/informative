@@ -54,7 +54,7 @@ const ScrollPosts = async ({ page, posts, count, category, tag, search }) => {
           className="mb-4"
         />
       )}
-      {posts.length <= 0 && (
+      {posts?.length <= 0 && (
         <Heading title="No posts found!" size="md"></Heading>
       )}
     </>
