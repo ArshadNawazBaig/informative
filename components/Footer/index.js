@@ -13,6 +13,8 @@ import {
 } from 'next-share';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <FooterWrapper className="container mt-5 pb-4">
       <Box className="row gap-4">
@@ -25,7 +27,7 @@ const Footer = () => {
             Your gateway to a world of knowledge, where curiosity meets
             inspiration.
           </Para>
-          <Para className="mt-4">© 2023, All Rights Reserved.</Para>
+          <Para className="mt-4">© {currentYear}, All Rights Reserved.</Para>
         </Box>
         <Box className="col">
           <Heading title="Quick Links" size="md" />
